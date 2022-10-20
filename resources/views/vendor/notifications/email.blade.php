@@ -40,7 +40,7 @@
 {{ $salutation }}
 @else
 @lang('Regards'),<br>
-VisionPakistan
+DarAlKhulood
 @endif
 
 {{-- Subcopy --}}

@@ -2,7 +2,7 @@
 {{-- Header --}}
 @slot('header')
 @component('mail::header', ['url' => config('app.url')])
-VisionPakistan
+DarAlKhulood
 @endcomponent
 @endslot
 
@@ -21,7 +21,7 @@ VisionPakistan
 {{-- Footer --}}
 @slot('footer')
 @component('mail::footer')
-© {{ date('Y') }} VisionPakistan. @lang('All rights reserved.')
+© {{ date('Y') }} DarAlKhulood. @lang('All rights reserved.')
 @endcomponent
 @endslot
 @endcomponent

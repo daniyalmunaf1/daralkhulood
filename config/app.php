@@ -15,7 +15,7 @@ return [
     |
     */
 
-    'name' => env('APP_NAME', 'VisionPakistan'),
+    'name' => env('APP_NAME', 'DarAlKhulood'),
 
     /*
     |--------------------------------------------------------------------------

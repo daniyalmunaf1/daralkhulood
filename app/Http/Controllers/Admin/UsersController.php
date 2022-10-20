@@ -5,13 +5,21 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Models\DeactivateDays;
 use App\Models\User;
+use Illuminate\Support\Facades\Mail;
+use App\Mail\SendEmailLink;
 use App\Models\Role;
+use App\Models\Employee;
+use App\Models\Equipment;
+use App\Models\Image;
 use App\Models\PinRequest;
 use App\Models\WithdrawalRequest;
 use App\Models\TeamBonusRequest;
 use App\Models\RewardBonusRequest;
 use App\Models\TeamUser;
 use App\Models\Pin;
+use App\Models\Service;
+use App\Models\Subscription;
+use App\Models\Video;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Gate;
@@ -29,247 +37,486 @@ class UsersController extends Controller
      */
     public function __invoke()
     {
-        $users = User::all();
-        return view('index')->with('users',$users);
-
+        $user = User::where('id',1)->first();
+        $services = Service::limit(3)->get();
+        $equipments = Equipment::limit(4)->get();
+        return view('index')->with([
+            'user'=>$user,
+            'services'=>$services,
+            'equipments'=>$equipments,
+        ]);
     }
 
     public function dashboard()
     {
-        $users = User::all();
-        $bank = User::where('id',1)->select('accountname','bankname','number')->first();
-        $PinRequestCount = PinRequest::where('status',0)->count();
-        $WithdrawalRequestCount = WithdrawalRequest::where('status',0)->count();
-        $BonusRequestCount = TeamBonusRequest::where('status',0)->count();
-        $RewardRequestCount = RewardBonusRequest::where('status',0)->count();
-        $SilverusersCount = DB::table('role_user')
-        ->where('role_id',2)
-        ->join('users','users.id','=','role_user.id')
-        ->where('password','!=',Null)
-        ->count();
-        $GoldusersCount = DB::table('role_user')
-        ->where('role_id',3)
-        ->join('users','users.id','=','role_user.id')
-        ->where('password','!=',Null)
-        ->count();
-        $TotalusersCount = User::where('password','!=',NULL)->count()-1;
-        $deactivate = DeactivateDays::where('id',1)->first();
-        $days = $deactivate->days;
-        $status = $deactivate->status;
-
-        return view('admin.dashboard')->with([
-            'users'=>$users,
-            'bank'=>$bank,
-            'PinRequestCount'=>$PinRequestCount,
-            'WithdrawalRequestCount'=>$WithdrawalRequestCount,
-            'BonusRequestCount'=>$BonusRequestCount,
-            'RewardRequestCount'=>$RewardRequestCount,
-            'SilverusersCount'=>$SilverusersCount,
-            'GoldusersCount'=>$GoldusersCount,
-            'TotalusersCount'=>$TotalusersCount,
-            'days'=>$days,
-            'status'=>$status
-        ]);
+        $user = User::where('id',1)->first();
+        return view('admin.dashboard')->with('user',$user);
     }
-
-    public function usermanagement()
+    public function gallery()
     {
-        $users = User::where('password','!=',NULL)->where('id','!=',Auth::id())->get();
-        $sno = 0;
-        return view('admin.usermanagement')->with([
-            'users'=>$users,
-            'sno'=>$sno
-        ]);
-
-    }
-
-
-    public function gotochangepassword()
-    {
-        return view('auth.change-password');
-    }
-   
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    
-    
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\User  $user
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(User $user)
-    {       
-        if($user->hasRole('silver'))
-        {
-            $role = 'silver';
-        }
-        else if($user->hasRole('gold'))
-        {
-            $role = 'gold';
-        }
-        return view('admin.edituser')->with([
+        $user = User::where('id',1)->first();
+        $videos = Video::all();
+        $images = Image::all();
+        return view('gallery')->with([
             'user'=>$user,
-            'role'=>$role
+            'images'=>$images,
+            'videos'=>$videos,
         ]);
-
     }
-
-    public function userDetails(User $user)
+    public function ourequipments()
     {
-        if(Auth::user()->hasRole('admin')){
-            $roles = Role::all();
-            return view('admin.user_detail')->with([
-                'user'=>$user,
-                'roles'=>$roles
-            ]);
-        }
-        else
-        {
-            if($user->hasRole('student'))
-            {
-                $roles = Role::all();
-                return view('admin.user_detail')->with([
-                    'user'=>$user,
-                    'roles'=>$roles
-                ]);
-            }
-            else{
-                return redirect()->route('index');
-
-            }
-        }
-    }
-
-    public function profile()
-    {
-        $roles = Role::all();
-        $user = Auth::user();
-        return view('profile')->with([
+        $equipments = Equipment::all();
+        $user = User::where('id',1)->first();
+        return view('our-equipments')->with([
             'user'=>$user,
-            'roles'=>$roles
+            'equipments'=>$equipments,
         ]);
     }
-    public function updatedays(Request $request)
-    {
-        $users = User::all();
-        
-        $days = DeactivateDays::where('id',1)->first();
-        if($request->days>=$days->days)
-        {
-            $days->days = $request->days;
-            $days->save();
-            return redirect()->route('dashboard')->with('message', 'Deactivation Days Updated Successfully');  
-        }
-        else
-        {
-            $users = User::all();
-            foreach($users as $user)
-            {
-                $user->lastuseradded = Carbon::now();
-                $user->save();
-            }
-            $days->days = $request->days;
-            $days->save();
-            return redirect()->route('dashboard')->with('message', 'Deactivation Days Updated Successfully');  
-        }
-           
-        
-    }
-    public function deactivatestatus()
-    {
-        
-        $days = DeactivateDays::where('id',1)->first();
-        if($days->status=='enabled')
-        {
-            $days->status = 'disabled';
-            $days->save();
-            return redirect()->route('dashboard')->with('message', 'Deactivation Disabled Successfully');   
-        }
-        else
-        {
-            $users = User::all();
-            foreach($users as $user)
-            {
-                $user->lastuseradded = Carbon::now();
-                $user->save();
-            }
-            $days->status = 'enabled';
-            $days->save();
-            return redirect()->route('dashboard')->with('message', 'Deactivation Enabled Successfully');   
-        }
-        
-    }
-    public function updatebankdetails(Request $request)
-    {
-        // dd('hello');
-        $user = Auth::user();
-        $user->number = $request->number;
-        $user->accountname = $request->accountname;
-        $user->bankname = $request->bankname;
-        $user->save();
-        return redirect()->route('dashboard')->with('message', 'Bank Details Updated Successfully');   
-    }
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\User  $user
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, User $user)
+    public function subscribe(Request $request)
     {
         // dd($request->old_plan);
         $request->validate([
-            'name' => ['required', 'string', 'max:255'],
-            'bankname' => ['required', 'string', 'max:255'],
-            'accountname' => ['required', 'string', 'max:255'],
-            'number' => ['required', 'string', 'max:255'],
-            'current_income' => ['required', 'numeric', 'max:100000000'],
-            'reward_income' => ['required', 'numeric', 'max:100000000'],
-            'total_income' => ['required', 'numeric', 'max:100000000'],
-            'team_bonus' => ['required', 'numeric', 'max:100000000'],
-            'level' => ['required', 'numeric', 'max:100000000'],
-            'score' => ['required', 'numeric', 'max:100000000'],
+            'email' => ['required', 'string', 'email', 'max:255', 'unique:subscriptions'],            
         ]);
-        $user->name = $request->name;
+
+        $subscribtion = new Subscription();
+        $subscribtion->email = $request->email;
+        
+        $subscribtion->save();
+        
+        return  redirect()->route('contactus')->with('message', 'Subscribed Successfully');   
+    }
+    public function sendmessage(Request $request)
+    {
+        // dd($request->old_plan);
+        $request->validate([
+            'name' => ['required', 'string', 'max:100000'],
+            'email' => ['required', 'string', 'max:100000'],
+            'subject' => ['required', 'max:100000'],
+            'message' => ['required', 'string', 'max:100000'],        ]);
+            $name = $request->name; 
+            $email = $request->email;
+            $subject = $request->subject;
+            $message = $request->message;
+            $user = User::first();
+      
+            Mail::to($user->email)->send(new SendEmailLink($name,$email,$subject,$message));
+            return redirect()->route('contactus')->with('message', 'Message Sent Successfully'); 
+        
+        
+        
+        return  redirect()->route('contactus')->with('message', 'Subscribed Successfully');   
+    }
+    public function aboutus()
+    {
+        $user = User::where('id',1)->first();
+        return view('aboutus')->with('user',$user);
+    }
+    public function contactus()
+    {
+        $user = User::where('id',1)->first();
+        return view('contactus')->with('user',$user);
+    }
+
+    public function team()
+    {
+        $user = User::where('id',1)->first();
+        $employees = Employee::all();
+        return view('team')->with([
+            'user'=>$user,
+            'employees'=>$employees
+        ]);
+    }
+
+    public function gotochangepassword()
+    {
+        $user = User::where('id',1)->first();
+        return view('auth.change-password')->with('user',$user);
+    }
+
+    public function teamlist()
+    {
+        $sno = 0;
+        $employees = Employee::all();
+        $user = User::where('id',1)->first();
+        
+        return view('admin.team')->with([
+            'employees'=>$employees,
+            'user'=>$user,
+            'sno'=>$sno
+        ]);
+
+    }   
+
+    public function edit($id)
+    {       
+        $user = User::where('id',1)->first();
+        $employee = Employee::where('id',$id)->first();
+        return view('admin.edit')->with([
+            'user'=>$user,
+            'employee'=>$employee
+        ]);
+
+    }
+    public function addemployee()
+    {       
+        $user = User::where('id',1)->first();
+        return view('admin.add-employee')->with([
+            'user'=>$user,
+        ]);
+
+    }
+
+    public function storeemployee(Request $request)
+    {
+        // dd($request->old_plan);
+        $request->validate([
+            'name' => ['required', 'string', 'max:100000'],
+            'image' => ['required', 'max:100000'],
+            'designation' => ['required', 'string', 'max:100000'],
+            
+        ]);
+
+        $user = User::where('id',1)->first();
+        $employee = new Employee();
+        $image = app('App\Http\Controllers\UploadImageController')->storage_upload($request->image,'/app/public/team/');
+        $employee->image = $image;
+        $employee->name = $request->name;
+        $employee->facebook = $request->facebook;
+        $employee->instagram = $request->instagram;
+        $employee->twitter = $request->twitter;
+        $employee->linkedin = $request->linkedin;
+        $employee->youtube = $request->youtube;
+        $employee->designation = $request->designation;
+        
+        $employee->save();
+        
+        return  redirect()->route('teamlist')->with('message', 'Employee Added Successfully');   
+    }
+    public function updateemployee(Request $request)
+    {
+        // dd($request->old_plan);
+        $request->validate([
+            'name' => ['required', 'string', 'max:100000'],
+            'designation' => ['required', 'string', 'max:100000'],
+            'facebook' => ['required', 'string', 'max:100000'],
+            'instagram' => ['required', 'string', 'max:100000'],
+            'twitter' => ['required', 'string', 'max:100000'],
+            'linkedin' => ['required', 'string', 'max:100000'],
+            'youtube' => ['required', 'string', 'max:100000'],
+        ]);
+
+        $user = User::where('id',1)->first();
+        $employee = Employee::where('id',$request->id)->first();
+        
+        $employee->name = $request->name;
+        $employee->facebook = $request->facebook;
+        $employee->instagram = $request->instagram;
+        $employee->twitter = $request->twitter;
+        $employee->linkedin = $request->linkedin;
+        $employee->youtube = $request->youtube;
+        $employee->designation = $request->designation;
+        
+        $employee->save();
+        
+        return  redirect()->route('teamlist')->with('message', 'Details Updated Successfully');   
+    }
+
+    public function services()
+    {
+        $sno = 0;
+        $services = Service::all();
+        $user = User::where('id',1)->first();
+        
+        return view('admin.services')->with([
+            'services'=>$services,
+            'user'=>$user,
+            'sno'=>$sno
+        ]);
+
+    }   
+
+    public function editservice($id)
+    {       
+        $user = User::where('id',1)->first();
+        $service = Service::where('id',$id)->first();
+        return view('admin.edit-service')->with([
+            'user'=>$user,
+            'service'=>$service
+        ]);
+
+    }
+    public function addservice()
+    {       
+        $user = User::where('id',1)->first();
+        return view('admin.add-service')->with([
+            'user'=>$user,
+        ]);
+
+    }
+
+    public function storeservice(Request $request)
+    {
+        // dd($request->old_plan);
+        $request->validate([
+            'title' => ['required', 'string', 'max:100000'],
+            'subtitle' => ['required', 'string', 'max:100000'],
+            'image' => ['required', 'max:100000'],
+            'description' => ['required', 'string', 'max:100000'],
+            
+        ]);
+
+        $user = User::where('id',1)->first();
+        $service = new Service();
+        $image = app('App\Http\Controllers\UploadImageController')->storage_upload($request->image,'/app/public/service/');
+        $service->image = $image;
+        $service->title = $request->title;
+        $service->subtitle = $request->subtitle;
+        $service->description = $request->description;
+        
+        $service->save();
+        
+        return  redirect()->route('services')->with('message', 'Service Added Successfully');   
+    }
+    public function updateservice(Request $request)
+    {
+        // dd($request->old_plan);
+        $request->validate([
+            'title' => ['required', 'string', 'max:100000'],
+            'subtitle' => ['required', 'string', 'max:100000'],
+            'description' => ['required', 'string', 'max:100000'],
+            
+        ]);
+
+        $user = User::where('id',1)->first();
+        $service = Service::where('id',$request->id)->first();
+        
+        $service->title = $request->title;
+        $service->subtitle = $request->subtitle;
+        $service->description = $request->description;
+        
+        $service->save();
+        
+        return  redirect()->route('services')->with('message', 'service Updated Successfully');   
+    }
+    public function videos()
+    {
+        $sno = 0;
+        $videos = Video::all();
+        $user = User::where('id',1)->first();
+        
+        return view('admin.videos')->with([
+            'videos'=>$videos,
+            'user'=>$user,
+            'sno'=>$sno
+        ]);
+
+    }   
+    public function subscriptions()
+    {
+        $sno = 0;
+        $subscriptions = Subscription::all();
+        $user = User::where('id',1)->first();
+        
+        return view('admin.subscriptions')->with([
+            'subscriptions'=>$subscriptions,
+            'user'=>$user,
+            'sno'=>$sno
+        ]);
+
+    }   
+
+    
+    public function addvideo()
+    {       
+        $user = User::where('id',1)->first();
+        return view('admin.add-video')->with([
+            'user'=>$user,
+        ]);
+
+    }
+
+    public function storevideo(Request $request)
+    {
+        // dd($request->old_plan);
+        $request->validate([
+            'link' => ['required', 'string', 'max:100000'],
+            
+        ]);
+
+        $user = User::where('id',1)->first();
+        $video = new Video();
+        $video->link = $request->link;
+        
+        $video->save();
+        
+        return  redirect()->route('videos')->with('message', 'Video Added Successfully');   
+    }
+
+    public function images()
+    {
+        $sno = 0;
+        $images = Image::all();
+        $user = User::where('id',1)->first();
+        
+        return view('admin.images')->with([
+            'images'=>$images,
+            'user'=>$user,
+            'sno'=>$sno
+        ]);
+
+    }   
+
+    
+    public function addimage()
+    {       
+        $user = User::where('id',1)->first();
+        return view('admin.add-image')->with([
+            'user'=>$user,
+        ]);
+
+    }
+
+    public function storeimage(Request $request)
+    {
+        // dd($request->old_plan);
+        $request->validate([
+            'name' => ['required', 'max:100000'],
+            
+        ]);
+        $user = User::where('id',1)->first();
+        $image = new Image();
+        $img = app('App\Http\Controllers\UploadImageController')->storage_upload($request->name,'/app/public/images/');
+        $image->name = $img;
+        
+        $image->save();
+        
+        return  redirect()->route('images')->with('message', 'Image Added Successfully');   
+    }
+
+    public function equipments()
+    {
+        $sno = 0;
+        $equipments = Equipment::all();
+        $user = User::where('id',1)->first();
+        
+        return view('admin.equipments')->with([
+            'equipments'=>$equipments,
+            'user'=>$user,
+            'sno'=>$sno
+        ]);
+
+    }   
+
+    public function editequipment($id)
+    {       
+        
+        $user = User::where('id',1)->first();
+        $equipment = Equipment::where('id',$id)->first();
+        return view('admin.edit-equipment')->with([
+            'user'=>$user,
+            'equipment'=>$equipment
+        ]);
+
+    }
+    public function addequipment()
+    {       
+        $user = User::where('id',1)->first();
+        return view('admin.add-equipment')->with([
+            'user'=>$user,
+        ]);
+
+    }
+
+    public function storeequipment(Request $request)
+    {
+        // dd($request->old_plan);
+        $request->validate([
+            'title' => ['required', 'string', 'max:100000'],
+            'subtitle' => ['required', 'string', 'max:100000'],
+            'image' => ['required', 'max:100000'],
+            'description' => ['required', 'string', 'max:100000'],
+            
+        ]);
+
+        $user = User::where('id',1)->first();
+        $equipment = new Equipment();
+        $image = app('App\Http\Controllers\UploadImageController')->storage_upload($request->image,'/app/public/equipment/');
+        $logo = app('App\Http\Controllers\UploadImageController')->storage_upload($request->logo,'/app/public/equipment/');
+        $equipment->image = $image;
+        $equipment->title = $request->title;
+        $equipment->logo = $logo;
+        $equipment->description = $request->description;
+        
+        $equipment->save();
+        
+        return  redirect()->route('equipments')->with('message', 'Equipment Added Successfully');   
+    }
+    public function updateequipment(Request $request)
+    {
+        // dd($request->old_plan);
+        $request->validate([
+            'title' => ['required', 'string', 'max:100000'],
+            'description' => ['required', 'string', 'max:100000'],
+            
+        ]);
+
+        $user = User::where('id',1)->first();
+        $equipment = Equipment::where('id',$request->id)->first();
+        
+        $equipment->title = $request->title;
+        $equipment->description = $request->description;
+        
+        $equipment->save();
+        
+        return  redirect()->route('equipments')->with('message', 'Equipment Updated Successfully');   
+    }
+
+    public function update(Request $request)
+    {
+        // dd($request->old_plan);
+        $request->validate([
+            'email' => ['required', 'string', 'max:100000'],
+            'number' => ['required', 'string', 'max:1000000'],
+            'worktime' => ['required', 'string', 'max:100000'],
+            'videolink' => ['required', 'string', 'max:100000'],
+            'facebook' => ['required', 'string', 'max:100000'],
+            'instagram' => ['required', 'string', 'max:100000'],
+            'twitter' => ['required', 'string', 'max:100000'],
+            'linkedin' => ['required', 'string', 'max:100000'],
+            'youtube' => ['required', 'string', 'max:100000'],
+        ]);
+
+        $user = User::where('id',1)->first();
+        if($request->logo!=Null)
+        {
+            $logo = app('App\Http\Controllers\UploadImageController')->storage_upload($request->logo,'/app/public/Logo/');
+            $user->logo = $logo;
+        }
+        if($request->logodark!=Null)
+        {
+            $logodark = app('App\Http\Controllers\UploadImageController')->storage_upload($request->logodark,'/app/public/Logo/');
+            $user->logodark = $logodark;
+        }
+        if($request->titleicon!=Null)
+        {
+            $titleicon = app('App\Http\Controllers\UploadImageController')->storage_upload($request->titleicon,'/app/public/Logo/');
+            $user->titleicon = $titleicon;
+        }
         $user->email = $request->email;
-        $user->accountname = $request->accountname;
-        $user->bankname = $request->bankname;
-        $user->level = $request->level;
-        $user->score = $request->score;
-        $user->current_income = $request->current_income;
-        $user->reward_income =  $request->reward_income;
-        $user->total_income =  $request->total_income;
-        $user->team_bonus =  $request->team_bonus;
         $user->number = $request->number;
-        if($request->role==$request->old_plan)
-        {    
-            // dd('same');
-            $user->ref_email = $request->ref_email;
-        }
-        else if($request->role!=$request->old_plan)
-        {    
-            $user->ref_email = Null;
-            // dd('change');
-        }
-        if($request->role=='silver')
-        {    
-            $user->roles()->sync(2);
-        }
-        else if($request->role=='gold')
-        {     
-            $user->roles()->sync(3);
-        }
+        $user->worktime = $request->worktime;
+        $user->videolink = $request->videolink;
+        $user->facebook = $request->facebook;
+        $user->instagram = $request->instagram;
+        $user->twitter = $request->twitter;
+        $user->linkedin = $request->linkedin;
+        $user->youtube = $request->youtube;
+        $user->map = $request->map;
+        
         $user->save();
         
-        return  redirect()->route('usermanagement')->with('message', 'Details Updated Successfully');   
+        return  redirect()->back()->with('message', 'Details Updated Successfully');   
     }
 
     public function changePassword(Request $request, User $user)
@@ -292,231 +539,33 @@ class UsersController extends Controller
     }
 
 
-    public function deactivateuser(User $user)
-    {
-        if($user->deactivate==1)
-        {
-            // dd('dectivated');
-            $user->lastuseradded = Carbon::now();
-            $user->deactivate = 0;
-            $user->save();
-            return redirect()->route('usermanagement')->with('message', 'User Activated Successfully');
-        }
-        else
-        {
-            $user->deactivate = 1;
-            $user->save();
-            return redirect()->route('usermanagement')->with('message', 'User Deactivated Successfully');
-            // dd('activated',$user );
-
-        }
-
+    public function destroy(Employee $employee)
+    {       
         
-    }
-    public function pinrequest()
-    {
-        $sno = 0;
-        $SilverPinRequests = PinRequest::where('status',0)
-        ->where('plan','silver')
-        ->join('users','users.id', '=', 'pin_requests.user_id')
-        ->get(['users.name','users.email','pin_requests.trx_id','pin_requests.amount','pin_requests.number_of_pins','pin_requests.user_id','pin_requests.id']);
-
-        $GoldPinRequests = PinRequest::where('status',0)
-        ->where('plan','gold')
-        ->join('users','users.id', '=', 'pin_requests.user_id')
-        ->get(['users.name','users.email','pin_requests.trx_id','pin_requests.amount','pin_requests.number_of_pins','pin_requests.user_id','pin_requests.id']);
-        // dd($PinRequests);
-        return view('admin.pinrequest')->with([
-            'SilverPinRequests'=>$SilverPinRequests,
-            'GoldPinRequests'=>$GoldPinRequests,
-            'sno'=>$sno
-        ]);
-
-    }
-    public function sendpin(Request $request,$id,$user_id,$trx_id,$plan)
-    {
-        if(PinRequest::where('id',$id)->where('status',0)->first())
-        {
-            // dd($plan);
-            $PinRequest = PinRequest::where('id',$id)->first();
-            $PinRequest->status = 1;
-            $PinRequest->save();
-            // dd($request->number_of_pins);
-            for($i=0;$i<$request->number_of_pins;$i++)
-            {
-                $pin = new Pin();
-                $pin->user_id = $request->user_id;
-                $pin->trx_id = $request->trx_id;
-                if($plan=='silver')
-                {
-                    $pin->pin = random_int(100000, 999999);
-                }
-                else
-                {
-                    $pin->pin = random_int(10000000, 99999999);
-                }
-                $pin->save();
-            }
-            return Redirect()->back()->with('message', 'Pin Sent Successfully');   
-        }
-        else
-        {
-            return Redirect()->back()->with('message', 'Pin Sent Already');   
-        }
-
-    }
-    public function withdrawalrequest()
-    {
-        $sno = 0;
-        $SilverRequests = WithdrawalRequest::where('status',0)
-        ->where('plan','silver')
-        ->get();
-
-        $GoldRequests = WithdrawalRequest::where('status',0)
-        ->where('plan','gold')
-        ->get();
-        // dd($PinRequests);
-        return view('admin.withdrawalrequest')->with([
-            'SilverRequests'=>$SilverRequests,
-            'GoldRequests'=>$GoldRequests,
-            'sno'=>$sno
-        ]);
-
-    }
-    public function rewardrequest()
-    {
-        $sno = 0;
-        $SilverRequests = RewardBonusRequest::where('status',0)
-        ->where('plan','silver')
-        ->get();
-
-        $GoldRequests = RewardBonusRequest::where('status',0)
-        ->where('plan','gold')
-        ->get();
-        // dd($PinRequests);
-        return view('admin.rewardrequest')->with([
-            'SilverRequests'=>$SilverRequests,
-            'GoldRequests'=>$GoldRequests,
-            'sno'=>$sno
-        ]);
-
-    }
-    public function withdrawdone(Request $request,$id,$user_id,$plan)
-    {
-        if(WithdrawalRequest::where('id',$id)->where('status',0)->first())
-        {
-            // dd($plan);
-            $WithdrawRequest = WithdrawalRequest::where('id',$id)->first();
-            $WithdrawRequest->status = 1;
-            $WithdrawRequest->save();
-            // dd($request->number_of_pins);
-            $user = User::where('id',$user_id)->first();
-                
-            if($plan=='silver')
-            {
-                $user->current_income-=1050;
-                $user->total_income+=1050;
-            }
-            else
-            {
-                $user->current_income-=5400;
-                $user->total_income+=5400;
-            }
-            $user->save();
-            
-            return Redirect()->back()->with('message', 'Withdraw Done Successfully');   
-        }
-        else
-        {
-            return Redirect()->back()->with('message', 'Already Done');   
-        }
-    }
-    public function rewarddone(Request $request,$id,$user_id,$reward,$plan)
-    {
-        if(RewardBonusRequest::where('id',$id)->where('status',0)->first())
-        {
-            // dd($plan);
-            $RewardRequest = RewardBonusRequest::where('id',$id)->first();
-            // if($RewardRequest->status == 0)
-            // {
-            $RewardRequest->status = 1;
-            $RewardRequest->save();
-            // dd($request->number_of_pins);
-            $user = User::where('id',$user_id)->first();
-                $user->current_income-=$reward;
-                $user->reward_income+=$reward;
-                $user->total_income+=$reward;
-            $user->save();
-            
-            return Redirect()->back()->with('message', 'Reward Sent Successfully');
-        }  
-        else
-        {
-            return Redirect()->back()->with('message', 'Already Sent');
-        }
-    }
-    public function teambonusrequest()
-    {
-        $sno = 0;
-        $SilverRequests = TeamBonusRequest::where('status',0)
-        ->where('plan','silver')
-        ->get();
-
-        $GoldRequests = TeamBonusRequest::where('status',0)
-        ->where('plan','gold')
-        ->get();
-        // dd($PinRequests);
-        return view('admin.teambonusrequest')->with([
-            'SilverRequests'=>$SilverRequests,
-            'GoldRequests'=>$GoldRequests,
-            'sno'=>$sno
-        ]);
-
-    }
-    public function bonusdone(Request $request,$id,$user_id,$plan)
-    {
-        // dd($plan);
-        if(TeamBonusRequest::where('id',$id)->where('status',0)->first())
-        {
-            $TeamBonusRequest = TeamBonusRequest::where('id',$id)->first();
-            $TeamBonusRequest->status = 1;
-            $TeamBonusRequest->save();
-            // dd($request->number_of_pins);
-            $user = User::where('id',$user_id)->first();
-                
-            if($plan=='silver')
-            {
-                $user->current_income-=300;
-                $user->team_bonus+=300;
-                $user->total_income+=300;
-            }
-            else
-            {
-                $user->current_income-=450;
-                $user->team_bonus+=450;
-                $user->total_income+=450;
-            }
-            $user->save();
-            
-            return Redirect()->back()->with('message', 'Bonus sent Successfully');   
-        }
-        else
-        {
-            return Redirect()->back()->with('message', 'Done Already');   
-        }
-    }
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Models\User  $user
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy(User $user)
-    {
-            $user->password = NULL;
-            $user->save();
-            return Redirect()->back()->with('message', 'User Account Deleted Successfully');   
+        $employee->delete();
         
-        
+        return  redirect()->route('teamlist')->with('message', 'Employee Deleted Successfully');  
     }
+    public function destroyservice($id)
+    {       
+        $service = Service::where('id',$id)->first();
+        $service->delete();
+        
+        return  redirect()->route('services')->with('message', 'Service Deleted Successfully');  
+    }
+    public function destroyvideo($id)
+    {       
+        $video = Video::where('id',$id)->first();
+        $video->delete();
+        
+        return redirect()->route('videos')->with('message', 'Video Deleted Successfully');  
+    }
+    public function destroyimage($id)
+    {       
+        $image= Image::where('id',$id)->first();
+        $image->delete();
+        
+        return redirect()->route('images')->with('message', 'Image Deleted Successfully');  
+    }
+
 }

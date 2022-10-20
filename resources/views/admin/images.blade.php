@@ -1,15 +1,14 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <meta charset="utf-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="description" content="Vision Pakistan is a network Marketing Website, Here you can earn unlimited Money by just developing a network">
-  <meta name="keywords" content="Network Marketing,Online Earnig,Earning,Marketing,Work From Home,Make Your Network,Invite,Invite Friends">
-  <meta name="author" content="Vision Pakistan">
-    <meta
-      name="viewport"
-      content="width=device-width, initial-scale=1, shrink-to-fit=no"
-    />
+  <title>Images</title>
+    <meta content="Chernkh Mikhail" name="author">
+    <meta content="DAR AL KHULOOD UNITED LLC - Top-Of-The-Line Equipment Rentals" name="description">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="HandheldFriendly" content="true">
+    <meta name="format-detection" content="telephone=no">
+    <meta content="IE=edge" http-equiv="X-UA-Compatible">
+    <link rel="shortcut icon" href="{{asset('/storage/'.$user->titleicon)}}" type="image/x-icon">
     <link rel="stylesheet" href="{{asset('assets/css/login.css')}}">
 
     <link rel="stylesheet" href="{{asset('assets/css/bootstrap.min.css')}}">
@@ -66,7 +65,6 @@ border: 1px solid;
     <!-- <link rel="stylesheet" href="{{asset('assets/css/style.css')}}"> -->
     <link rel="icon"  sizes="512x512" href="{{asset('assets/favicon/android-chrome-512x512.png')}}">
 
-    <title>Vision Pakistan - Users List</title>
 
     <!-- Custom fonts for this template-->
     <link
@@ -111,66 +109,31 @@ border: 1px solid;
      @if (Session::has('message'))
             <div class="alert alert-success">{{ Session::get('message') }}</div>
             @endif
-<h1>Users List</h1>
-<input type="text" id="myInput" onkeyup="myFunction()" placeholder="Search By Email" title="Type in a name">
+<h1>Image List</h1>
+<input type="text" id="myInput" onkeyup="myFunction()" placeholder="Search" title="Type in a name">
+<a href="{{route('add-image')}}" class="btn btn-primary">Add Image</a>
                <table style="width:1250px;" class="table table-striped" id="myTable">
                    <!--Table head-->
                    <thead>
                        <tr>
                            <!-- <th>#</th> -->
-                           <th>Activate</th>
-                           <th>Username</th>
-                           <th>Email</th>
-                           <th>Score</th>
-                           <th>Level</th>
-                           <th>Plan</th>
-                           <th>Current Income</th>
-                           <th>Reward Income</th>
-                           <th>Team Bonus</th>
-                           <th>Total Income</th>
-                           <th>Ref Email</th>
+                           <th style="width:50px;">S.NO</th>
+                           <th>Image</th>
                            <th style="width:180px;">Actions</th>
                        </tr>
                    </thead>
                    <!--Table head-->
                    <!--Table body-->
                    <tbody>
-                        @foreach($users as $user)
+                        @foreach($images as $image)
                        <tr>
-                           <!-- <th scope="row">{{++$sno}}</th> -->
+                          <td>{{++$sno}}</td>
+                           <td><img src="{{asset('/storage/'.$image->name)}}" style="height:75px;width: 75px;" alt="image"></td>
                            <td>
-                           <!-- <form method="POST" action="{{ route('deactivateuser',$user) }}" class="" novalidate="novalidate" id="" > -->
-																<!-- @csrf -->
-																<!-- {{method_field('put')}} -->
-																<!-- <button type="submit" class="btn btn-icon btn-bg-light btn-active-color-primary btn-sm "> -->
-                                  <!-- <div> -->
-																	<!-- <label class="form-check form-switch form-check-custom form-check-solid"> -->
-																		<input class="form-check-input w-30px h-20px" type="checkbox" name="lock" onclick="return false;" @if($user->deactivate==0) checked @endif />
-																	<!-- </label> -->
-<!-- </div> -->
-
-																	<!--end::Svg Icon-->
-																<!-- </button> -->
-															</form>
-                            
-                          </td>
-                           <td>{{$user->name}}</td>
-                           <td>{{$user->email}}</td>
-                           <td>{{$user->score}}</td>
-                           <td>{{$user->level}}</td>
-                           <td style="text-transform:capitalize;">{{ implode(',', $user->roles()->get()->pluck('name')->toArray())}}</td>
-                           <td>{{$user->current_income}}</td>
-                           <td>{{$user->reward_income}}</td>
-                           <td>{{$user->team_bonus}}</td>
-                           <td>{{$user->total_income}}</td>
-                           <td>{{$user->ref_email}}</td>
-                           <td>
-                           <a class="btn btn-success" style=""  href="{{route('deactivateuser',$user)}}">A/C</a>
-                            <a class="btn btn-primary" style="" href="{{route('users.edit',$user->id)}}"><i class="fa fa-edit"></i></a>
-                           <form method="POST" style="float:right;" action="{{ route('users.destroy',$user) }}" class="" novalidate="novalidate" id="" >
+                           <form method="POST" style="float:center;" action="{{ route('delete-image',$image->id) }}" class="" novalidate="novalidate" id="" >
 															@csrf
-																{{method_field('DELETE')}}
-                             <button class="btn btn-danger del-user" onclick="return confirm('Are you sure You Want to delete this User?')"><i class="fa fa-trash"></i></button>
+																<!-- {{method_field('DELETE')}} -->
+                             <button class="btn btn-danger del-user" ><i class="fa fa-trash"></i></button>
                            </form>
                        </td>
                        </tr>
@@ -197,7 +160,7 @@ function myFunction() {
   table = document.getElementById("myTable");
   tr = table.getElementsByTagName("tr");
   for (i = 0; i < tr.length; i++) {
-    td = tr[i].getElementsByTagName("td")[2];
+    td = tr[i].getElementsByTagName("td")[1];
     if (td) {
       txtValue = td.textContent || td.innerText;
       if (txtValue.toUpperCase().indexOf(filter) > -1) {

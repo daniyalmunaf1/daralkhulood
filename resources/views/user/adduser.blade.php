@@ -46,7 +46,7 @@
             
             <div class="registration-form">
             
-                <form method="POST" action="{{ route('register') }}" class="form w-100" novalidate="novalidate" id="" >
+        <form method="POST" action="{{ route('register') }}" class="form w-100" novalidate="novalidate" id="" >
                     @csrf
                     @if(Session::has('errors'))
             <p class="alert alert-danger">    {{ implode('', $errors->all(':message')) }}
@@ -70,8 +70,8 @@
                     @can('gold')
                     <label for="pincode-input">Enter 8 Digits PIN</label>
                     <input type="number" class="form-control item" value="{{ old('pin') }}" name="pin" placeholder="Enter 8 Digits Pin" 
-   onInput="if(this.value>99999999){this.value='';}"
-/>
+             onInput="if(this.value>99999999){this.value='';}"
+                    />
                     @endcan('gold')
                     <!-- <div id="pincode-input" name="pin" class="form-group container"></div> -->
                     <div class="form-group">
@@ -112,7 +112,7 @@
                     <div class="form-group">
                         <button type="Submit" class="btn btn-block create-account">Create Account</button>
                     </div>
-                </form>
+        </form>
             </div>
            
         </div>

@@ -21,7 +21,8 @@ class AuthenticatedSessionController extends Controller
      */
     public function create()
     {
-        return view('auth.login');
+        $user = User::where('id',1)->first();
+        return view('auth.login')->with('user',$user);
     }
 
     /**
@@ -36,17 +37,7 @@ class AuthenticatedSessionController extends Controller
 
         $request->session()->regenerate();
 
-        $_days = DeactivateDays::where('id',1)->first();
-        $days = $_days->days;
-        // dd($days);
-
-        $users = User::where('lastuseradded', '<', Carbon::now()->subDays($days))->get();
-        foreach($users as $user)
-        {
-            $user->deactivate = 1;
-            $user->save();
-        }
-
+        
         return redirect()->intended(RouteServiceProvider::HOME);
     }
 

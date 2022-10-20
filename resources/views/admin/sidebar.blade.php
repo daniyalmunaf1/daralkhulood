@@ -6,13 +6,13 @@
         <!-- Sidebar - Brand -->
         <a style="flex-direction:column;height: 87px;"
           class="sidebar-brand d-flex align-items-center justify-content-center"
-          href="{{route('dashboard')}}"
+          href="{{route('index')}}"
         >
           <div style="transform:none;" class="sidebar-brand-icon rotate-n-15">
-            <img class="V-logo" style="width:100px;" src="{{asset('assets/Images/VsionPakLogoVWhite.png')}}" alt="">
+            <img class="V-logo" style="width:75px;" src="{{asset('/storage/'.$user->logodark)}}" alt="">
            
           </div>
-          <div style="font-size:11px;" class="sidebar-brand-text mx-3"><span style="display:inline;color:#3f48cc;">Vision </span><span style="display:inline;">Pakistan</span></div>
+          <div style="font-size:11px;" class="sidebar-brand-text mx-3"><span style="display:inline;color:#3f48cc;">Dar Al </span><span style="display:inline;">Khulood</span></div>
         </a>
 
         <!-- Divider -->
@@ -26,38 +26,43 @@
           >
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="{{route('usermanagement')}}">
+          <a class="nav-link" href="{{route('teamlist')}}">
             <i class="fas fa-fw fa-user-alt"></i>
-            <span>Users Management</span></a
+            <span>Team List</span></a
+          >
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="{{route('services')}}">
+            <i class="fas fa-fw fa-user-alt"></i>
+            <span>Services</span></a
+          >
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="{{route('images')}}">
+            <i class="fas fa-fw fa-user-alt"></i>
+            <span>Images</span></a
+          >
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="{{route('videos')}}">
+            <i class="fas fa-fw fa-user-alt"></i>
+            <span>Videos</span></a
+          >
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="{{route('equipments')}}">
+            <i class="fas fa-fw fa-user-alt"></i>
+            <span>Equipments</span></a
+          >
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="{{route('subscriptions')}}">
+            <i class="fas fa-fw fa-user-alt"></i>
+            <span>Subscriptions</span></a
           >
         </li>
    
-        <li class="nav-item ">
-          <a class="nav-link"  href="{{route('pinrequest')}}">
-            <i class="fas fa-fw fa-key"></i>
-            <span>Pin Requests</span></a
-          >
-        </li>
-        <li class="nav-item ">
-        <a class="nav-link"  href="{{route('withdrawalrequest')}}">
-            <i class="fas fa-fw fa-money"></i>
-            <span>Withdrawal Requests</span></a
-          >
-        </li>
-        <li class="nav-item ">
-        <a class="nav-link"  href="{{route('teambonusrequest')}}">
-            <i class="fas fa-fw fa-users"></i>
-            <span>Team Bonus Requests</span></a
-          >
-        </li>
-        <li class="nav-item ">
-        <a class="nav-link"  href="{{route('rewardrequest')}}">
-            <i class="fas fa-fw fa-trophy"></i>
-            <span>Rewards Requests</span></a
-          >
-        </li>
- 
-        <!-- Divider -->
+                <!-- Divider -->
         <hr class="sidebar-divider d-none d-md-block" />
 
         <!-- Sidebar Toggler (Sidebar) -->

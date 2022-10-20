@@ -1,15 +1,14 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <meta charset="utf-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="description" content="Vision Pakistan is a network Marketing Website, Here you can earn unlimited Money by just developing a network">
-  <meta name="keywords" content="Network Marketing,Online Earnig,Earning,Marketing,Work From Home,Make Your Network,Invite,Invite Friends">
-  <meta name="author" content="Vision Pakistan">
-    <meta
-      name="viewport"
-      content="width=device-width, initial-scale=1, shrink-to-fit=no"
-    />
+  <title>Dashboard</title>
+    <meta content="Chernkh Mikhail" name="author">
+    <meta content="DAR AL KHULOOD UNITED LLC - Top-Of-The-Line Equipment Rentals" name="description">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="HandheldFriendly" content="true">
+    <meta name="format-detection" content="telephone=no">
+    <meta content="IE=edge" http-equiv="X-UA-Compatible">
+    <link rel="shortcut icon" href="{{asset('/storage/'.$user->titleicon)}}" type="image/x-icon">
     <link rel="stylesheet" href="{{asset('assets/css/login.css')}}">
 
     <link rel="stylesheet" href="{{asset('assets/css/bootstrap.min.css')}}">
@@ -90,9 +89,7 @@ border: 1px solid;
           <!-- Begin Page Content -->
           <div class="container-fluid">
             <!-- Page Heading -->
-            @if (Session::has('message'))
-            <div class="text-center alert alert-success">{{ Session::get('message') }}</div>
-            @endif
+            
             <div
               class="d-sm-flex align-items-center justify-content-between mb-4"
             >
@@ -100,166 +97,101 @@ border: 1px solid;
               <h1 class="h3 mb-0 text-gray-800">Hi Admin</h1>
             </div>
 
-            <!-- Content Row -->
-            <div class="row"> 
-              <!-- Earnings (Monthly) Card Example -->
-              <div class="col-xl-3 col-md-6 mb-4">
-                            <div class="card border-left-primary shadow h-100 py-2">
-                                <div class="card-body">
-                                    <div class="row no-gutters align-items-center">
-                                        <div class="col mr-2">
-                                            <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
-                                                Total Users</div>
-                                            <div class="h5 mb-0 font-weight-bold text-gray-800">{{$TotalusersCount}}</div>
-                                        </div>
-                                        <div class="col-auto">
-                                            <i class="fas fa-user fa-2x text-gray-300"></i>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-              <div class="col-xl-3 col-md-6 mb-4">
-                            <div class="card border-left-primary shadow h-100 py-2">
-                                <div class="card-body">
-                                    <div class="row no-gutters align-items-center">
-                                        <div class="col mr-2">
-                                            <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
-                                                Silver Users</div>
-                                            <div class="h5 mb-0 font-weight-bold text-gray-800">{{$SilverusersCount}}</div>
-                                        </div>
-                                        <div class="col-auto">
-                                          <i class="fas fa-user fa-2x text-gray-300"></i>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+            <div class="registration-form row">
+            
+            <form enctype="multipart/form-data" method="POST" action="{{ route('update') }}" class="w-100">
+                        @csrf
 
-
-              <div class="col-xl-3 col-md-6 mb-4">
-                <div class="card border-left-success shadow h-100 py-2">
-                  <div class="card-body">
-                    <div class="row no-gutters align-items-center">
-                      <div class="col mr-2">
-                        <div
-                          class="text-xs font-weight-bold text-success text-uppercase mb-1"
-                        >
-                          Gold Users
+                        @if(Session::has('errors'))
+                <p class="text-center alert alert-danger">    {{ implode('', $errors->all(':message')) }}
+                </p>
+                @endif
+                @if (Session::has('message'))
+                <div class="text-center alert alert-success">{{ Session::get('message') }}</div>
+                @endif
+                @if (Session::has('issue'))
+                <div class="alert alert-danger">{{ Session::get('issue') }}</div>
+                @endif
+                       
+                       
+                        <!-- <div id="pincode-input" name="pin" class="form-group container"></div> -->
+                        <div class="row container">
+                        
+                        <div class="form-group col-12 col-lg-6">
+                            <label for="email1">Email</label>
+                            <input type="email" class="form-control item" value="{{ $user->email}}" id="eamil1" name="email" placeholder="Email">
                         </div>
-                        <div class="h5 mb-0 font-weight-bold text-gray-800">
-                        {{$GoldusersCount}}
+                        <div class="form-group col-12 col-lg-6">
+                            <label for="accnum">Contact Number</label>
+                            <input type="text" class="form-control item" value="{{ $user->number}}" id="accnum" name="number" placeholder="Contact Number">
                         </div>
-                      </div>
-                      <div class="col-auto">
-                        <i class="fas fa-user fa-2x text-gray-300"></i>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-              <!-- Earnings (Monthly) Card Example -->
-              <div class="col-xl-3 col-md-6 mb-4">
-                <div class="card border-left-info shadow h-100 py-2">
-                  <div class="card-body">
-                    <div class="row no-gutters align-items-center">
-                      <div class="col mr-2">
-                        <div
-                          class="text-xs font-weight-bold text-info text-uppercase mb-1"
-                        >
-                          Pending Pin Requests
+                        <div class="form-group col-12 col-lg-6">
+                            <label>HomePage Video Link</label>
+                            <input type="text" class="form-control item" value="{{ $user->videolink}}" id="videolink" name="videolink" placeholder="Video Link">
                         </div>
-                        <div class="row no-gutters align-items-center">
-                          <div class="col-auto">
-                            <div
-                              class="h5 mb-0 mr-3 font-weight-bold text-gray-800"
-                            >
-                              {{$PinRequestCount}}
-                            </div>
-                          </div>
-                          <div class="col"></div>
+                        <div class="form-group col-12 col-lg-6">
+                            <label for="accnum">Work Time</label>
+                            <input type="text" class="form-control item" value="{{ $user->worktime}}" id="accnum" name="worktime" placeholder="Work Time">
                         </div>
-                      </div>
-                      <div class="col-auto">
-                        <i class="fas fa-key fa-2x text-gray-300"></i>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-              <!-- Pending Requests Card Example -->
-              <div class="col-xl-3 col-md-6 mb-4">
-                <div class="card border-left-danger shadow h-100 py-2">
-                  <div class="card-body">
-                    <div class="row no-gutters align-items-center">
-                      <div class="col mr-2">
-                        <div
-                          class="text-xs font-weight-bold text-danger text-uppercase mb-1"
-                        >
-                        Withdrawal Requests
+                        <div class="form-group col-12 col-lg-6">
+                            <label for="accnum">Facebook Link</label>
+                            <input type="text" class="form-control item" value="{{ $user->facebook}}" id="accnum" name="facebook" placeholder="facebook Link">
                         </div>
-                        <div class="h5 mb-0 font-weight-bold text-gray-800">
-                        {{$WithdrawalRequestCount}}
+                        <div class="form-group col-12 col-lg-6">
+                            <label for="accnum">Instagram Link</label>
+                            <input type="text" class="form-control item" value="{{ $user->instagram}}" id="accnum" name="instagram" placeholder="Instagram Link">
                         </div>
-                      </div>
-                      <div class="col-auto">
-                        <i
-                          class="fas fa-clipboard-list fa-2x text-gray-300"
-                        ></i>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div class="col-xl-3 col-md-6 mb-4">
-                <div class="card border-left-danger shadow h-100 py-2">
-                  <div class="card-body">
-                    <div class="row no-gutters align-items-center">
-                      <div class="col mr-2">
-                        <div
-                          class="text-xs font-weight-bold text-danger text-uppercase mb-1"
-                        >
-                        Team Bouns Requests
+                        <div class="form-group col-12 col-lg-6">
+                            <label for="accnum">Twitter Link</label>
+                            <input type="text" class="form-control item" value="{{ $user->twitter}}" id="accnum" name="twitter" placeholder="Twitter Link">
                         </div>
-                        <div class="h5 mb-0 font-weight-bold text-gray-800">
-                        {{$BonusRequestCount}}
+                        <div class="form-group col-12 col-lg-6">
+                            <label for="accnum">Linkedin Link</label>
+                            <input type="text" class="form-control item" value="{{ $user->linkedin}}" id="accnum" name="linkedin" placeholder="Linkedin Link">
+                        </div>
+                        <div class="form-group col-12 col-lg-6">
+                            <label for="accnum">Youtube Link</label>
+                            <input type="text" class="form-control item" value="{{ $user->youtube}}" id="accnum" name="youtube" placeholder="Youtube Link">
+                        </div>
+                        <div class="form-group col-12 col-lg-6">
+                            <label for="accnum">Map Link</label>
+                            <input type="text" class="form-control item" value="{{ $user->map}}" id="accnum" name="map" placeholder="Map Link">
+                        </div>
+                        <div class="form-group col-12 col-lg-6">
+                            <label for="accnum">Address</label>
+                            <textarea type="text" class="form-control item" id="accnum" name="address" rows="3" placeholder="Address">{{ $user->address}}</textarea>
+                        </div>
+                        <div class="form-group col-12 col-lg-6">
+                            <label for="accnum">Home Slider Text</label>
+                            <textarea type="text" class="form-control item" id="accnum" name="slider" rows="3" placeholder="Home Slider Text">{{ $user->slider}}</textarea>
+                        </div>
+                        <div class="form-group col-12 col-lg-6">
+                            <label for="accnum">Logo</label>
+            <img class="d-flex justify-content-center" style="width:auto;height:auto;" src="{{asset('/storage/'.$user->logo)}}" alt="">
+            <input type="file"  style="height:45px;" class="form-control item" value="{{ $user->logo}}" id="accnum" name="logo">
+                            
+                        </div>
+                        <div class="form-group col-12 col-lg-6">
+                        <label for="accnum">White Logo</label>
+            <img class="d-flex justify-content-center" style="width:auto;height:auto;" src="{{asset('/storage/'.$user->logodark)}}" alt="">
+            <input type="file"  style="height:45px;" class="form-control item" value="{{ $user->darklogo}}" id="accnum" name="logodark">
+                        </div>
+                        <div class="form-group col-12 col-lg-6">
+                            <label for="accnum">Title Icon</label>
+            <img class="d-flex justify-content-center" style="width:auto;height:auto;" src="{{asset('/storage/'.$user->titleicon)}}" alt="">
+            <input type="file"  style="height:45px;" class="form-control item" value="{{ $user->titleicon}}" id="accnum" name="titleicon">
+                            
+                        </div>
+                        
+                        
+                        </div>
+                      <div class="container row">
+                        <div class="form-group">
+                            <button type="Submit" class="btn btn-primary float-center create-account">Update Details</button>
                         </div>
                       </div>
-                      <div class="col-auto">
-                        <i
-                          class="fas fa-users fa-2x text-gray-300"
-                        ></i>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div class="col-xl-3 col-md-6 mb-4">
-                <div class="card border-left-danger shadow h-100 py-2">
-                  <div class="card-body">
-                    <div class="row no-gutters align-items-center">
-                      <div class="col mr-2">
-                        <div
-                          class="text-xs font-weight-bold text-danger text-uppercase mb-1"
-                        >
-                        Reward Requests
-                        </div>
-                        <div class="h5 mb-0 font-weight-bold text-gray-800">
-                        {{$RewardRequestCount}}
-                        </div>
-                      </div>
-                      <div class="col-auto">
-                        <i
-                          class="fas fa-clipboard-list fa-2x text-gray-300"
-                        ></i>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
+            </form>
+                </div>            
             </div>
        
             <hr>
@@ -281,116 +213,13 @@ border: 1px solid;
                 justify-content: space-evenly;
               }
             </style>
-            <h3 style="text-align: center;color:#535353;">Current Bank Account</h3>
-            <div class="accountNumber"style="background:white;">
-
-              <div class="date"></div>
-              <hr>
-              <div  class="account-details">
-                <div class="bank-acc ">
-                  <h5 class="text-gray-700">Back Account <i class="fa fa-hand-o-right"></i> </h5>
-                  <p>{{$bank->bankname}}</p>
-                </div>
-                <div class="bank-acc ">
-                  <h5 class="text-gray-700">Account Number <i class="fa fa-hand-o-right"></i> </h5>
-                  <p>{{$bank->number}}</p>
-                </div>
-                <div class="bank-acc ">
-                  <h5 class="text-gray-700">Account Name <i class="fa fa-hand-o-right"></i></h5>
-                  <p>{{$bank->accountname}}</p>
-                </div>
-                           </div>
-
-            </div>
+            
        
            
   </div>
     
-  <div class="container " style="margin-top:15px ;">
-    <div class="row justify-content-center">
-        <div class="col-md-6 text-center mb-5">
-            <h2 class="heading-section text-gray-700">Change Bank Account</h2>
-        </div>
-    </div>
-    <div class="row justify-content-center">
-        <div class="col-md-7 col-lg-5">
-            <div class="login-wrap p-4 p-md-5">
-          <div class="icon d-flex align-items-center justify-content-center">
-              <span class="fa fa-dollar"></span>
-          </div>
-          <h3 class="text-center mb-4">Details Of Bank Account</h3>
-        <form method="POST" action="{{route('updatebankdetails')}}" class="login-form">
-          @csrf
-              <div class="form-group">
-                  <input type="text" name="bankname" value="{{$bank->bankname}}" class="form-control rounded-left" placeholder="Bank Account" required>
-              </div>
-        <div class="form-group d-flex">
-          <input type="number"name="number" value="{{$bank->number}}" class="form-control rounded-left" placeholder="Account Number" required>
-        </div>
-        <div class="form-group d-flex">
-          <input type="text" name="accountname" value="{{$bank->accountname}}" class="form-control rounded-left" placeholder="Account Name" required>
-        </div>
-        <div class="form-group">
-        <!-- <button type="submit" class="form-control btn btn-primary rounded submit px-3">Login</button> -->
-        <button type="submit" class="loginbtn">Submit</button>
+  
 
-        </div>
-      </form>
-    </div>
-        </div>
-    </div>
-</div>
-<hr>
-<div class="container">
-<h3 class="text-gray-700 text-center">Accounts Deactivation Limit</h3>
-<div class="toggle-deac d-flex"style="padding: 20px;margin-top:30px; justify-content:space-evenly;">
-  <h4 class="text-gray-700">   
-    Accounts Deactivation
-  </h4>
-  <div class="right-sect">
-    @if($status=='enabled')
-    <a class="btn btn-primary">Enabled</a>
-    <a href="{{route('deactivatestatus')}}" style="color:white;" class="btn btn-danger">Disable</a>
-    @else
-    <a href="{{route('deactivatestatus')}}" class="btn btn-primary">Enable</a>
-    <a style="color:white;" class="btn btn-danger">Disabled</a>
-    @endif
-  </div>
-</div>
-<div class="bg-white" style="padding: 20px;margin-top:30px ;"> <div class="bank-acc">
-  <h5 class="text-gray-700">Current Deactivation Time <i class="fa fa-hand-o-right"></i></h5>
-  <p style="font-size: 20px;">{{$days}} days</p>
-</div></div>
-<div class="change-acc-limit" style="margin-top:30px ;">
-  <div class="row justify-content-center">
-    <div class="col-md-7 col-lg-5">
-        <div class="login-wrap p-4 p-md-5">
-      <div class="icon d-flex align-items-center justify-content-center">
-          <span class="fa fa-clock"></span>
-      </div>
-      <h3 class="text-center mb-4">Change Accounts Deactivation Limit </h3>
-      <form method="POST" action="{{route('updatedays')}}" class="login-form">
-          @csrf  
-              <h5 class="text-gray-700">Enter After How Many Days User Account will deactivate if he dosen't work</h5>
-    <div class="form-group d-flex">
-      <input type="number" id="deac-limit" name="days" value="{{$days}}" class="form-control rounded-left" placeholder="Enter Deactivation Days" required>
-    </div>
-
-    <div class="form-group">
-    <!-- <button type="submit" class="form-control btn btn-primary rounded submit px-3">Login</button> -->
-    <button type="submit" class="loginbtn">Submit</button>
-
-    </div>
-  </form>
-</div>
-    </div>
-</div>
-
-</div>
-</div>
-</div>
-          </div>
-        </div>
       </div>
       
     </div>

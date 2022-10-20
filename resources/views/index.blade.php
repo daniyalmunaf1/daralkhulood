@@ -1,384 +1,537 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ru">
+
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta charset="utf-8">
+    <title>Home</title>
+    <meta content="Chernkh Mikhail" name="author">
+    <meta content="DAR AL KHULOOD UNITED LLC - Top-Of-The-Line Equipment Rentals" name="description">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Vision Pakistan is a network Marketing Website, Here you can earn unlimited Money by just developing a network">
-  <meta name="keywords" content="Network Marketing,Online Earnig,Earning,Marketing,Work From Home,Make Your Network,Invite,Invite Friends">
-  <meta name="author" content="Vision Pakistan">
-    <link rel="stylesheet" href="assets/css/style.css">
-    <link rel="icon"  sizes="512x512" href="assets/favicon/android-chrome-512x512.png">
-    <link rel="stylesheet" href="assets/css/bootstrap.min.css">
-    <link rel="stylesheet" href="assets/css/bootstrap/_media.css">
-    <link rel="stylesheet" href="assets/css/bootstrap/mixins/_border-radius.css">
-    <link rel="stylesheet" href="assets/css/bootstrap/mixins/_screen-reader.css">
-    <link rel="stylesheet" href="assets/css/bootstrap/mixins/_visibility.css">
-    <link rel="stylesheet" href="assets/css/bootstrap/utilities/_stretched-link.css">
-    <link rel="stylesheet" href="assets/dashboard/css/rewards.css">
+    <meta name="HandheldFriendly" content="true">
+    <meta name="format-detection" content="telephone=no">
+    <meta content="IE=edge" http-equiv="X-UA-Compatible">
+    <link rel="shortcut icon" href="{{asset('/storage/'.$user->titleicon)}}" type="image/x-icon">
+    <link rel="stylesheet" href="asset/css/libs.min.css">
+    <link rel="stylesheet" href="asset/css/main.css">
+
+    <style>
+/*****************************
+*	horizontal news ticker
+******************************/
+.grid-container {
+  display: grid;
+  grid-template-columns: auto auto auto auto;
+  gap: 10px;
   
-    <!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous"> -->
-     <title>Vision Pakistan</title>
+  padding: 10px;
+}
+
+.grid-container > div {
+  background-color: rgba(255, 255, 255, 0.8);
+  
+  text-align: center;
+  font-size: 30px;
+}
+
+
+
+
+.ticker-wrapper-h{
+	display: flex;	
+	position: relative;
+	overflow: hidden;
+	border: 1px solid #14A850;
+    background-color: #14A850;
+}
+
+.ticker-wrapper-h .heading{
+	background-color: #14A850;
+	color: #fff;
+	padding: 5px 10px;
+	flex: 0 0 auto;
+	z-index: 1000;
+}
+.ticker-wrapper-h .heading:after{
+	content: "";
+	position: absolute;
+	top: 0;
+	border-left: 20px solid #14A850;
+	border-top: 17px solid transparent;
+	border-bottom: 15px solid transparent;
+}
+
+
+.news-ticker-h{
+	display: flex;
+	margin:0;
+	padding: 0;
+	padding-left: 90%;
+	z-index: 999;
+	
+	animation-iteration-count: infinite;
+	animation-timing-function: linear;
+	animation-name: tic-h;
+	animation-duration: 30s;
+	
+}
+.news-ticker-h:hover { 
+	animation-play-state: paused; 
+}
+
+.news-ticker-h li{
+	display: flex;
+	width: 100%;
+	align-items: center;
+	white-space: nowrap;
+	padding-left: 20px;
+}
+
+.news-ticker-h li a{
+	color: #fff;
+	font-weight: bold;
+}
+
+@keyframes tic-h {
+	0% {
+		-webkit-transform: translate3d(0, 0, 0);
+		transform: translate3d(0, 0, 0);
+		visibility: visible;
+	}
+	100% {
+		-webkit-transform: translate3d(-100%, 0, 0);
+		transform: translate3d(-100%, 0, 0);
+	}
+}
+    </style>
 </head>
-<body >	
 
-	<div class="navigation-wrap start-header start-style"style="    max-height: 80px;
-  padding: 0;">
-		<div class="container">
-			<div class="row">
-				<div class="col-12">
-					<nav class="navbar navbar-expand-md navbar-light" style="max-height: 79px;">
-					
-				<img class="vision-pak-logo" src="assets/Images/visionpakLogo.png" alt="">
-						
-						<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-							<span class="navbar-toggler-icon"></span>
-						</button>
-						
-						<div class="collapse navbar-collapse" id="navbarSupportedContent">
-							<ul class="navbar-nav ml-auto py-4 py-md-0" style="background-color: white;padding: 29px;">
-								<li class="nav-item pl-4 pl-md-0 ml-0 ml-md-4">
-									<a class="nav-link" href="#home">Home</a>
-									
-								</li>
-								
-								<li class="nav-item pl-4 pl-md-0 ml-0 ml-md-4">
-									<a class="nav-link" href="#aboutus">About Us</a>
-								</li>
-								<li class="nav-item pl-4 pl-md-0 ml-0 ml-md-4">
-									<a class="nav-link"href="#contactus">Watch Video</a>
-									
-								</li>
-                @can('login')
-                <li class="nav-item pl-4 pl-md-0 ml-0 ml-md-4">
-									<a class="nav-link"href="{{route('dashboard')}}">Dashboard</a>
-									
-								</li>
-                <form method="POST" action="{{ route('logout') }}">
-                            			@csrf
-                 
-								<li class="pl-4 pl-md-0 ml-0 ml-md-4">
-                <button type="submit" class="nav-login login-a" >
+<body class="page-home">
+
+    <!-- Loader-->
+    <div id="page-preloader"><span class="spinner border-t_second_b border-t_prim_a"></span></div>
+    <!-- Loader end-->
+
+
+    <div class="page-wrapper">
+        @include('header')
+        <main class="page-main">
+            <section class="s-hero">
+                <div class="s-hero__inner">
+                    <div class="s-hero__desc">
+                        <div class="s-hero__title">Looking For Construction Equipments On Rent?</div>
+                        <div class="s-hero__subtitle">Get the best rental service that is more cost effective, efficient and Safest.</div>
+                        <div class="s-hero__search">
+                            <a class="uk-button uk-button-danger uk-button-large uk-icon uk-first-column info-card__btn uk-button" style="background-color: #14A850; border-radius: 100px; font-size: 15px;"; href="{{route('aboutus')}}">Book Now</a>
+                            <a class="uk-button uk-button-danger uk-button-large uk-icon uk-first-column info-card__btn uk-button" style="background-color: #fff; color: #0E58A8; border-radius: 100px; font-size: 15px;"; href="{{route('aboutus')}}">Browse Rental Categories</a>
+                        </div>
+                    </div>
+                    <div class="s-hero__slider">
+                        <div class="js-hero-slider">
+                            <div class="swiper">
+                                <div class="swiper-wrapper">
+                                    <a href=""> <div class="swiper-slide"><img src="asset/img/hero-slider-1.jpg" alt="hero-slider"></div></a>
+                                    <a href=""> <div class="swiper-slide"></a><img src="asset/img/hero-slider-2.jpg" alt="hero-slider"></div></a>
+                                    <a href=""> <div class="swiper-slide"></a><img src="asset/img/hero-slider-3.jpg" alt="hero-slider"></div></a>
+                                </div>
+                                <div class="swiper-pagination"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="ticker-wrapper-h">
+                    <!--<div class="heading">Trending Now</div>-->
                     
-                    
-										LogOut</button>
-									
-								</li>
-									</form>
-  
-                @endcan
-                @cannot('login')
-								<li class="pl-4 pl-md-0 ml-0 ml-md-4">
-								<a  class="nav-login login-a" href="{{route('login')}}">Login</a>
-									
-								</li>
-                @endcannot
+                    <ul class="news-ticker-h">
+                        <li><a href="">{{$user->slider}}</a></li>
+                        
+                    </ul>
+                </div>
+            </section>
+            <section class="s-about">
+                <div class="uk-section uk-container">
+                    <div class="uk-grid uk-child-width-1-2@m uk-flex-middle" data-uk-grid="">
+                        <!--<div class="uk-text-center uk-first-column"><img src="asset/img/Groupbt.png" alt="image"></div>-->
+                        <div class="uk-text-center uk-first-column">
+                            <div class="grid-container">
+                            <div><div class="uk-text-center uk-first-column"><img src="asset/img/Groupbt 1.png" alt="image"></div></div>
+                            <div><div class="uk-text-center uk-first-column"><img src="asset/img/Groupbt 2.png" alt="image"></div></div>
+                          </div>
+                          <div class="grid-container">
+                            <div><div class="uk-text-center uk-first-column"><img src="asset/img/Groupbt 3.png" alt="image"></div></div>
+                            <div><div class="uk-text-center uk-first-column"><img src="asset/img/Groupbt 4.png" alt="image"></div></div>
+                          </div></div>
+                        <div>
+                            <div class="section-title"><span>[Company Overview]</span>
+                                <h3>Helping the Industry with 10k+ Equipments for Rentals Anytime</h3>
+                            </div>
+                            <div class="section-content">
+                                <p>Kiusmod tempor sed incididunts labore sed dolor mag dolor mag aliqua enimad mini veniam quis nostrud dolor mag aliqua enimad mini veniam quis nostrud enimad mini veniam quis nostrud exercitation ullamco labores nisi ut aliquip ex ea reprehen deritin voluptate. Alabores nisi ut aliquip ex ea reprehen eiusmod deritin voluptate.</p>
+                                <p>Waliqua enimad mini veniam quis nostrud dolor mag aliqua enimad mini veniam ipsum dolor tempor amety consecteur adipisicing elits dolor mag aliqua enimad mini veniam quis nostrud tempor incididunt aliqua.</p>
+                                <div class="s-about__btns" data-uk-margin=""><a class="uk-button uk-button-danger uk-button-large uk-icon uk-first-column" href="11_about-us.html" data-uk-icon="arrow-right">Get started<svg width="20" height="20" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><polyline fill="none" stroke="#000" points="10 5 15 9.5 10 14"></polyline><line fill="none" stroke="#000" x1="4" y1="9.5" x2="15" y2="9.5"></line></svg></a><a class="uk-icon-button ico_mission" href="11_about-us.html" data-uk-tooltip="title: Our Mission; pos: bottom" title="" aria-expanded="false"></a><a class="uk-icon-button ico_track" href="11_about-us.html" data-uk-tooltip="title: Our Mission; pos: bottom" title="" aria-expanded="false"></a></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <section class="s-categories">
+                <div class="uk-background-muted">
+                    <div class="uk-section uk-container uk-container-expand">
+                        <div class="section-title --center"><span>[Premier Equipment Rental Service]</span>
+                            <h3>Browse Rental Categories</h3>
+                        </div>
+                        <div class="section-content">
+                            <div class="uk-grid uk-child-width-1-2@s  uk-child-width-1-2@m uk-child-width-1-4@l uk-child-width-1-2@xl" data-uk-grid>
+                                @foreach($equipments as $equipment)
+                                <div>
+                                    <div class="uk-card uk-card-default uk-grid-collapse uk-child-width-1-2@xl uk-margin" data-uk-grid>
+                                        <div class="uk-card-media-left uk-cover-container"><img src="{{asset('/storage/'.$equipment->image)}}" alt="cat-item" data-uk-cover><canvas width="350" height="300"></canvas></div>
+                                        <div>
+                                            <div class="uk-card-body">
+                                                <div class="uk-card-icon"><span><img src="{{asset('/storage/'.$equipment->logo)}}" alt="ico-cat-item"></span></div>
+                                                <h3 class="uk-card-title">{{$equipment->title}}</h3>
+                                                <p>{{$equipment->description}}</p>
+                                                <a class="more" href=""><span>read more</span><span data-uk-icon="arrow-right"></span></a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                @endforeach
+                            </div>
+                            <div class="uk-margin-large-top uk-text-center"><a class="uk-button uk-button-default uk-button-large" href="04_equipment-categories.html"><span>view more</span><span data-uk-icon="arrow-right"></span></a></div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <section class="s-video">
+                <div class="s-video__inner">
+                    <div class="s-video__desc">
+                        <div class="section-title"><span>[30 Years Of Equipment Rental Expertise]</span>
+                            <h3>Provide Solutions to Utilize Industry and Assistance for Better Working</h3>
+                        </div>
+                        <div class="section-content"><a class="more" href="11_about-us.html"><span data-uk-icon="arrow-right"></span><span>see how it works</span></a></div>
+                    </div>
+                    <div class="s-video__img" data-uk-lightbox="video-autoplay: true">
+                        <div class="uk-cover-container"><img src="asset/img/img-video.jpg" alt="img-video" data-uk-cover><canvas width="960" height="400"></canvas></div><a class="s-video__link" href="{{$user->videolink}}" data-attrs="width: 1280; height: 720;" data-caption="YouTube"><img src="asset/img/ico-play.png" alt="image"></a>
+                    </div>
+                </div>
+            </section>
+            <section class="s-solutions">
+                <div class="uk-section uk-container uk-container-large">
+                    <div class="section-title --center"><span>[Premier Equipment Rental Service]</span>
+                        <h3>DAR AL KHULOOD UNITED LLC Industry Solutions</h3>
+                    </div>
+                    <div class="section-content">
+                        <div class="js-solution-slider">
+                            <div class="swiper">
+                                <div class="swiper-wrapper">
+                                @foreach($services as $service)
 
-							</ul>
-						</div>
-						
-					</nav>		
-				</div>
-			</div>
-		</div>
-	</div>
+                                    <div class="swiper-slide">
+                                        <div class="solution-item">
+                                            <div class="solution-item__box uk-inline"><img src="{{asset('/storage/'.$service->image)}}" alt="solution-item">
+                                                <div class="uk-overlay uk-light uk-position-bottom">
+                                                    <div class="solution-item__title"><span>[{{$service->subtitle}}]</span>
+                                                        <h3>{{$service->subtitle}}</h3>
+                                                    </div>
+                                                    <div class="solution-item__intro">
+                                                        <p>{{$service->description}}</p>
+                                                    </div>
+                                                    <div class="solution-item__link"><a class="more" href="07_equipment-detail.html"><span data-uk-icon="arrow-right"></span><span>learn more</span></a></div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                @endforeach    
+                                </div>
+                            </div>
+                            <div class="slider-nav uk-margin-large-top">
+                                <div class="swiper-button-prev"></div>
+                                <div class="swiper-button-next"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <section class="s-stats">
+                <div class="uk-container uk-container-xlarge">
+                    <div class="uk-grid uk-grid-small uk-child-width-1-4@l uk-child-width-1-2@s" data-uk-grid>
+                        <div>
+                            <div class="stat-item ">
+                                <div class="stat-item__box">
+                                    <h6 class="stat-item__title">Rental Orders</h6><span class="stat-item__value">3.4k</span>
+                                    <p class="stat-item__text">Pioneer of the equipment rental industry.</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="stat-item ">
+                                <div class="stat-item__box">
+                                    <h6 class="stat-item__title">Experienced Team</h6><span class="stat-item__value">125+</span>
+                                    <p class="stat-item__text">Pioneer of the equipment rental industry.</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="stat-item ">
+                                <div class="stat-item__box">
+                                    <h6 class="stat-item__title">Customer Reviews</h6><span class="stat-item__value">3.6k+</span>
+                                    <p class="stat-item__text">Pioneer of the equipment rental industry.</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="stat-item ">
+                                <div class="stat-item__box">
+                                    <h6 class="stat-item__title">Verified Locations</h6><span class="stat-item__value">150+</span>
+                                    <p class="stat-item__text">Pioneer of the equipment rental industry.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <section class="s-reasons">
+                <div class="s-reasons__inner uk-background-muted">
+                    <div class="s-reasons__media uk-cover-container"><img src="asset/img/img-reason.jpg" alt="reason" data-uk-cover><canvas width="960" height="670"></canvas></div>
+                    <div class="s-reasons__info">
+                        <div class="section-title"><span>[Equipment Rental Industry]</span>
+                            <h3>Reasons to Choose DAR AL KHULOOD UNITED LLC</h3>
+                        </div>
+                        <div class="section-content">
+                            <p>Helping with the best & wide selection of rental equipments.</p>
+                            <div class="uk-grid uk-grid-small uk-child-width-1-2@s" data-uk-grid>
+                                <div>
+                                    <div class="reason-item"><img class="reason-item__img" src="asset/img/img-reason-1.jpg" alt="reason">
+                                        <div class="reason-item__body">
 
-    <section id="home" class="container section1">
-<div class="sec1-cont">
-    <div class="left-sec1-cont">
-        <h1>Let's Start Earning With <br> <h1 class="blue-color">Vision Pakistan</h1></h1>
-<p>Vision Pakistan is the world's first networking website where you can withdraw your invested money on your first deposit with a five percent bonus.</p>
-<p style="font-family:
-    font-family: inherit;
-;">ویژن پاکستان دنیا کی پہلی ایسی نیٹ ورکنگ ویب سائٹ ہے جس میں آپ اپنے پہلے ہی وڈرال میں اپنے انویسٹمنٹ شدہ رقم کو  پانچ پرسنٹ بونس کے ساتھ واپس لے سکتے ہیں</p>
-@cannot('login')
-<a  class="nav-login login-a" href="{{route('login')}}">Log In</a>
-@endcannot
-@can('login')
-<a style="width:100px;" class="nav-login login-a" href="{{route('dashboard')}}">Dashboard</a>
-@endcan
-    </div>
-    <div class="right-sec1-cont">
-       <img src="assets/Images/img-1.jpg" alt="">
-    </div>
-</div>
-    </section>
+                                            <div class="reason-item__desc">
+                                                <h4 class="reason-item__title">Out Class Performance</h4>
+                                                <p class="reason-item__text">The industry standard sit amest elits sed tempor eiusmod.</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div>
+                                    <div class="reason-item"><img class="reason-item__img" src="asset/img/img-reason-2.jpg" alt="reason">
+                                        <div class="reason-item__body">
 
-    <section class="container section2">
-        <div class="left-sec2-cont">
-            <img src="assets/Images/img-2.jpg" alt="">
-
-        </div>
-        <div class="right-sec2-cont">
-<h1>Welcome to <spans class="blue-color">Vision Pakistan</spans> </h1>
-<h3>Why You Should Choose Us?</h3>
-<ul class="list-bullets">
-    <li class="mb-2"><p>Our aim is to reduce the growing unemployment in Pakistan</p>
-<p style="font-family:
-    font-family: inherit;
-;">ہمارا مقصد پاکستان میں بڑھتی ہوئی بے روزگاری کو کم کرنا</p>
-    </li>
-    <li class="mb-2"><p>Vision Pakistan website is registered with FBR, an organization of Government of Pakistan</p><p style="font-family:inherit;">ویژن پاکستان ویب سائڈ گورنمنٹ آف پاکستان کے ادارے ایف بی آر سے رجسٹرڈ ہے</p></li>
-    <li class="mb-2"> <p>Vision Pakistan is 100% Trusted website</p> <p style="font-family:inherit;margin-left:13px;">ویژن پاکستان 100% پرسینٹ  بھروسے مند ویب سائٹ ہے</p>  </li>
-   
-</ul>
-
-        </div>
-
-    </section>
-    <section id="aboutus" class="container section4">
-<div class="aboutus container">
-    <h1>About <span class="blue-color">Vision Pakistan</span></h1>
-    <div class="aboutcontent">
-        <img src="assets/Images/img-3.jpg" alt="">
-        <div class="about-para">
-            <p>Vision Pakistan is the first networking website whose rules are much simpler than all other networking websites.All bonuses will be transferred to their given bank accounts within 24 hours without any request to all customers.</p>
-            <p class="mt-14"style="font-family:inherit;">ویژن پاکستان پہلی نیٹ ورکنگ ویب سائٹ ہے جس کے قوانین دیگر تمام نیٹ ورکنگ ویب سائٹس سے بہت آسان ہیں۔تمام صارفین کو بغیر کسی درخواست کے 24 گھنٹے کے اندر تمام قسم کے بونس ان کے دیئے گئے بینک اکاؤنٹس میں منتقل کر دیے جائیں گے</p>
-
-        </div>
-    </div>
-</div>
-
-    </section>
-
-    <section class="rewards-table" style="display: flex;justify-content: center;
-    margin-top: 75px;flex-wrap: wrap;text-align: center;">
-<div class="silverPlans"style="display: flex;flex-direction:column;">
-  <h2>Silver Package Rewards</h2>
-  <div class="container" style="margin-top: 20px;">
-	
-    <div class="table">
-      <div class="table-header">
-        <div class="header__item"><a  class="filter__link">Your Level</a></div>
-       
-        <div class="header__item"><a  class="filter__link filter__link--number">Cost Of Rewards</a></div>
-        <div class="header__item"><a  class="filter__link filter__link--number">Type Of Rewards</a></div>
-      </div>
-      <div class="table-content">	
-        <div class="table-row">		
-          <div class="table-data">1</div>
-          
-          <div class="table-data">2500</div>
-          <div class="table-data"> <img style="width: 56px;" src="assets/dashboard/rewards-img/money.png" alt=""> </div>
-      
-        </div>
-        <div class="table-row">
-          <div class="table-data">2</div>
- 
-          <div class="table-data">SmartPhone</div>
-          <div class="table-data"> <img style="width: 56px;" src="assets/dashboard/rewards-img/phone.png" alt=""> </div>
-
-        </div>
-        <div class="table-row">
-          <div class="table-data">3</div>
-  
-          <div class="table-data">Corei5 4thGen Laptop</div>
-          <div class="table-data"> <img style="width: 56px;" src="assets/dashboard/rewards-img/laptop.png" alt=""></div>
-        </div>
-        <div class="table-row">
-          <div class="table-data">4</div>
-        
-          <div class="table-data">Smart LED TV</div>
-          <div class="table-data"> <img style="width: 56px;" src="assets/dashboard/rewards-img/tv.png" alt=""></div>
-        </div>
-        <div class="table-row">
-          <div class="table-data">5</div>
-          
-          <div class="table-data">75,000</div>
-          <div class="table-data"> <img style="width: 56px;" src="assets/dashboard/rewards-img/money.png" alt=""> </div>
-        </div>
-        <div class="table-row">
-          <div class="table-data">6</div>
-       
-          <div class="table-data">150,000</div>
-          <div class="table-data"> <img style="width: 56px;" src="assets/dashboard/rewards-img/money.png" alt=""> </div>
-        </div>
-        <div class="table-row">
-          <div class="table-data">7</div>
-         
-          <div class="table-data">Complete Umrah Package</div>
-          <div class="table-data"> <img style="width: 46px;" src="assets/dashboard/rewards-img/umrah.png" alt=""> </div>
-        </div>
-        <div class="table-row">
-          <div class="table-data">8</div>
-        
-          <div class="table-data">500,000</div>
-          <div class="table-data"> <img style="width: 56px;" src="assets/dashboard/rewards-img/money.png" alt=""> </div>
-        </div>
-        <div class="table-row">
-          <div class="table-data">9</div>
-         
-          <div class="table-data">1000,000</div>
-          <div class="table-data"> <img style="width: 56px;" src="assets/dashboard/rewards-img/money.png" alt=""> </div>
-        </div>
-        <div class="table-row">
-          <div class="table-data">10</div>
-       
-          <div class="table-data">2000,000</div>
-          <div class="table-data"> <img style="width: 56px;" src="assets/dashboard/rewards-img/money.png" alt=""> </div>
-        </div>
-      </div>	
-    </div>
-  </div>
-</div>
-<div class="goldPlans" style="display: flex;flex-direction:column;text-align: center;">
-  <h2>Gold Package Rewards</h2>
-  <div class="container"style="margin-top: 20px;">
-	
-    <div class="table">
-      <div class="table-header">
-        <div class="header__item"><a  class="filter__link">Your Level</a></div>
-     
-        <div class="header__item"><a  class="filter__link filter__link--number">Cost Of Rewards</a></div>
-        <div class="header__item"><a  class="filter__link filter__link--number">Type Of Rewards</a></div>
-      </div>
-      <div class="table-content">	
-        <div class="table-row">		
-          <div class="table-data">1</div>
-    
-          <div class="table-data">7000</div>
-          <div class="table-data"> <img style="width: 56px;" src="assets/dashboard/rewards-img/money.png" alt=""> </div>
-      
-        </div>
-        <div class="table-row">
-          <div class="table-data">2</div>
-  
-          <div class="table-data">SmartPhone</div>
-          <div class="table-data"> <img style="width: 56px;" src="assets/dashboard/rewards-img/phone.png" alt=""> </div>
-
-        </div>
-        <div class="table-row">
-          <div class="table-data">3</div>
- 
-          <div class="table-data">Corei7 4thGen Laptop</div>
-          <div class="table-data"> <img style="width: 56px;" src="assets/dashboard/rewards-img/laptop.png" alt=""></div>
-        </div>
-        <div class="table-row">
-          <div class="table-data">4</div>
-   
-          <div class="table-data">Smart LED TV 42"</div>
-          <div class="table-data"> <img style="width: 56px;" src="assets/dashboard/rewards-img/tv.png" alt=""></div>
-        </div>
-        <div class="table-row">
-          <div class="table-data">5</div>
-         
-          <div class="table-data">80,000</div>
-          <div class="table-data"> <img style="width: 56px;" src="assets/dashboard/rewards-img/money.png" alt=""> </div>
-        </div>
-        <div class="table-row">
-          <div class="table-data">6</div>
-       
-          <div class="table-data">150,000</div>
-          <div class="table-data"> <img style="width: 56px;" src="assets/dashboard/rewards-img/money.png" alt=""> </div>
-        </div>
-        <div class="table-row">
-          <div class="table-data">7</div>
- 
-          <div class="table-data">Complete Umrah Package</div>
-          <div class="table-data"> <img style="width: 46px;" src="assets/dashboard/rewards-img/umrah.png" alt=""> </div>
-        </div>
-        <div class="table-row">
-          <div class="table-data">8</div>
-    
-          <div class="table-data">1200,000</div>
-          <div class="table-data"> <img style="width: 56px;" src="assets/dashboard/rewards-img/money.png" alt=""> </div>
-        </div>
-        <div class="table-row">
-          <div class="table-data">9</div>
-   
-          <div class="table-data">1500,000</div>
-          <div class="table-data"> <img style="width: 56px;" src="assets/dashboard/rewards-img/money.png" alt=""> </div>
-        </div>
-        <div class="table-row">
-          <div class="table-data">10</div>
-    
-          <div class="table-data">3500,000</div>
-          <div class="table-data"> <img style="width: 56px;" src="assets/dashboard/rewards-img/money.png" alt=""> </div>
-        </div>
-      </div>	
-    </div>
-  </div>
-</div>
-    </section>
-
-
- 
-
-   <!-- Footer -->
-<footer class="mt-14 text-center text-lg-start bg-light text-muted">
-    <!-- Section: Links  -->
-    <section class="footer-sec">
-      <div class="container text-center text-md-start mt-5">
-        <!-- Grid row -->
-        <div class="row mt-3">
-          <!-- Grid column -->
-          <div class="col-md-3 col-lg-4 col-xl-3 mx-auto mb-4">
-            <!-- Content -->
-            <h6 class="text-uppercase fw-bold mb-4">
-              <i class="fas fa-gem me-3"></i>Vision Pakistan
-            </h6>
-            <p>
-             Vision Pakistan - The Best Networking Website
-            </p>
-          </div>
-       
-          <div class="col-md-3 col-lg-2 col-xl-2 mx-auto mb-4">
-            <!-- Links -->
-            <h6 class="text-uppercase fw-bold mb-4">
-              Useful links
-            </h6>
+                                            <div class="reason-item__desc">
+                                                <h4 class="reason-item__title">Collaborative Support</h4>
+                                                <p class="reason-item__text">The industry standard sit amest elits sed tempor eiusmod.</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <section class="s-reviews">
+                <div class="uk-section uk-container">
+                    <div class="section-title --center"><span>[Premier Equipment Rental Service]</span>
+                        <h3>Words From Loyal Customers</h3>
+                    </div>
+                    <div class="section-content">
+                        <div class="js-reviews-slider">
+                            <div class="swiper">
+                                <div class="swiper-wrapper">
+                                    <div class="swiper-slide">
+                                        <div class="review-item">
+                                            <div class="review-item__box">
+                                                <div class="review-item__desc">
+                                                    <div class="review-item__icon"><span data-uk-icon="quote-right"></span></div>
+                                                    <h4 class="review-item__title">Satisfying Services.</h4>
+                                                    <p class="review-item__text">At dolore magna aliqua umt enim ad mini veniam quis ulamco aliquip com da consequat duis aute irue derit vol ptate cillum dolore afugiat.</p>
+                                                </div>
+                                                <div class="review-item__user">
+                                                    <div class="user">
+                                                        <div class="user__avatar"><img src="asset/img/user-1.png" alt="avatar"></div>
+                                                        <div class="user__info">
+                                                            <div class="user__name">Donald James</div>
+                                                            <div class="user__position">Rental Customer</div>
+                                                            <div class="user__rating">
+                                                                <ul class="rating-list">
+                                                                    <li class="active" data-uk-icon="star"></li>
+                                                                    <li class="active" data-uk-icon="star"></li>
+                                                                    <li class="active" data-uk-icon="star"></li>
+                                                                    <li class="active" data-uk-icon="star"></li>
+                                                                    <li data-uk-icon="star"></li>
+                                                                </ul>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="swiper-slide">
+                                        <div class="review-item">
+                                            <div class="review-item__box">
+                                                <div class="review-item__desc">
+                                                    <div class="review-item__icon"><span data-uk-icon="quote-right"></span></div>
+                                                    <h4 class="review-item__title">Well-Performed Equip.</h4>
+                                                    <p class="review-item__text">At dolore magna aliqua umt enim ad mini veniam quis ulamco aliquip com da consequat duis aute irue derit vol ptate cillum dolore afugiat.</p>
+                                                </div>
+                                                <div class="review-item__user">
+                                                    <div class="user">
+                                                        <div class="user__avatar"><img src="asset/img/user-2.png" alt="avatar"></div>
+                                                        <div class="user__info">
+                                                            <div class="user__name">Sheggy O’Brain</div>
+                                                            <div class="user__position">Rental Customer</div>
+                                                            <div class="user__rating">
+                                                                <ul class="rating-list">
+                                                                    <li class="active" data-uk-icon="star"></li>
+                                                                    <li class="active" data-uk-icon="star"></li>
+                                                                    <li class="active" data-uk-icon="star"></li>
+                                                                    <li data-uk-icon="star"></li>
+                                                                    <li data-uk-icon="star"></li>
+                                                                </ul>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="swiper-slide">
+                                        <div class="review-item">
+                                            <div class="review-item__box">
+                                                <div class="review-item__desc">
+                                                    <div class="review-item__icon"><span data-uk-icon="quote-right"></span></div>
+                                                    <h4 class="review-item__title">Working Excavators.</h4>
+                                                    <p class="review-item__text">At dolore magna aliqua umt enim ad mini veniam quis ulamco aliquip com da consequat duis aute irue derit vol ptate cillum dolore afugiat.</p>
+                                                </div>
+                                                <div class="review-item__user">
+                                                    <div class="user">
+                                                        <div class="user__avatar"><img src="asset/img/user-3.png" alt="avatar"></div>
+                                                        <div class="user__info">
+                                                            <div class="user__name">Albert D’Souza</div>
+                                                            <div class="user__position">Rental Customer</div>
+                                                            <div class="user__rating">
+                                                                <ul class="rating-list">
+                                                                    <li class="active" data-uk-icon="star"></li>
+                                                                    <li class="active" data-uk-icon="star"></li>
+                                                                    <li class="active" data-uk-icon="star"></li>
+                                                                    <li class="active" data-uk-icon="star"></li>
+                                                                    <li data-uk-icon="star"></li>
+                                                                </ul>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="slider-nav uk-margin-large-top">
+                                <div class="swiper-pagination"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <section class="s-info">
+                <div class="uk-container uk-container-xlarge">
+                    <div class="uk-grid uk-grid-collapse uk-child-width-1-2@l" data-uk-grid>
+                        <div>
+                            <div class="info-card --accent">
+                                <div class="info-card__box">
+                                    <div class="info-card__head"><img src="asset/img/ico-info-1.png" alt="ico-info"><span>Do you need our Assistance while Renting an Equipment?</span></div>
+                                    <div class="info-card__title">Contact our Customer Care Team to Better Assist for your Needs.</div>
+                                    <div class="info-card__btn"><a class="uk-button uk-button-default uk-button-large" href="11_about-us.html"><span>Get assistance</span><span data-uk-icon="arrow-right"></span></a></div>
+                                    <div class="info-card__progress">
+                                        <div class="progress-item">
+                                            <h6>Machinery Help</h6><progress class="uk-progress" value="95" max="100"></progress><span>95%</span>
+                                        </div>
+                                        <div class="progress-item">
+                                            <h6>Choose an Equip</h6><progress class="uk-progress" value="90" max="100"></progress><span>90%</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="info-card">
+                                <div class="info-card__box">
+                                    <div class="info-card__head"><img src="asset/img/ico-info-2.png" alt="ico-info"><span>Do you want to Buy a Part or Equipment? DAR AL KHULOOD UNITED LLC can Help you!</span></div>
+                                    <div class="info-card__title">Buy a Part or Equipment in Best Shape with Fully Maintainence.</div>
+                                    <div class="info-card__btn"><a class="uk-button uk-button-default uk-button-large" href="11_about-us.html"><span>Start searching</span><span data-uk-icon="arrow-right"></span></a></div>
+                                    <div class="info-card__progress">
+                                        <div class="progress-item">
+                                            <h6>Rent Equipment</h6><progress class="uk-progress" value="95" max="100"></progress><span>95%</span>
+                                        </div>
+                                        <div class="progress-item">
+                                            <h6>Delivery Timing</h6><progress class="uk-progress" value="90" max="100"></progress><span>90%</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
             
-            <p>
-              <a href="#!" class="text-reset">Video Link</a>
-            </p>
-            <p>
-              <a href="#aboutus" class="text-reset">About Us</a>
-            </p>
-            @cannot('login')
+            <section class="s-form">
+                <div class="uk-section-large uk-container">
+                    <div class="uk-grid uk-flex-middle" data-uk-grid>
+                        <div class="uk-width-2-5@m">
+                            <div class="section-title"><span>[Equipment Rental Industry]</span>
+                                <h3>Need an Equipment on Rent? Get Expert’s Help</h3>
+                            </div>
+                            <div class="section-content">
+                                <p>Send your query today & our team would be happy to assist you because we care industry to utilizing heavy equipment.</p>
+                                <div class="contacts-box">
+                                    <div class="contacts-box__img"><img src="asset/img/avatar.png" alt="image"></div>
+                                    <div class="contacts-box__desc">
+                                        <div class="contacts-box__label">Need Help? Call Us</div><a class="contacts-box__phone" href="tel:+96895219590">(+968) 9521-9590</a>
+                                    </div>
+                                </div>
 
-            <p>
-              <a href="{{route('login')}}" class="text-reset">Log In</a>
-            </p>
-            @endcannot
-          
-          </div>
-          <!-- Grid column -->
-  
-          <!-- Grid column -->
-          <div class="col-md-4 col-lg-3 col-xl-3 mx-auto mb-md-0 mb-4">
-            <!-- Links -->
-            <h6 class="text-uppercase fw-bold mb-4">Contact</h6>
-            <p>
-              <i class="fas fa-envelope me-3"></i>
-              visionpakistan@visionpakistan.com
-            </p>
-            <p><i class="fas fa-phone me-3"></i>03</p>
-          </div>
-          <!-- Grid column -->
+                            </div>
+                        </div>
+                        <div class="uk-width-3-5@m">
+                            <form action="#!">
+                                <!-- Hidden Required Fields -->
+                                <input type="hidden" name="project_name" value="DAR AL KHULOOD UNITED LLC - Top-Of-The-Line Equipment Rentals">
+                                <input type="hidden" name="admin_email" value="test@gmail.com">
+                                <input type="hidden" name="form_subject" value="Get Expert’s Help">
+                                <!-- END Hidden Required Fields -->
+                                <div class="uk-grid uk-child-width-1-2@s uk-grid-small" style="justify-content: center;" data-uk-grid>
+                                    <a class="uk-button uk-button-default uk-button-large" href="{{route('contactus')}}"><span>Contact Us</span><span data-uk-icon="arrow-right"></span></a></div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+        
+				@include('footer')
+        <div id="offcanvas" data-uk-offcanvas="mode: reveal; overlay: true">
+            <div class="uk-offcanvas-bar uk-flex uk-flex-column uk-flex-between"><button class="uk-offcanvas-close" type="button" data-uk-close></button>
+                <div class="uk-margin-bottom"><a class="logo uk-margin-bottom" href="/"><img src="{{asset('/storage/'.$user->logodark)}}" alt="image"></a>
+
+
+
+                    <ul class="uk-nav uk-nav-default uk-nav-parent-icon" data-uk-nav>
+                        <li class="uk-active"><a href="index.html"><span>Home</span></a></li>
+                            <li><a href="11_about-us.html"><span class="with-navbar-dropdown-nav">About Us</span></a></li>
+                            <li><a href="08_blog-grid.html">Group</a></li>
+                            <li><a href="gallery.html">Gallery</a></li>
+                            <li><a href="team.html"><span>Our Team</span></a></li>
+                            <li><a href="04_equipment-categories.html"><span>Our Equipments</span></a></li>
+                            <li><a href="08_blog-grid.html"><span>Projects</span></a></li></li>
+                            <li><a href="12_contact-us.html"><span>Contact</span></a></li>
+                    </ul>
+                </div>
+                <div class="uk-margin"><a class="contacts-block" href=""><span>Need Help? Call Us</span><strong>{{$user->number}}</strong></a></div>
+            </div>
         </div>
-        <!-- Grid row -->
-      </div>
-    </section>
-    <!-- Section: Links  -->
-  
-    <!-- Copyright -->
-    <div class="text-center p-4" style="background-color: rgba(0, 0, 0, 0.05);">
-      © 2015 Copyright:
-      <a class="text-reset fw-bold" href="https://mdbootstrap.com/">VisionPakistan.com</a>
     </div>
-    <!-- Copyright -->
-  </footer>
-  <!-- Footer -->
-
-      
-
-<script src="assets/js/jquery.min.js"></script>
-<script src="assets/js/popper.js"></script>
-<script src="assets/js/bootstrap.min.js"></script>
-<script src="assets/js/main.js"></script>
-<script src="assets/js/index.js"></script>
-<!-- <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
-<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script> -->
+    <script src="asset/js/libs.js"></script>
+    <script src="asset/js/main.js"></script>
 </body>
+
 </html>
