@@ -44,7 +44,6 @@
                     <div class="page-head__title">Get In Touch</div>
                     <div class="page-head__breadcrumb">
                         <ul class="uk-breadcrumb">
-                            <li><a href="/">Home</a></li>
                             <li><span>Contact Us</span></li>
                         </ul>
                     </div>

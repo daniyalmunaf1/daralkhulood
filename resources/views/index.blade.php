@@ -122,7 +122,7 @@
                         <div class="s-hero__subtitle">Get the best rental service that is more cost effective, efficient and Safest.</div>
                         <div class="s-hero__search">
                             <a class="uk-button uk-button-danger uk-button-large uk-icon uk-first-column info-card__btn uk-button" style="background-color: #14A850; border-radius: 100px; font-size: 15px;"; href="{{route('aboutus')}}">Book Now</a>
-                            <a class="uk-button uk-button-danger uk-button-large uk-icon uk-first-column info-card__btn uk-button" style="background-color: #fff; color: #0E58A8; border-radius: 100px; font-size: 15px;"; href="{{route('aboutus')}}">Browse Rental Categories</a>
+                            <a class="uk-button uk-button-danger uk-button-large uk-icon uk-first-column info-card__btn uk-button" style="background-color: #fff; color: #0E58A8; border-radius: 100px; font-size: 15px;"; href="{{route('our-equipments')}}">Browse Rental Categories</a>
                         </div>
                     </div>
                     <div class="s-hero__slider">
@@ -161,7 +161,7 @@
                             <div><div class="uk-text-center uk-first-column"><img src="asset/img/Groupbt 4.png" alt="image"></div></div>
                           </div></div>
                         <div>
-                            <div class="section-title"><span>[Who we are]</span>
+                            <div class="section-title"><span>Who we are</span>
                                 <h3>Helping the Industry with 10k+ Equipments for Rentals Anytime</h3>
                             </div>
                             <div class="section-content">
@@ -190,7 +190,7 @@
                                                 <div class="uk-card-icon"><span><img src="{{asset('/storage/'.$equipment->logo)}}" alt="ico-cat-item"></span></div>
                                                 <h3 class="uk-card-title">{{$equipment->title}}</h3>
                                                 <p>{{$equipment->description}}</p>
-                                                <a class="more" href=""><span>read more</span><span data-uk-icon="arrow-right"></span></a>
+                                                <a class="more" href=""><span>Book Now</span><span data-uk-icon="arrow-right"></span></a>
                                             </div>
                                         </div>
                                     </div>
@@ -437,35 +437,38 @@
                     <div class="uk-grid uk-grid-collapse uk-child-width-1-2@l" data-uk-grid>
                         <div>
                             <div class="info-card --accent">
-                                <div class="info-card__box">
-                                    <div class="info-card__head"><img src="asset/img/ico-info-1.png" alt="ico-info"><span>Do you need our Assistance while Renting an Equipment?</span></div>
-                                    <div class="info-card__title">Contact our Customer Care Team to Better Assist for your Needs.</div>
-                                    <div class="info-card__btn"><a class="uk-button uk-button-default uk-button-large" href="11_about-us.html"><span>Get assistance</span><span data-uk-icon="arrow-right"></span></a></div>
-                                    <div class="info-card__progress">
-                                        <div class="progress-item">
-                                            <h6>Machinery Help</h6><progress class="uk-progress" value="95" max="100"></progress><span>95%</span>
-                                        </div>
-                                        <div class="progress-item">
-                                            <h6>Choose an Equip</h6><progress class="uk-progress" value="90" max="100"></progress><span>90%</span>
-                                        </div>
+                            <div style="padding:100px">
+                            <div style="color:white;" class="section-title"><span style="color:white;">[Equipment Rental Industry]</span>
+                                <h3 style="color:white;">Need an Equipment on Rent? Get Expert’s Help</h3>
+                            </div>
+                            <div style="color:white;" class="section-content">
+                                <p>Send your query today & our team would be happy to assist you because we care industry to utilizing heavy equipment.</p>
+                                <div style="color:white;" class="contacts-box">
+                                    <div class="contacts-box__img"><img src="asset/img/avatar.png" alt="image"></div>
+                                    <div class="contacts-box__desc">
+                                        <div style="color:white;" class="contacts-box__label">Need Help? Call Us</div><a style="color:white;" class="contacts-box__phone" href="tel:+96895219590">(+968) 9521-9590</a>
                                     </div>
                                 </div>
+
+                            </div>
+                        </div>
                             </div>
                         </div>
                         <div>
-                            <div class="info-card">
+                            <div class="info-card uk-flex-middle" style="height:100%;display:flex;">
                                 <div class="info-card__box">
-                                    <div class="info-card__head"><img src="asset/img/ico-info-2.png" alt="ico-info"><span>Do you want to Buy a Part or Equipment? DAR AL KHULOOD UNITED LLC can Help you!</span></div>
-                                    <div class="info-card__title">Buy a Part or Equipment in Best Shape with Fully Maintainence.</div>
-                                    <div class="info-card__btn"><a class="uk-button uk-button-default uk-button-large" href="11_about-us.html"><span>Start searching</span><span data-uk-icon="arrow-right"></span></a></div>
-                                    <div class="info-card__progress">
-                                        <div class="progress-item">
-                                            <h6>Rent Equipment</h6><progress class="uk-progress" value="95" max="100"></progress><span>95%</span>
-                                        </div>
-                                        <div class="progress-item">
-                                            <h6>Delivery Timing</h6><progress class="uk-progress" value="90" max="100"></progress><span>90%</span>
-                                        </div>
-                                    </div>
+                                     <form action="#!">
+                                <!-- Hidden Required Fields -->
+                                <input type="hidden" name="project_name" value="DAR AL KHULOOD UNITED LLC - Top-Of-The-Line Equipment Rentals">
+                                <input type="hidden" name="admin_email" value="test@gmail.com">
+                                <input type="hidden" name="form_subject" value="Get Expert’s Help">
+                                <!-- END Hidden Required Fields -->
+                                <div class="uk-grid uk-child-width-1-2@s uk-grid-small" style="" data-uk-grid>
+                                    <a style="width: 280px;border-color: #0E58A8;
+    background-color: #0E58A8;
+    color: #fff;" class="uk-button uk-button-default uk-button-large" href="{{route('contactus')}}"><span>Contact Us</span><span data-uk-icon="arrow-right"></span></a></div>
+                                </div>
+                            </form>
                                 </div>
                             </div>
                         </div>
@@ -473,39 +476,7 @@
                 </div>
             </section>
             
-            <section class="s-form">
-                <div class="uk-section-large uk-container">
-                    <div class="uk-grid uk-flex-middle" data-uk-grid>
-                        <div class="uk-width-2-5@m">
-                            <div class="section-title"><span>[Equipment Rental Industry]</span>
-                                <h3>Need an Equipment on Rent? Get Expert’s Help</h3>
-                            </div>
-                            <div class="section-content">
-                                <p>Send your query today & our team would be happy to assist you because we care industry to utilizing heavy equipment.</p>
-                                <div class="contacts-box">
-                                    <div class="contacts-box__img"><img src="asset/img/avatar.png" alt="image"></div>
-                                    <div class="contacts-box__desc">
-                                        <div class="contacts-box__label">Need Help? Call Us</div><a class="contacts-box__phone" href="tel:+96895219590">(+968) 9521-9590</a>
-                                    </div>
-                                </div>
-
-                            </div>
-                        </div>
-                        <div class="uk-width-3-5@m">
-                            <form action="#!">
-                                <!-- Hidden Required Fields -->
-                                <input type="hidden" name="project_name" value="DAR AL KHULOOD UNITED LLC - Top-Of-The-Line Equipment Rentals">
-                                <input type="hidden" name="admin_email" value="test@gmail.com">
-                                <input type="hidden" name="form_subject" value="Get Expert’s Help">
-                                <!-- END Hidden Required Fields -->
-                                <div class="uk-grid uk-child-width-1-2@s uk-grid-small" style="justify-content: center;" data-uk-grid>
-                                    <a class="uk-button uk-button-default uk-button-large" href="{{route('contactus')}}"><span>Contact Us</span><span data-uk-icon="arrow-right"></span></a></div>
-                                </div>
-                            </form>
-                        </div>
-                    </div>
-                </div>
-            </section>
+            
         </main>
         
 				@include('footer')

@@ -28,11 +28,10 @@
         <main class="page-main">
             <div class="page-head">
                 <div class="page-head__bg" style="background-image: url(asset/img/bg_page-categories-2.jpg)">
-                    <div class="page-head__title">Equipment Categories</div>
+                    <div class="page-head__title">Equipments</div>
                     <div class="page-head__breadcrumb">
                         <ul class="uk-breadcrumb">
-                            <li><a href="/">Home</a></li>
-                            <li><span>Equipment Categories 2</span></li>
+                            <li><span>Our Equipments</span></li>
                         </ul>
                     </div>
                 </div>
@@ -55,7 +54,7 @@
                                                 <div class="uk-card-icon"><span><img src="{{asset('/storage/'.$equipment->logo)}}" alt="ico-cat-item"></span></div>
                                                 <h3 class="uk-card-title">{{$equipment->title}}</h3>
                                                 <p>{{$equipment->description}}</p>
-                                                <a class="more" href="07_equipment-detail.html"><span>read more</span><span data-uk-icon="arrow-right"></span></a>
+                                                <a class="more" href="07_equipment-detail.html"><span>Book Now</span><span data-uk-icon="arrow-right"></span></a>
                                             </div>
                                         </div>
                                     </div>
