@@ -63,6 +63,7 @@ class UsersController extends Controller
             'videos'=>$videos,
         ]);
     }
+
     public function ourequipments()
     {
         $equipments = Equipment::all();
@@ -111,6 +112,22 @@ class UsersController extends Controller
     {
         $user = User::where('id',1)->first();
         return view('aboutus')->with('user',$user);
+    }
+    public function service()
+    {
+        $user = User::where('id',1)->first();
+        $services = Service::limit(3)->get();
+        $equipments = Equipment::limit(4)->get();
+        return view('services')->with([
+            'user'=>$user,
+            'services'=>$services,
+            'equipments'=>$equipments,
+        ]);
+    }
+    public function company()
+    {
+        $user = User::where('id',1)->first();
+        return view('company')->with('user',$user);
     }
     public function contactus()
     {

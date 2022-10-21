@@ -161,13 +161,13 @@
                             <div><div class="uk-text-center uk-first-column"><img src="asset/img/Groupbt 4.png" alt="image"></div></div>
                           </div></div>
                         <div>
-                            <div class="section-title"><span>[Company Overview]</span>
+                            <div class="section-title"><span>[Who we are]</span>
                                 <h3>Helping the Industry with 10k+ Equipments for Rentals Anytime</h3>
                             </div>
                             <div class="section-content">
                                 <p>Kiusmod tempor sed incididunts labore sed dolor mag dolor mag aliqua enimad mini veniam quis nostrud dolor mag aliqua enimad mini veniam quis nostrud enimad mini veniam quis nostrud exercitation ullamco labores nisi ut aliquip ex ea reprehen deritin voluptate. Alabores nisi ut aliquip ex ea reprehen eiusmod deritin voluptate.</p>
                                 <p>Waliqua enimad mini veniam quis nostrud dolor mag aliqua enimad mini veniam ipsum dolor tempor amety consecteur adipisicing elits dolor mag aliqua enimad mini veniam quis nostrud tempor incididunt aliqua.</p>
-                                <div class="s-about__btns" data-uk-margin=""><a class="uk-button uk-button-danger uk-button-large uk-icon uk-first-column" href="11_about-us.html" data-uk-icon="arrow-right">Get started<svg width="20" height="20" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><polyline fill="none" stroke="#000" points="10 5 15 9.5 10 14"></polyline><line fill="none" stroke="#000" x1="4" y1="9.5" x2="15" y2="9.5"></line></svg></a><a class="uk-icon-button ico_mission" href="11_about-us.html" data-uk-tooltip="title: Our Mission; pos: bottom" title="" aria-expanded="false"></a><a class="uk-icon-button ico_track" href="11_about-us.html" data-uk-tooltip="title: Our Mission; pos: bottom" title="" aria-expanded="false"></a></div>
+                                <div class="s-about__btns" data-uk-margin=""><a class="uk-button uk-button-danger uk-button-large uk-icon uk-first-column" href="11_about-us.html" data-uk-icon="arrow-right">Get started<svg width="20" height="20" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><polyline fill="none" stroke="#000" points="10 5 15 9.5 10 14"></polyline><line fill="none" stroke="#000" x1="4" y1="9.5" x2="15" y2="9.5"></line></svg></a><a class="uk-icon-button ico_mission" href="{{route('team')}}" data-uk-tooltip="title: Our Team; pos: bottom" title="" aria-expanded="false"></a><a class="uk-icon-button ico_track" href="{{route('our-equipments')}}" data-uk-tooltip="title: Our Equipment; pos: bottom" title="" aria-expanded="false"></a></div>
                             </div>
                         </div>
                     </div>

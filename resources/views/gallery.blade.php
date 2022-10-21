@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="utf-8">
-    <title>News</title>
+    <title>Gallery</title>
     <meta content="Chernkh Mikhail" name="author">
     <meta content="DAR AL KHULOOD UNITED LLC - Top-Of-The-Line Equipment Rentals" name="description">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -27,11 +27,10 @@
         <main class="page-main">
             <div class="page-head">
                 <div class="page-head__bg" style="background-image: url(asset/img/bg_page-blog-grid.jpg)">
-                    <div class="page-head__title">Latest News - Grid View</div>
+                    <div class="page-head__title" style="font-size:35px;">Photo Gallery</div>
                     <div class="page-head__breadcrumb">
                         <ul class="uk-breadcrumb">
-                            <li><a href="/">Home</a></li>
-                            <li><span>Latest News - Grid View</span></li>
+                            <li><span>Gallery</span></li>
                         </ul>
                     </div>
                 </div>
@@ -71,11 +70,11 @@
                         
                             
                     </div>
-                    <ul class="uk-pagination uk-flex-center" data-uk-margin>
+                    <!-- <ul class="uk-pagination uk-flex-center" data-uk-margin>
                         <li class="uk-active"><a href="#">1</a></li>
                         <li><a href="#">2</a></li>
                         <li><a href="#">3</a></li>
-                    </ul>
+                    </ul> -->
                 </div>
                 
             </div>

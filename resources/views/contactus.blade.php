@@ -61,23 +61,23 @@
 
                                     <p>Aiusmod tempor incididunt labore dnim ad minim veniam quis nostrsd exercitation ullamco.</p>
                                     <ul class="contacts-list">
-                                        <li><a href="https://goo.gl/maps/DPJcfW5igRysd5jQ8" target="_blank"><span data-uk-icon="location"></span>
-                                                <div><span class="label">Head Office</span><span>Al Jami Al Akbar St, Muscat, Oman</span></div>
+                                        <li><a href="{{$user->map}}" target="_blank"><span data-uk-icon="location"></span>
+                                                <div><span class="label">Head Office</span><span>{{$user->address}}</span></div>
                                             </a></li>
-                                        <li><a href="tel:+96895219590"><span data-uk-icon="receiver"></span>
-                                                <div><span class="label">Send Email</span><span>(+968) 9521-9590</span></div>
+                                        <li><a href=""><span data-uk-icon="receiver"></span>
+                                                <div><span class="label">Send Email</span><span>{{$user->number}}</span></div>
                                             </a></li>
-                                        <li><a href="mailto:equipments@domain.net"><span data-uk-icon="clock"></span>
-                                                <div><span class="label">Work Time</span><span>Monday to Saturday: 9am to 7pm<br> Sunday: Closed</span></div>
+                                        <li><a href="mailto:{{$user->email}}"><span data-uk-icon="clock"></span>
+                                                <div><span class="label">Work Time</span><span>{{$user->worktime}}</span></div>
                                             </a></li>
                                     </ul>
                                     <ul class="social">
-                                        <li><a href="http://www.facebook.com/" target="_blank"><span data-uk-icon="facebook"></span></a></li>
-                                        <li><a href="http://www.twitter.com/" target="_blank"><span data-uk-icon="twitter"></span></a></li>
-                                        <li><a href="http://www.instagram.com/" target="_blank"><span data-uk-icon="instagram"></span></a></li>
-                                        <li><a href="http://www.linkedin.com/" target="_blank"><span data-uk-icon="linkedin"></span></a></li>
-                                        <li><a href="http://www.youtube.com/" target="_blank"><span data-uk-icon="youtube"></span></a></li>
-                                    </ul>
+                                    <li><a href="{{$user->facebook}}"><span data-uk-icon="facebook"></span></a></li>
+                                    <li><a href="{{$user->twitter}}" ><span data-uk-icon="twitter"></span></a></li>
+                                    <li><a href="{{$user->instagram}}" ><span data-uk-icon="instagram"></span></a></li>
+                                    <li><a href="{{$user->linkedin}}" ><span data-uk-icon="linkedin"></span></a></li>
+                                    <li><a href="{{$user->youtube}}" ><span data-uk-icon="youtube"></span></a></li>
+                                </ul>
                                 </div>
                             </div>
                             <div class="uk-width-2-3@m">

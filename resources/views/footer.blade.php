@@ -8,7 +8,7 @@
                             <ul class="contacts-list">
                                 <li><a href="{{$user->map}}" target="_blank"><span data-uk-icon="location"></span><span>{{$user->address}}</span></a></li>
                                 <li><a href=""><span data-uk-icon="receiver"></span><span>{{$user->number}}</span></a></li>
-                                <li><a href="mailto:equipments@domain.net"><span data-uk-icon="mail"></span><span>equipments@domain.net</span></a></li>
+                                <li><a href="mailto:{{$user->email}}"><span data-uk-icon="mail"></span><span>equipments@domain.net</span></a></li>
                             </ul>
                             <ul class="social">
                                 <li><a href="{{$user->facebook}}"><span data-uk-icon="facebook"></span></a></li>
@@ -60,7 +60,7 @@
             </div>
             <div class="page-footer__bottom">
                 <div class="uk-container uk-container-large">
-                    <div class="page-footer__copy"><span>© 2022 <b>DAR AL KHULOOD UNITED LLC</b> - Heavy Equipment Rental Service</span><a href="page-typography.html">Terms & Conditions</a><a href="page-typography.html">Sitemap</a><a href="page-typography.html">Career Opportunities</a></div>
+                    <div class="page-footer__copy"><span>© 2022 <b>DAR AL KHULOOD UNITED LLC</b> - Heavy Equipment Rental Service</span>-    Designed and Developed by ABC</div>
                 </div>
             </div>
         </footer>

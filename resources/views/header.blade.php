@@ -8,8 +8,9 @@
                             <li><a href="{{route('aboutus')}}"><span class="with-navbar-dropdown-nav">About Us</span></a>
                                 <div class="uk-navbar-dropdown">
                                     <ul class="uk-nav uk-navbar-dropdown-nav">
-                                        <li><a href="08_blog-grid.html">Group</a></li>
+                                        <li><a href="{{route('company')}}">Company</a></li>
                                         <li><a href="{{route('gallery')}}">Gallery</a></li>
+                                        <li><a href="{{route('service')}}">Services</a></li>
                                     </ul>
                                 </div>
                             </li>
@@ -32,8 +33,18 @@
                             </div>
                         </div>
                     </div>
-                    <div class="page-header__contacts"><a class="contacts-block" href=""><span>Need Help? Call Us</span><strong>{{$user->number}}</strong></a></div>
+                    <div class="page-header__contacts"><a class="contacts-block" href=""><span>Need Help? Call Us</span><strong>{{$user->number}}</strong></a>
+                    <ul style="margin-top:5px;" class="social">
+                        <br>
+                                    <li style="background-color: #045aa4;border-radius: 50%;"><a href="{{$user->facebook}}"><span data-uk-icon="facebook"></span></a></li>
+                                    <li style="background-color: #045aa4;border-radius: 50%;"><a href="{{$user->twitter}}" ><span data-uk-icon="twitter"></span></a></li>
+                                    <li style="background-color: #045aa4;border-radius: 50%;"><a href="{{$user->instagram}}" ><span data-uk-icon="instagram"></span></a></li>
+                                    <li style="background-color: #045aa4;border-radius: 50%;"><a href="{{$user->linkedin}}" ><span data-uk-icon="linkedin"></span></a></li>
+                                    <li style="background-color: #045aa4;border-radius: 50%;"><a href="{{$user->youtube}}" ><span data-uk-icon="youtube"></span></a></li>
+                                </ul>
+                </div>
                     <div class="page-header__mobile-menu-btn"><button data-uk-toggle="target: #offcanvas" type="button"><span data-uk-icon="menu"></span></button></div>
+                    
                 </div>
             </div>
         </header>

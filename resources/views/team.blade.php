@@ -27,11 +27,10 @@
         <main class="page-main">
             <div class="page-head">
                 <div class="page-head__bg" style="background-image: url(asset/img/bg_page-blog-grid.jpg)">
-                    <div class="page-head__title">Latest News - Grid View</div>
+                    <div class="page-head__title" style="font-size:35px;">Meet Our Team Members</div>
                     <div class="page-head__breadcrumb">
                         <ul class="uk-breadcrumb">
-                            <li><a href="/">Home</a></li>
-                            <li><span>Latest News - Grid View</span></li>
+                            <li><span>Team</span></li>
                         </ul>
                     </div>
                 </div>

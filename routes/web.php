@@ -54,6 +54,8 @@ Route::post('/delete-equipment-{equipment}', [App\Http\Controllers\Admin\UsersCo
 
 Route::get('/our-equipments', [App\Http\Controllers\Admin\UsersController::class, 'ourequipments'])->name('our-equipments');
 Route::get('/gallery', [App\Http\Controllers\Admin\UsersController::class, 'gallery'])->name('gallery');
+Route::get('/service', [App\Http\Controllers\Admin\UsersController::class, 'service'])->name('service');
+Route::get('/company', [App\Http\Controllers\Admin\UsersController::class, 'company'])->name('company');
 Route::get('/aboutus', [App\Http\Controllers\Admin\UsersController::class, 'aboutus'])->name('aboutus');
 Route::get('/contactus', [App\Http\Controllers\Admin\UsersController::class, 'contactus'])->name('contactus');
 Route::post('/sendmessage', [App\Http\Controllers\Admin\UsersController::class, 'sendmessage'])->name('sendmessage');
