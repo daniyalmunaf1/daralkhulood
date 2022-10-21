@@ -197,7 +197,7 @@
                                 </div>
                                 @endforeach
                             </div>
-                            <div class="uk-margin-large-top uk-text-center"><a class="uk-button uk-button-default uk-button-large" href="04_equipment-categories.html"><span>view more</span><span data-uk-icon="arrow-right"></span></a></div>
+                            <div class="uk-margin-large-top uk-text-center"><a class="uk-button uk-button-default uk-button-large" href="{{route('our-equipments')}}"><span>view more</span><span data-uk-icon="arrow-right"></span></a></div>
                         </div>
                     </div>
                 </div>
