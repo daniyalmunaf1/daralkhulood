@@ -207,7 +207,11 @@ class UsersController extends Controller
     public function aboutus()
     {
         $user = User::where('id',1)->first();
-        return view('aboutus')->with('user',$user);
+        $employees = Employee::limit(4)->get();
+        return view('aboutus')->with([
+            'user'=>$user,
+            'employees'=>$employees
+        ]);
     }
     public function service()
     {
@@ -223,7 +227,11 @@ class UsersController extends Controller
     public function company()
     {
         $user = User::where('id',1)->first();
-        return view('company')->with('user',$user);
+        $employees = Employee::limit(4)->get();
+        return view('company')->with([
+            'user'=>$user,
+            'employees'=>$employees
+        ]);
     }
     public function contactus()
     {

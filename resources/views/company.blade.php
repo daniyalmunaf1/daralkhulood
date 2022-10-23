@@ -114,76 +114,28 @@
                     <div class="section-content">
                         <div class="js-team-slider">
                             <div class="swiper">
-                                <div class="swiper-wrapper">
-                                    <div class="swiper-slide">
-                                        <div class="team-user">
-                                            <div class="team-user__photo"><img src="asset/img/team-user-1.jpg" alt="team"></div>
-                                            <div class="team-user__body">
-                                                <div class="team-user__name">William Mason</div>
-                                                <div class="team-user__position">CEO & Founder</div>
-                                                <div class="team-user__social">
-                                                    <ul class="social">
-                                                        <li class="social__item"><a class="social__link" href="http://www.twitter.com" target="_blank"><span data-uk-icon="twitter"></span></a></li>
-                                                        <li class="social__item"><a class="social__link" href="http://www.facebook.com" target="_blank"><span data-uk-icon="facebook"></span></a></li>
-                                                        <li class="social__item"><a class="social__link" href="http://www.linkedin.com" target="_blank"><span data-uk-icon="linkedin"></span></a></li>
-                                                        <li class="social__item"><a class="social__link" href="http://www.instagram.com" target="_blank"><span data-uk-icon="instagram"></span></a></li>
-                                                    </ul>
+                            <div class="swiper-wrapper">
+                                        @foreach($employees as $employee)
+                                        <div class="swiper-slide">
+                                            <div class="team-user">
+                                                <div class="team-user__photo"><img src="{{asset('/storage/'.$employee->image)}}" alt="team"></div>
+                                                <div class="team-user__body">
+                                                    <div class="team-user__name">{{$employee->name}}</div>
+                                                    <div class="team-user__position">{{$employee->designation}}</div>
+                                                    <div class="team-user__social">
+                                                        <ul class="social">
+                                                            <li class="social__item"><a class="social__link" href="{{$employee->twitter}}" target="_blank"><span data-uk-icon="twitter"></span></a></li>
+                                                            <li class="social__item"><a class="social__link" href="{{$employee->facebook}}" target="_blank"><span data-uk-icon="facebook"></span></a></li>
+                                                            <li class="social__item"><a class="social__link" href="{{$employee->linkedin}}" target="_blank"><span data-uk-icon="linkedin"></span></a></li>
+                                                            <li class="social__item"><a class="social__link" href="{{$employee->instagram" target="_blank"><span data-uk-icon="instagram"></span></a></li>
+                                                            <li class="social__item"><a class="social__link" href="{{$employee->youtube" target="_blank"><span data-uk-icon="youtube"></span></a></li>
+                                                        </ul>
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
+                                        @endforeach
                                     </div>
-                                    <div class="swiper-slide">
-                                        <div class="team-user">
-                                            <div class="team-user__photo"><img src="asset/img/team-user-2.jpg" alt="team"></div>
-                                            <div class="team-user__body">
-                                                <div class="team-user__name">James Danieyl</div>
-                                                <div class="team-user__position">Rental Manager</div>
-                                                <div class="team-user__social">
-                                                    <ul class="social">
-                                                        <li class="social__item"><a class="social__link" href="http://www.twitter.com" target="_blank"><span data-uk-icon="twitter"></span></a></li>
-                                                        <li class="social__item"><a class="social__link" href="http://www.facebook.com" target="_blank"><span data-uk-icon="facebook"></span></a></li>
-                                                        <li class="social__item"><a class="social__link" href="http://www.linkedin.com" target="_blank"><span data-uk-icon="linkedin"></span></a></li>
-                                                        <li class="social__item"><a class="social__link" href="http://www.instagram.com" target="_blank"><span data-uk-icon="instagram"></span></a></li>
-                                                    </ul>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="swiper-slide">
-                                        <div class="team-user">
-                                            <div class="team-user__photo"><img src="asset/img/team-user-3.jpg" alt="team"></div>
-                                            <div class="team-user__body">
-                                                <div class="team-user__name">Amelia Grace</div>
-                                                <div class="team-user__position">Senior Member</div>
-                                                <div class="team-user__social">
-                                                    <ul class="social">
-                                                        <li class="social__item"><a class="social__link" href="http://www.twitter.com" target="_blank"><span data-uk-icon="twitter"></span></a></li>
-                                                        <li class="social__item"><a class="social__link" href="http://www.facebook.com" target="_blank"><span data-uk-icon="facebook"></span></a></li>
-                                                        <li class="social__item"><a class="social__link" href="http://www.linkedin.com" target="_blank"><span data-uk-icon="linkedin"></span></a></li>
-                                                        <li class="social__item"><a class="social__link" href="http://www.instagram.com" target="_blank"><span data-uk-icon="instagram"></span></a></li>
-                                                    </ul>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="swiper-slide">
-                                        <div class="team-user">
-                                            <div class="team-user__photo"><img src="asset/img/team-user-4.jpg" alt="team"></div>
-                                            <div class="team-user__body">
-                                                <div class="team-user__name">Taylor Benson</div>
-                                                <div class="team-user__position">Senior Member</div>
-                                                <div class="team-user__social">
-                                                    <ul class="social">
-                                                        <li class="social__item"><a class="social__link" href="http://www.twitter.com" target="_blank"><span data-uk-icon="twitter"></span></a></li>
-                                                        <li class="social__item"><a class="social__link" href="http://www.facebook.com" target="_blank"><span data-uk-icon="facebook"></span></a></li>
-                                                        <li class="social__item"><a class="social__link" href="http://www.linkedin.com" target="_blank"><span data-uk-icon="linkedin"></span></a></li>
-                                                        <li class="social__item"><a class="social__link" href="http://www.instagram.com" target="_blank"><span data-uk-icon="instagram"></span></a></li>
-                                                    </ul>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
                             </div>
                         </div>
                     </div>
