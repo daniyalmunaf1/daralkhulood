@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="utf-8">
-    <title>Contact</title>
+    <title>Book Now</title>
     <meta content="Chernkh Mikhail" name="author">
     <meta content="DAR AL KHULOOD UNITED LLC - Top-Of-The-Line Equipment Rentals" name="description">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -41,10 +41,10 @@
         <main class="page-main">
             <div class="page-head">
                 <div class="page-head__bg" style="background-image: url(asset/img/bg_page-contact.jpg)">
-                    <div class="page-head__title" style="font-size:35px;">Get In Touch</div>
+                    <div class="page-head__title" style="font-size:35px;">Need an Equipment on Rent</div>
                     <div class="page-head__breadcrumb">
                         <ul class="uk-breadcrumb">
-                            <li><span>Contact Us</span></li>
+                            <li><span>Book Now</span></li>
                         </ul>
                     </div>
                 </div>
@@ -85,7 +85,7 @@
                                         <h3>Need an Equipment on Rent?<br> Send us a Message</h3>
                                     </div>
                                     <div class="section-content">
-                                    <form enctype="multipart/form-data" method="POST" action="{{ route('sendmessage') }}" class="form w-100" novalidate="novalidate" id="" >
+                                    <form enctype="multipart/form-data" method="POST" action="{{ route('sendinquiry') }}" class="form w-100" novalidate="novalidate" id="" >
                     @csrf                                            <!-- Hidden Required Fields -->
                                             <input type="hidden" name="project_name" value="DAR AL KHULOOD UNITED LLC - Top-Of-The-Line Equipment Rentals">
                                             <input type="hidden" name="admin_email" value="test@gmail.com">
@@ -94,7 +94,13 @@
                                             <div class="uk-grid uk-grid-medium uk-child-width-1-2@s" data-uk-grid>
                                                 <div><input class="uk-input uk-form-large" name="name" type="text" placeholder="Name *"></div>
                                                 <div><input class="uk-input uk-form-large" name="email" type="email" placeholder="Email *"></div>
-                                                <div class="uk-width-1-1"><input class="uk-input uk-form-large" name="subject" type="text" placeholder="Subject"></div>
+                                                <div class="uk-width-1-1">
+                                                <select style="padding-top:6px;text-transform:capitalize;" name="equipment" class="uk-input uk-form-large form-control item">
+                                                    @foreach($equipments as $equipment)
+                                                    <option value="{{$equipment->title}}">{{$equipment->title}}</option>
+                                                    @endforeach
+                                            </select>
+                                                </div>
                                                 <div class="uk-width-1-1"><textarea class="uk-textarea uk-form-large" name="message" placeholder="Your Message"></textarea></div>
                                                 <div><button class="uk-button uk-button-default uk-button-large" type="submit"><span>Send message</span><span data-uk-icon="arrow-right"></span></button></div>
                                             </div>
@@ -106,34 +112,8 @@
                     </div>
                 </div>
             </div>
-            <div class="contacts-map"><iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d14626.27347655932!2d58.3664292!3d23.5839408!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0xe807a3da6f1f836d!2sDAR%20AL%20KHULOOD%20UNITED%20LLC!5e0!3m2!1sen!2s!4v1664500784243!5m2!1sen!2"></iframe></div>
         </main>
-        <section class="newsletter">
-            <div class="uk-section uk-container uk-container-xlarge">
-                <div class="newsletter__inner">
-                    <div class="newsletter-form">
-                        <div class="newsletter-form__title">
-                            <h4>Newsletter<br> Subscription</h4>
-                        </div>
-                        <div class="newsletter-form__form">
-                        <form enctype="multipart/form-data" method="POST" action="{{ route('subscribe') }}" class="form w-100" novalidate="novalidate" id="" >
-                    @csrf
-
-                                                  <!-- Hidden Required Fields -->
-                               <input type="email" name="email" placeholder="Enter Your Email"><button type="submit">Subscribe</button>
-                            </form>
-                        </div>
-                    </div>
-                    <div class="download-app">
-                        <div class="download-app__title">
-                            <h4>Download Our App</h4>
-                            <p>Get Apps For Faster Booking</p>
-                        </div>
-                        <div class="download-app__links"><a class="download-link" href="https://www.apple.com/ua/app-store/" target="_blank"><img src="asset/img/appstore.png" alt="appstore"></a><a class="download-link" href="https://play.google.com/" target="_blank"><img src="asset/img/googleplay.png" alt="appstore"></a></div>
-                    </div>
-                </div>
-            </div>
-        </section>
+        >
         @include('footer')
         <div id="offcanvas" data-uk-offcanvas="mode: reveal; overlay: true">
             <div class="uk-offcanvas-bar uk-flex uk-flex-column uk-flex-between"><button class="uk-offcanvas-close" type="button" data-uk-close></button>

@@ -56,11 +56,24 @@
           >
         </li>
         <li class="nav-item">
+          <a class="nav-link" href="{{route('projects')}}">
+            <i class="fas fa-fw fa-user-alt"></i>
+            <span>Projects</span></a
+          >
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="{{route('reviews')}}">
+            <i class="fas fa-fw fa-user-alt"></i>
+            <span>Reviews</span></a
+          >
+        </li>
+        <li class="nav-item">
           <a class="nav-link" href="{{route('subscriptions')}}">
             <i class="fas fa-fw fa-user-alt"></i>
             <span>Subscriptions</span></a
           >
         </li>
+        
    
                 <!-- Divider -->
         <hr class="sidebar-divider d-none d-md-block" />

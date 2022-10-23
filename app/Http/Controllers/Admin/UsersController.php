@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Mail\Email;
 use App\Models\DeactivateDays;
 use App\Models\User;
 use Illuminate\Support\Facades\Mail;
@@ -17,6 +18,8 @@ use App\Models\TeamBonusRequest;
 use App\Models\RewardBonusRequest;
 use App\Models\TeamUser;
 use App\Models\Pin;
+use App\Models\Project;
+use App\Models\Review;
 use App\Models\Service;
 use App\Models\Subscription;
 use App\Models\Video;
@@ -39,10 +42,14 @@ class UsersController extends Controller
     {
         $user = User::where('id',1)->first();
         $services = Service::limit(3)->get();
+        $reviews = Review::get();
+        $reviewscount = Review::count();
         $equipments = Equipment::limit(4)->get();
         return view('index')->with([
             'user'=>$user,
             'services'=>$services,
+            'reviews'=>$reviews,
+            'reviewscount'=>$reviewscount,
             'equipments'=>$equipments,
         ]);
     }
@@ -52,6 +59,73 @@ class UsersController extends Controller
         $user = User::where('id',1)->first();
         return view('admin.dashboard')->with('user',$user);
     }
+    public function image($id, $name)
+    {
+        $user = User::where('id',1)->first();
+        return view('admin.change-image')->with([
+            'user'=>$user,
+            'id'=>$id,
+            'name'=>$name,
+        ]);
+    }
+    public function changeimage(Request $request)
+    {
+        // dd($request->old_plan);
+        $request->validate([
+            'image' => ['required' ,'max:10000'],            
+        ]);
+
+        if($request->name=='review')
+        {
+            $table = Review::where('id',$request->id)->first();
+            $image = app('App\Http\Controllers\UploadImageController')->storage_upload($request->image,'/app/public/review/');
+            $table->image = $image;
+            $table->save();
+            return  redirect()->route('reviews')->with('message', 'Image Updated Successfully');   
+        }
+        elseif($request->name=='project')
+        {
+            $table = Project::where('id',$request->id)->first();
+            $image = app('App\Http\Controllers\UploadImageController')->storage_upload($request->image,'/app/public/project/');
+            $table->image = $image;
+            $table->save();
+            return  redirect()->route('projects')->with('message', 'Image Updated Successfully');
+        }
+        elseif($request->name=='employee')
+        {
+            $table = Employee::where('id',$request->id)->first();
+            $image = app('App\Http\Controllers\UploadImageController')->storage_upload($request->image,'/app/public/team/');
+            $table->image = $image;
+            $table->save();
+            return  redirect()->route('teamlist')->with('message', 'Image Updated Successfully');
+        }
+        elseif($request->name=='service')
+        {
+            $table = Service::where('id',$request->id)->first();
+            $image = app('App\Http\Controllers\UploadImageController')->storage_upload($request->image,'/app/public/service/');
+            $table->image = $image;
+            $table->save();
+            return  redirect()->route('services')->with('message', 'Image Updated Successfully');
+        }
+        elseif($request->name=='equipment')
+        {
+            $table = Equipment::where('id',$request->id)->first();
+            $image = app('App\Http\Controllers\UploadImageController')->storage_upload($request->image,'/app/public/equipment/');
+            $table->image = $image;
+            $table->save();
+            return  redirect()->route('equipments')->with('message', 'Image Updated Successfully');
+        }
+        elseif($request->name=='equipment_logo')
+        {
+            $table = Equipment::where('id',$request->id)->first();
+            $image = app('App\Http\Controllers\UploadImageController')->storage_upload($request->image,'/app/public/equipment/');
+            $table->logo = $image;
+            $table->save();
+            return  redirect()->route('equipments')->with('message', 'Logo Updated Successfully');
+            
+        }
+    }
+
     public function gallery()
     {
         $user = User::where('id',1)->first();
@@ -71,6 +145,15 @@ class UsersController extends Controller
         return view('our-equipments')->with([
             'user'=>$user,
             'equipments'=>$equipments,
+        ]);
+    }
+    public function viewprojects()
+    {
+        $projects = Project::all();
+        $user = User::where('id',1)->first();
+        return view('view-projects')->with([
+            'user'=>$user,
+            'projects'=>$projects,
         ]);
     }
     public function subscribe(Request $request)
@@ -102,11 +185,24 @@ class UsersController extends Controller
             $user = User::first();
       
             Mail::to($user->email)->send(new SendEmailLink($name,$email,$subject,$message));
-            return redirect()->route('contactus')->with('message', 'Message Sent Successfully'); 
-        
-        
-        
-        return  redirect()->route('contactus')->with('message', 'Subscribed Successfully');   
+            return redirect()->route('contactus')->with('message', 'Message Sent Successfully');         
+    }
+    public function sendinquiry(Request $request)
+    {
+        // dd($request->old_plan);
+        $request->validate([
+            'name' => ['required', 'string', 'max:100000'],
+            'email' => ['required', 'string', 'max:100000'],
+            'equipment' => ['required', 'max:100000'],
+            'message' => ['required', 'string', 'max:100000'],        ]);
+            $name = $request->name; 
+            $email = $request->email;
+            $equipment = $request->equipment;
+            $message = $request->message;
+            $user = User::first();
+      
+            Mail::to($user->email)->send(new Email($name,$email,$equipment,$message));
+            return redirect()->route('booknow')->with('message', 'Message Sent Successfully'); 
     }
     public function aboutus()
     {
@@ -133,6 +229,15 @@ class UsersController extends Controller
     {
         $user = User::where('id',1)->first();
         return view('contactus')->with('user',$user);
+    }
+    public function booknow()
+    {
+        $user = User::where('id',1)->first();
+        $equipments = Equipment::all();
+        return view('booknow')->with([
+            'user'=>$user,
+            'equipments'=>$equipments,
+        ]);
     }
 
     public function team()
@@ -489,6 +594,166 @@ class UsersController extends Controller
         return  redirect()->route('equipments')->with('message', 'Equipment Updated Successfully');   
     }
 
+    public function projects()
+    {
+        $sno = 0;
+        $projects = Project::all();
+        $user = User::where('id',1)->first();
+        
+        return view('admin.projects')->with([
+            'projects'=>$projects,
+            'user'=>$user,
+            'sno'=>$sno
+        ]);
+
+    }   
+
+    public function editproject($id)
+    {       
+        
+        $user = User::where('id',1)->first();
+        $project = Project::where('id',$id)->first();
+        return view('admin.edit-project')->with([
+            'user'=>$user,
+            'project'=>$project
+        ]);
+
+    }
+    public function addproject()
+    {       
+        $user = User::where('id',1)->first();
+        return view('admin.add-project')->with([
+            'user'=>$user,
+        ]);
+
+    }
+
+    public function storeproject(Request $request)
+    {
+        // dd($request->old_plan);
+        $request->validate([
+            'title' => ['required', 'string', 'max:100000'],
+            'image' => ['required', 'max:100000'],
+            'description' => ['required', 'string', 'max:100000'],
+            
+        ]);
+
+        $user = User::where('id',1)->first();
+        $project = new Project();
+        $image = app('App\Http\Controllers\UploadImageController')->storage_upload($request->image,'/app/public/project/');
+        $project->image = $image;
+        $project->title = $request->title;
+        $project->description = $request->description;
+        
+        $project->save();
+        
+        return  redirect()->route('projects')->with('message', 'Project Added Successfully');   
+    }
+    public function updateproject(Request $request)
+    {
+        // dd($request->old_plan);
+        $request->validate([
+            'title' => ['required', 'string', 'max:100000'],
+            'description' => ['required', 'string', 'max:100000'],
+            
+        ]);
+
+        $user = User::where('id',1)->first();
+        $project = Project::where('id',$request->id)->first();
+        
+        $project->title = $request->title;
+        $project->description = $request->description;
+        
+        $project->save();
+        
+        return  redirect()->route('projects')->with('message', 'Project Updated Successfully');   
+    }
+
+    public function reviews()
+    {
+        $sno = 0;
+        $reviews = Review::all();
+        $user = User::where('id',1)->first();
+        
+        return view('admin.reviews')->with([
+            'reviews'=>$reviews,
+            'user'=>$user,
+            'sno'=>$sno
+        ]);
+
+    }   
+
+    public function editreview($id)
+    {       
+        
+        $user = User::where('id',1)->first();
+        $review = Review::where('id',$id)->first();
+        return view('admin.edit-review')->with([
+            'user'=>$user,
+            'review'=>$review
+        ]);
+
+    }
+    public function addreview()
+    {       
+        $user = User::where('id',1)->first();
+        return view('admin.add-review')->with([
+            'user'=>$user,
+        ]);
+
+    }
+
+    public function storereview(Request $request)
+    {
+        // dd($request->old_plan);
+        $request->validate([
+            'title' => ['required', 'string', 'max:100000'],
+            'image' => ['required', 'max:100000'],
+            'description' => ['required', 'string', 'max:100000'],
+            'name' => ['required', 'string', 'max:100000'],
+            'CustomerType' => ['required', 'string', 'max:100000'],
+            'rate' => ['required', 'string', 'max:100000'],
+        ]);
+
+        $user = User::where('id',1)->first();
+        $review = new Review();
+        $image = app('App\Http\Controllers\UploadImageController')->storage_upload($request->image,'/app/public/review/');
+        $review->image = $image;
+        $review->title = $request->title;
+        $review->description = $request->description;
+        $review->name = $request->name;
+        $review->c_type = $request->CustomerType;
+        $review->rate = $request->rate;
+        
+        $review->save();
+        
+        return  redirect()->route('reviews')->with('message', 'Review Added Successfully');   
+    }
+    public function updatereview(Request $request)
+    {
+        // dd($request->old_plan);
+        $request->validate([
+            'title' => ['required', 'string', 'max:100000'],
+            'description' => ['required', 'string', 'max:100000'],
+            'name' => ['required', 'string', 'max:100000'],
+            'CustomerType' => ['required', 'string', 'max:100000'],
+            'rate' => ['required', 'string', 'max:100000'],
+        ]);
+
+        $user = User::where('id',1)->first();
+        $review = Review::where('id',$request->id)->first();
+        
+        $review->title = $request->title;
+        $review->description = $request->description;
+        $review->name = $request->name;
+        $review->c_type = $request->CustomerType;
+        $review->rate = $request->rate;
+        
+        $review->save();
+        
+        return  redirect()->route('reviews')->with('message', 'Review Updated Successfully');   
+    }
+
     public function update(Request $request)
     {
         // dd($request->old_plan);
@@ -569,6 +834,27 @@ class UsersController extends Controller
         $service->delete();
         
         return  redirect()->route('services')->with('message', 'Service Deleted Successfully');  
+    }
+    public function destroyequipment($id)
+    {       
+        $equipment = Equipment::where('id',$id)->first();
+        $equipment->delete();
+        
+        return  redirect()->route('equipments')->with('message', 'Equipment Deleted Successfully');  
+    }
+    public function destroyproject($id)
+    {       
+        $project = Project::where('id',$id)->first();
+        $project->delete();
+        
+        return  redirect()->route('projects')->with('message', 'Project Deleted Successfully');  
+    }
+    public function destroyreview($id)
+    {       
+        $review = Review::where('id',$id)->first();
+        $review->delete();
+        
+        return  redirect()->route('reviews')->with('message', 'Review Deleted Successfully');  
     }
     public function destroyvideo($id)
     {       

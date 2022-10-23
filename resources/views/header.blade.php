@@ -1,3 +1,11 @@
+<div style="background-color:#14A850;"><ul style="margin-top:1px;float:right;margin-right:6%;margin-top:2px;margin-bottom:2px;" class="social">
+                        <br>
+                                    <li style="background-color: #045aa4;border-radius: 50%;height: 26px;"><a href="{{$user->facebook}}"><span style="height: 23px;" data-uk-icon="facebook"></span></a></li>
+                                    <li style="background-color: #045aa4;border-radius: 50%;height: 26px;"><a href="{{$user->twitter}}" ><span style="height: 23px;" data-uk-icon="twitter"></span></a></li>
+                                    <li style="background-color: #045aa4;border-radius: 50%;height: 26px;"><a href="{{$user->instagram}}" ><span style="height: 23px;" data-uk-icon="instagram"></span></a></li>
+                                    <li style="background-color: #045aa4;border-radius: 50%;height: 26px;"><a href="{{$user->linkedin}}" ><span style="height: 23px;" data-uk-icon="linkedin"></span></a></li>
+                                    <li style="background-color: #045aa4;border-radius: 50%;height: 26px;"><a href="{{$user->youtube}}" ><span style="height: 23px;" data-uk-icon="youtube"></span></a></li>
+                                </ul></div>
 <header class="page-header">
             <div class="uk-container-expand">
                 <div class="page-header__inner">
@@ -16,10 +24,10 @@
                             </li>
                             <li><a href="{{route('team')}}"><span>Our Team</span></a></li>
                             <li><a href="{{route('our-equipments')}}"><span>Our Equipments</span></a></li>
-                           
+                            <li><a href="{{route('view-projects')}}"><span>Projects</span></a></li>
                             
-                            <li><a href="08_blog-grid.html"><span>Projects</span></a></li></li>
                             <li><a href="{{route('contactus')}}"><span>Contact</span></a></li>
+                            <li><a href="{{route('booknow')}}"><span>BookNow</span></a></li>
                         </ul>
 
 
@@ -34,14 +42,7 @@
                         </div>
                     </div>
                     <div class="page-header__contacts"><a class="contacts-block" href=""><span>Need Help? Call Us</span><strong>{{$user->number}}</strong></a>
-                    <ul style="margin-top:5px;" class="social">
-                        <br>
-                                    <li style="background-color: #045aa4;border-radius: 50%;"><a href="{{$user->facebook}}"><span data-uk-icon="facebook"></span></a></li>
-                                    <li style="background-color: #045aa4;border-radius: 50%;"><a href="{{$user->twitter}}" ><span data-uk-icon="twitter"></span></a></li>
-                                    <li style="background-color: #045aa4;border-radius: 50%;"><a href="{{$user->instagram}}" ><span data-uk-icon="instagram"></span></a></li>
-                                    <li style="background-color: #045aa4;border-radius: 50%;"><a href="{{$user->linkedin}}" ><span data-uk-icon="linkedin"></span></a></li>
-                                    <li style="background-color: #045aa4;border-radius: 50%;"><a href="{{$user->youtube}}" ><span data-uk-icon="youtube"></span></a></li>
-                                </ul>
+                    
                 </div>
                     <div class="page-header__mobile-menu-btn"><button data-uk-toggle="target: #offcanvas" type="button"><span data-uk-icon="menu"></span></button></div>
                     

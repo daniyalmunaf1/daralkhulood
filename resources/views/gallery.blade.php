@@ -83,16 +83,7 @@
         <div id="offcanvas" data-uk-offcanvas="mode: reveal; overlay: true">
             <div class="uk-offcanvas-bar uk-flex uk-flex-column uk-flex-between"><button class="uk-offcanvas-close" type="button" data-uk-close></button>
                 <div class="uk-margin-bottom"><a class="logo uk-margin-bottom" href="/"><img src="asset/img/logo-white.png" alt="image"></a>
-                    <ul class="uk-nav uk-nav-default uk-nav-parent-icon" data-uk-nav>
-                        <li class="uk-active"><a href="index.html"><span>Home</span></a></li>
-                            <li><a href="11_about-us.html"><span class="with-navbar-dropdown-nav">About Us</span></a></li>
-                            <li><a href="08_blog-grid.html">Group</a></li>
-                            <li><a href="gallery.html">Gallery</a></li>
-                            <li><a href="team.html"><span>Our Team</span></a></li>
-                            <li><a href="04_equipment-categories.html"><span>Our Equipments</span></a></li>
-                            <li><a href="08_blog-grid.html"><span>Projects</span></a></li></li>
-                            <li><a href="12_contact-us.html"><span>Contact</span></a></li>
-                    </ul>
+                    @include('mb_menu')
                 </div>
                 <div class="uk-margin"><a class="contacts-block" href="tel:+96895219590"><span>Need Help? Call Us</span><strong>(+968) 9521-9590</strong></a></div>
             </div>

@@ -118,6 +118,8 @@ border: 1px solid;
                        <tr>
                            <!-- <th>#</th> -->
                            <th>S.NO</th>
+                           <th style="width:102px;">Logo</th>
+                           <th style="width:102px;">Image</th>
                            <th>Title</th>
                            <th>Description</th>
                            <th style="width:180px;">Actions</th>
@@ -129,6 +131,8 @@ border: 1px solid;
                         @foreach($equipments as $equipment)
                        <tr>
                           <td>{{++$sno}}</td>
+                          <td><img  style="height: 50px;width:50px;" src="{{asset('/storage/'.$equipment->logo)}}" alt=""><a title="change image" href="{{route('image',['id'=>$equipment->id,'equipment_logo'])}}"><i style="color: #1089ff;font-size:21px;margin-left:5px;" class="fa fa-edit"></i></a></td>
+                          <td><img  style="height: 50px;width:50px;" src="{{asset('/storage/'.$equipment->image)}}" alt=""><a title="change image" href="{{route('image',['id'=>$equipment->id,'equipment'])}}"><i style="color: #1089ff;font-size:21px;margin-left:5px;" class="fa fa-edit"></i></a></td>
                            <td>{{$equipment->title}}</td>
                            <td>{{$equipment->description}}</td>
                            <td>
@@ -162,7 +166,7 @@ function myFunction() {
   table = document.getElementById("myTable");
   tr = table.getElementsByTagName("tr");
   for (i = 0; i < tr.length; i++) {
-    td = tr[i].getElementsByTagName("td")[1];
+    td = tr[i].getElementsByTagName("td")[3];
     if (td) {
       txtValue = td.textContent || td.innerText;
       if (txtValue.toUpperCase().indexOf(filter) > -1) {

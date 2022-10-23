@@ -121,7 +121,7 @@
                         <div class="s-hero__title">Looking For Construction Equipments On Rent?</div>
                         <div class="s-hero__subtitle">Get the best rental service that is more cost effective, efficient and Safest.</div>
                         <div class="s-hero__search">
-                            <a class="uk-button uk-button-danger uk-button-large uk-icon uk-first-column info-card__btn uk-button" style="background-color: #14A850; border-radius: 100px; font-size: 15px;"; href="{{route('aboutus')}}">Book Now</a>
+                            <a class="uk-button uk-button-danger uk-button-large uk-icon uk-first-column info-card__btn uk-button" style="background-color: #14A850; border-radius: 100px; font-size: 15px;"; href="{{route('booknow')}}">Book Now</a>
                             <a class="uk-button uk-button-danger uk-button-large uk-icon uk-first-column info-card__btn uk-button" style="background-color: #fff; color: #0E58A8; border-radius: 100px; font-size: 15px;"; href="{{route('our-equipments')}}">Browse Rental Categories</a>
                         </div>
                     </div>
@@ -332,24 +332,37 @@
                     <div class="section-title --center"><span>[Premier Equipment Rental Service]</span>
                         <h3>Words From Loyal Customers</h3>
                     </div>
+                    @if($reviewscount>0)
                     <div class="section-content">
                         <div class="js-reviews-slider">
                             <div class="swiper">
                                 <div class="swiper-wrapper">
+                                @foreach($reviews as $review)
                                     <div class="swiper-slide">
                                         <div class="review-item">
                                             <div class="review-item__box">
                                                 <div class="review-item__desc">
                                                     <div class="review-item__icon"><span data-uk-icon="quote-right"></span></div>
-                                                    <h4 class="review-item__title">Satisfying Services.</h4>
-                                                    <p class="review-item__text">At dolore magna aliqua umt enim ad mini veniam quis ulamco aliquip com da consequat duis aute irue derit vol ptate cillum dolore afugiat.</p>
+                                                    <h4 class="review-item__title">{{$review->title}}</h4>
+                                                    <p class="review-item__text">{{$review->description}}</p>
                                                 </div>
                                                 <div class="review-item__user">
                                                     <div class="user">
-                                                        <div class="user__avatar"><img src="asset/img/user-1.png" alt="avatar"></div>
+                                                        <div class="user__avatar"><img src="{{asset('/storage/'.$review->image)}}" alt="avatar"></div>
                                                         <div class="user__info">
-                                                            <div class="user__name">Donald James</div>
-                                                            <div class="user__position">Rental Customer</div>
+                                                            <div class="user__name">{{$review->name}}</div>
+                                                            <div class="user__position">{{$review->c_type}}</div>
+                                                            @if($review->rate=='5')
+                                                            <div class="user__rating">
+                                                                <ul class="rating-list">
+                                                                    <li class="active" data-uk-icon="star"></li>
+                                                                    <li class="active" data-uk-icon="star"></li>
+                                                                    <li class="active" data-uk-icon="star"></li>
+                                                                    <li class="active" data-uk-icon="star"></li>
+                                                                    <li class="active" data-uk-icon="star"></li>
+                                                                </ul>
+                                                            </div>
+                                                            @elseif($review->rate=='4')
                                                             <div class="user__rating">
                                                                 <ul class="rating-list">
                                                                     <li class="active" data-uk-icon="star"></li>
@@ -359,26 +372,7 @@
                                                                     <li data-uk-icon="star"></li>
                                                                 </ul>
                                                             </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="swiper-slide">
-                                        <div class="review-item">
-                                            <div class="review-item__box">
-                                                <div class="review-item__desc">
-                                                    <div class="review-item__icon"><span data-uk-icon="quote-right"></span></div>
-                                                    <h4 class="review-item__title">Well-Performed Equip.</h4>
-                                                    <p class="review-item__text">At dolore magna aliqua umt enim ad mini veniam quis ulamco aliquip com da consequat duis aute irue derit vol ptate cillum dolore afugiat.</p>
-                                                </div>
-                                                <div class="review-item__user">
-                                                    <div class="user">
-                                                        <div class="user__avatar"><img src="asset/img/user-2.png" alt="avatar"></div>
-                                                        <div class="user__info">
-                                                            <div class="user__name">Sheggy O’Brain</div>
-                                                            <div class="user__position">Rental Customer</div>
+                                                            @elseif($review->rate=='3')
                                                             <div class="user__rating">
                                                                 <ul class="rating-list">
                                                                     <li class="active" data-uk-icon="star"></li>
@@ -388,41 +382,36 @@
                                                                     <li data-uk-icon="star"></li>
                                                                 </ul>
                                                             </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="swiper-slide">
-                                        <div class="review-item">
-                                            <div class="review-item__box">
-                                                <div class="review-item__desc">
-                                                    <div class="review-item__icon"><span data-uk-icon="quote-right"></span></div>
-                                                    <h4 class="review-item__title">Working Excavators.</h4>
-                                                    <p class="review-item__text">At dolore magna aliqua umt enim ad mini veniam quis ulamco aliquip com da consequat duis aute irue derit vol ptate cillum dolore afugiat.</p>
-                                                </div>
-                                                <div class="review-item__user">
-                                                    <div class="user">
-                                                        <div class="user__avatar"><img src="asset/img/user-3.png" alt="avatar"></div>
-                                                        <div class="user__info">
-                                                            <div class="user__name">Albert D’Souza</div>
-                                                            <div class="user__position">Rental Customer</div>
+                                                            @elseif($review->rate=='2')
                                                             <div class="user__rating">
                                                                 <ul class="rating-list">
                                                                     <li class="active" data-uk-icon="star"></li>
                                                                     <li class="active" data-uk-icon="star"></li>
-                                                                    <li class="active" data-uk-icon="star"></li>
-                                                                    <li class="active" data-uk-icon="star"></li>
+                                                                    <li data-uk-icon="star"></li>
+                                                                    <li data-uk-icon="star"></li>
                                                                     <li data-uk-icon="star"></li>
                                                                 </ul>
                                                             </div>
+                                                            @else
+                                                            <div class="user__rating">
+                                                                <ul class="rating-list">
+                                                                    <li class="active" data-uk-icon="star"></li>
+                                                                    <li data-uk-icon="star"></li>
+                                                                    <li data-uk-icon="star"></li>
+                                                                    <li data-uk-icon="star"></li>
+                                                                    <li data-uk-icon="star"></li>
+                                                                </ul>
+                                                            </div>
+                                                            @endif
                                                         </div>
                                                     </div>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
+                                    @endforeach
+                                    
+                                   
                                 </div>
                             </div>
                             <div class="slider-nav uk-margin-large-top">
@@ -430,6 +419,8 @@
                             </div>
                         </div>
                     </div>
+                    @endif
+
                 </div>
             </section>
             <section class="s-info">
@@ -446,7 +437,7 @@
                                 <div style="color:white;" class="contacts-box">
                                     <div class="contacts-box__img"><img src="asset/img/avatar.png" alt="image"></div>
                                     <div class="contacts-box__desc">
-                                        <div style="color:white;" class="contacts-box__label">Need Help? Call Us</div><a style="color:white;" class="contacts-box__phone" href="tel:+96895219590">(+968) 9521-9590</a>
+                                        <div style="color:white;" class="contacts-box__label">Need Help? Call Us</div><a style="color:white;" class="contacts-box__phone" href="tel:+96895219590">{{$user->number}}</a>
                                     </div>
                                 </div>
 
@@ -486,16 +477,7 @@
 
 
 
-                    <ul class="uk-nav uk-nav-default uk-nav-parent-icon" data-uk-nav>
-                        <li class="uk-active"><a href="index.html"><span>Home</span></a></li>
-                            <li><a href="11_about-us.html"><span class="with-navbar-dropdown-nav">About Us</span></a></li>
-                            <li><a href="08_blog-grid.html">Group</a></li>
-                            <li><a href="gallery.html">Gallery</a></li>
-                            <li><a href="team.html"><span>Our Team</span></a></li>
-                            <li><a href="04_equipment-categories.html"><span>Our Equipments</span></a></li>
-                            <li><a href="08_blog-grid.html"><span>Projects</span></a></li></li>
-                            <li><a href="12_contact-us.html"><span>Contact</span></a></li>
-                    </ul>
+                    @include('mb_menu')
                 </div>
                 <div class="uk-margin"><a class="contacts-block" href=""><span>Need Help? Call Us</span><strong>{{$user->number}}</strong></a></div>
             </div>

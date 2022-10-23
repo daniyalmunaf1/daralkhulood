@@ -54,6 +54,7 @@ return array(
     'App\\Models\\Pin' => $baseDir . '/app/Models/Pin.php',
     'App\\Models\\PinRequest' => $baseDir . '/app/Models/PinRequest.php',
     'App\\Models\\Project' => $baseDir . '/app/Models/Project.php',
+    'App\\Models\\Review' => $baseDir . '/app/Models/Review.php',
     'App\\Models\\RewardBonusRequest' => $baseDir . '/app/Models/RewardBonusRequest.php',
     'App\\Models\\Role' => $baseDir . '/app/Models/Role.php',
     'App\\Models\\Service' => $baseDir . '/app/Models/Service.php',

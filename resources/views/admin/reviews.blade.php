@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-  <title>Services</title>
+  <title>Reviews</title>
     <meta content="Chernkh Mikhail" name="author">
     <meta content="DAR AL KHULOOD UNITED LLC - Top-Of-The-Line Equipment Rentals" name="description">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -109,9 +109,9 @@ border: 1px solid;
      @if (Session::has('message'))
             <div class="alert alert-success">{{ Session::get('message') }}</div>
             @endif
-<h1>Service List</h1>
-<input type="text" id="myInput" onkeyup="myFunction()" placeholder="Search By Title" title="Type in a name">
-<a href="{{route('add-service')}}" class="btn btn-primary">Add Service</a>
+<h1>Reviews List</h1>
+<input type="text" id="myInput" onkeyup="myFunction()" placeholder="Search By Name" title="Type in a name">
+<a href="{{route('add-review')}}" class="btn btn-primary">Add Reviews</a>
                <table style="width:1250px;" class="table table-striped" id="myTable">
                    <!--Table head-->
                    <thead>
@@ -119,27 +119,30 @@ border: 1px solid;
                            <!-- <th>#</th> -->
                            <th>S.NO</th>
                            <th style="width:102px;">Image</th>
+                           <th>Customer Name</th>
+                           <th>Customer Type</th>
                            <th>Title</th>
-                           <th>SubTitle</th>
                            <th>Description</th>
+                           <th>Ratings</th>
                            <th style="width:180px;">Actions</th>
                        </tr>
                    </thead>
                    <!--Table head-->
                    <!--Table body-->
                    <tbody>
-                        @foreach($services as $service)
+                        @foreach($reviews as $review)
                        <tr>
                           <td>{{++$sno}}</td>
-                           <td><img  style="height: 50px;width:50px;" src="{{asset('/storage/'.$service->image)}}" alt=""><a title="change image" href="{{route('image',['id'=>$service->id,'service'])}}"><i style="color: #1089ff;font-size:21px;margin-left:5px;" class="fa fa-edit"></i></a></td>
-                           <td>{{$service->title}}</td>
-                           <td>{{$service->subtitle}}</td>
-                           <td>{{$service->description}}</td>
+                          <td><img  style="height: 50px;width:50px;" src="{{asset('/storage/'.$review->image)}}" alt=""><a title="change image" href="{{route('image',['id'=>$review->id,'review'])}}"><i style="color: #1089ff;font-size:21px;margin-left:5px;" class="fa fa-edit"></i></a></td>
+                          <td>{{$review->name}}</td>
+                          <td>{{$review->c_type}}</td>
+                           <td>{{$review->title}}</td>
+                           <td>{{$review->description}}</td>
+                           <td>{{$review->rate}}</td>
                            <td>
-                            <a class="btn btn-primary" style="" href="{{route('editservice',$service->id)}}"><i class="fa fa-edit"></i></a>
-                           <form method="POST" style="float:right;" action="{{ route('delete-service',$service->id) }}" class="" novalidate="novalidate" id="" >
+                            <a class="btn btn-primary" style="" href="{{route('editreview',$review->id)}}"><i class="fa fa-edit"></i></a>
+                           <form method="POST" style="float:right;" action="{{ route('delete-review',$review->id) }}" class="" novalidate="novalidate" id="" >
 															@csrf
-																<!-- {{method_field('DELETE')}} -->
                              <button class="btn btn-danger del-user" ><i class="fa fa-trash"></i></button>
                            </form>
                        </td>

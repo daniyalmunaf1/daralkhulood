@@ -38,7 +38,7 @@ class UsersTableSeeder extends Seeder
             'linkedin' => 'https://linkedin.com',
             'youtube' => 'https://youtube.com',
             'videolink' => 'https://youtu.be/IUYs3mYgEPI',
-            'email' => 'equipments@domain.net',
+            'email' => 'daniyalmunaf@gmail.com',
             'password' => Hash::make('qwertyuiop'),
             'email_verified_at' => '2022-08-19 18:34:11',
             'logo' => '/app/public/Logo/logo.png',

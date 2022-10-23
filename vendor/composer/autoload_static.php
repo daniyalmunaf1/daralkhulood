@@ -592,6 +592,7 @@ class ComposerStaticInit41d858e844c137098c80cdd5be39d606
         'App\\Models\\Pin' => __DIR__ . '/../..' . '/app/Models/Pin.php',
         'App\\Models\\PinRequest' => __DIR__ . '/../..' . '/app/Models/PinRequest.php',
         'App\\Models\\Project' => __DIR__ . '/../..' . '/app/Models/Project.php',
+        'App\\Models\\Review' => __DIR__ . '/../..' . '/app/Models/Review.php',
         'App\\Models\\RewardBonusRequest' => __DIR__ . '/../..' . '/app/Models/RewardBonusRequest.php',
         'App\\Models\\Role' => __DIR__ . '/../..' . '/app/Models/Role.php',
         'App\\Models\\Service' => __DIR__ . '/../..' . '/app/Models/Service.php',

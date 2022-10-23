@@ -20,6 +20,9 @@ Route::get('/', App\Http\Controllers\Admin\UsersController::class, 'index')->nam
 Route::get('/dashboard', [App\Http\Controllers\Admin\UsersController::class, 'dashboard'])->middleware(['auth','verified'])->name('dashboard');
 Route::post('/subscribe', [App\Http\Controllers\Admin\UsersController::class, 'subscribe'])->middleware(['auth','verified'])->name('subscribe');
 Route::get('/subscriptions', [App\Http\Controllers\Admin\UsersController::class, 'subscriptions'])->middleware(['auth','verified'])->name('subscriptions');
+Route::get('/image-{id}-{name}', [App\Http\Controllers\Admin\UsersController::class, 'image'])->middleware(['auth','verified'])->name('image');
+Route::post('/changeimage', [App\Http\Controllers\Admin\UsersController::class, 'changeimage'])->middleware(['auth','verified'])->name('changeimage');
+
 
 Route::get('/teamlist', [App\Http\Controllers\Admin\UsersController::class, 'teamlist'])->middleware(['auth','verified'])->name('teamlist');
 Route::get('/edit-{id}', [App\Http\Controllers\Admin\UsersController::class, 'edit'])->middleware(['auth','verified'])->name('edit');
@@ -52,12 +55,29 @@ Route::get('/add-equipment', [App\Http\Controllers\Admin\UsersController::class,
 Route::post('/storeequipment', [App\Http\Controllers\Admin\UsersController::class, 'storeequipment'])->middleware(['auth','verified'])->name('storeequipment');
 Route::post('/delete-equipment-{equipment}', [App\Http\Controllers\Admin\UsersController::class, 'destroyequipment'])->middleware(['auth','verified'])->name('delete-equipment');
 
+Route::get('/projects', [App\Http\Controllers\Admin\UsersController::class, 'projects'])->middleware(['auth','verified'])->name('projects');
+Route::get('/editproject-{id}', [App\Http\Controllers\Admin\UsersController::class, 'editproject'])->middleware(['auth','verified'])->name('editproject');
+Route::post('/updateproject', [App\Http\Controllers\Admin\UsersController::class, 'updateproject'])->middleware(['auth','verified'])->name('updateproject');
+Route::get('/add-project', [App\Http\Controllers\Admin\UsersController::class, 'addproject'])->middleware(['auth','verified'])->name('add-project');
+Route::post('/storeproject', [App\Http\Controllers\Admin\UsersController::class, 'storeproject'])->middleware(['auth','verified'])->name('storeproject');
+Route::post('/delete-project-{project}', [App\Http\Controllers\Admin\UsersController::class, 'destroyproject'])->middleware(['auth','verified'])->name('delete-project');
+
+Route::get('/reviews', [App\Http\Controllers\Admin\UsersController::class, 'reviews'])->middleware(['auth','verified'])->name('reviews');
+Route::get('/editreview-{id}', [App\Http\Controllers\Admin\UsersController::class, 'editreview'])->middleware(['auth','verified'])->name('editreview');
+Route::post('/updatereview', [App\Http\Controllers\Admin\UsersController::class, 'updatereview'])->middleware(['auth','verified'])->name('updatereview');
+Route::get('/add-review', [App\Http\Controllers\Admin\UsersController::class, 'addreview'])->middleware(['auth','verified'])->name('add-review');
+Route::post('/storereview', [App\Http\Controllers\Admin\UsersController::class, 'storereview'])->middleware(['auth','verified'])->name('storereview');
+Route::post('/delete-review-{review}', [App\Http\Controllers\Admin\UsersController::class, 'destroyreview'])->middleware(['auth','verified'])->name('delete-review');
+
 Route::get('/our-equipments', [App\Http\Controllers\Admin\UsersController::class, 'ourequipments'])->name('our-equipments');
+Route::get('/view-projects', [App\Http\Controllers\Admin\UsersController::class, 'viewprojects'])->name('view-projects');
 Route::get('/gallery', [App\Http\Controllers\Admin\UsersController::class, 'gallery'])->name('gallery');
 Route::get('/service', [App\Http\Controllers\Admin\UsersController::class, 'service'])->name('service');
 Route::get('/company', [App\Http\Controllers\Admin\UsersController::class, 'company'])->name('company');
 Route::get('/aboutus', [App\Http\Controllers\Admin\UsersController::class, 'aboutus'])->name('aboutus');
 Route::get('/contactus', [App\Http\Controllers\Admin\UsersController::class, 'contactus'])->name('contactus');
+Route::get('/booknow', [App\Http\Controllers\Admin\UsersController::class, 'booknow'])->name('booknow');
+Route::post('/sendinquiry', [App\Http\Controllers\Admin\UsersController::class, 'sendinquiry'])->name('sendinquiry');
 Route::post('/sendmessage', [App\Http\Controllers\Admin\UsersController::class, 'sendmessage'])->name('sendmessage');
 Route::get('/team', [App\Http\Controllers\Admin\UsersController::class, 'team'])->name('team');
 Route::post('/update', [App\Http\Controllers\Admin\UsersController::class, 'update'])->middleware(['auth','verified'])->name('update');

@@ -8,7 +8,7 @@
                             <ul class="contacts-list">
                                 <li><a href="{{$user->map}}" target="_blank"><span data-uk-icon="location"></span><span>{{$user->address}}</span></a></li>
                                 <li><a href=""><span data-uk-icon="receiver"></span><span>{{$user->number}}</span></a></li>
-                                <li><a href="mailto:{{$user->email}}"><span data-uk-icon="mail"></span><span>equipments@domain.net</span></a></li>
+                                <li><a href="mailto:{{$user->email}}"><span data-uk-icon="mail"></span><span>{{$user->email}}</span></a></li>
                             </ul>
                             <ul class="social">
                                 <li><a href="{{$user->facebook}}"><span data-uk-icon="facebook"></span></a></li>
