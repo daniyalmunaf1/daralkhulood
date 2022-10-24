@@ -12,17 +12,20 @@ class Email extends Mailable
     use Queueable, SerializesModels;
 
 
-    public $name,$email,$equipment,$message;
+    public $name,$email,$equipment,$message,$phonenumber,$companyname,$city;
 
     /**
      * Create a new message instance.
      *
      * @return void
      */
-    public function __construct($name,$email,$equipment,$message)
+    public function __construct($name,$email,$equipment,$message,$phonenumber,$companyname,$city)
     {
         $this->name = $name;
         $this->email = $email;
+        $this->phonenumber = $phonenumber;
+        $this->companyname = $companyname;
+        $this->city = $city;
         $this->equipment = $equipment;
         $this->message = $message;
     }
@@ -38,7 +41,10 @@ class Email extends Mailable
             'name'=>$this->name,
             'email'=>$this->email,
             'equipment'=>$this->equipment,
-            'message'=>$this->message
+            'message'=>$this->message,
+            'phonenumber'=>$this->phonenumber,
+            'companyname'=>$this->companyname,
+            'city'=>$this->city
 
         ]);
         

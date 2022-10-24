@@ -60,7 +60,7 @@
             </div>
             <div class="page-footer__bottom">
                 <div class="uk-container uk-container-large">
-                    <div class="page-footer__copy"><span>© 2022 <b>DAR AL KHULOOD UNITED LLC</b> - Heavy Equipment Rental Service</span>-    Designed and Developed by ABC</div>
+                    <div class="page-footer__copy"><span>© 2022 <b>DAR AL KHULOOD UNITED LLC</b> - Heavy Equipment Rental Service</span>-    <a href="http://www.jsoltech.com"> Developed by JSOL Technologies</a></div>
                 </div>
             </div>
         </footer>

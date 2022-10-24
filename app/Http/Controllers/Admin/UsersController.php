@@ -192,16 +192,22 @@ class UsersController extends Controller
         // dd($request->old_plan);
         $request->validate([
             'name' => ['required', 'string', 'max:100000'],
+            'phonenumber' => ['required', 'string', 'max:100000'],
+            'companyname' => ['required', 'string', 'max:100000'],
+            'city' => ['required', 'string', 'max:100000'],
             'email' => ['required', 'string', 'max:100000'],
             'equipment' => ['required', 'max:100000'],
             'message' => ['required', 'string', 'max:100000'],        ]);
             $name = $request->name; 
+            $companyname = $request->companyname; 
+            $city = $request->city; 
+            $phonenumber = $request->phonenumber; 
             $email = $request->email;
             $equipment = $request->equipment;
             $message = $request->message;
             $user = User::first();
       
-            Mail::to($user->email)->send(new Email($name,$email,$equipment,$message));
+            Mail::to($user->email)->send(new Email($name,$email,$equipment,$message,$phonenumber,$companyname,$city));
             return redirect()->route('booknow')->with('message', 'Message Sent Successfully'); 
     }
     public function aboutus()

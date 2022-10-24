@@ -94,7 +94,10 @@
                                             <div class="uk-grid uk-grid-medium uk-child-width-1-2@s" data-uk-grid>
                                                 <div><input class="uk-input uk-form-large" name="name" type="text" placeholder="Name *"></div>
                                                 <div><input class="uk-input uk-form-large" name="email" type="email" placeholder="Email *"></div>
-                                                <div class="uk-width-1-1">
+                                                <div><input class="uk-input uk-form-large" name="phonenumber" type="text" placeholder="Contact Number *"></div>
+                                                <div><input class="uk-input uk-form-large" name="city" type="text" placeholder="City *"></div>
+                                                <div><input class="uk-input uk-form-large" name="companyname" type="text" placeholder="Comapany Name *"></div>
+                                                <div >
                                                 <select style="padding-top:6px;text-transform:capitalize;" name="equipment" class="uk-input uk-form-large form-control item">
                                                     @foreach($equipments as $equipment)
                                                     <option value="{{$equipment->title}}">{{$equipment->title}}</option>

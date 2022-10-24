@@ -1,4 +1,4 @@
-<div style="background-color:#14A850;"><ul style="margin-top:1px;float:right;margin-right:6%;margin-top:2px;margin-bottom:2px;" class="social">
+<div style="background-color:#14A850;height:35px;"><ul style="margin-top:1px;float:right;margin-right:6%;margin-top:5px;margin-bottom:2px;" class="social">
                         <br>
                                     <li style="background-color: #045aa4;border-radius: 50%;height: 26px;"><a href="{{$user->facebook}}"><span style="height: 23px;" data-uk-icon="facebook"></span></a></li>
                                     <li style="background-color: #045aa4;border-radius: 50%;height: 26px;"><a href="{{$user->twitter}}" ><span style="height: 23px;" data-uk-icon="twitter"></span></a></li>
@@ -9,8 +9,8 @@
 <header class="page-header">
             <div class="uk-container-expand">
                 <div class="page-header__inner">
-                    <div class="page-header__logo"><a class="logo" href="{{route('index')}}"><img src="{{asset('/storage/'.$user->logo)}}" alt="image"></a></div>
-                    <div class="page-header__mainmenu">
+                    <div class="page-header__logo"><a style="margin-right:-75px;" class="logo" href="{{route('index')}}"><img src="{{asset('/storage/'.$user->logo)}}" alt="image"></a></div>
+                    <div style="margin-left:0px;" class="page-header__mainmenu">
                         <ul class="uk-navbar-nav" data-uk-navbar>
                             <li class=""><a href="{{route('index')}}"><span>Home</span></a></li>
                             <li><a href="{{route('aboutus')}}"><span class="with-navbar-dropdown-nav">About Us</span></a>
