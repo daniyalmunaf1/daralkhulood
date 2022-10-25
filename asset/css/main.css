@@ -1434,7 +1434,7 @@ textarea.uk-form-large {
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 100px;
+    width: 55PX;
 }
 
 .page-header__search .uk-search-icon svg {
@@ -7922,6 +7922,9 @@ html .widjet-filter .nice-select {
     .contacts-block {
         padding-left: 30px;
     }
+    .block{
+        display: none;
+    }
 
     .contacts-block span {
         display: none;
@@ -8796,4 +8799,23 @@ html .widjet-filter .nice-select {
     padding-right: 15px;
     padding-left: 15px;
 
+}
+
+.float{
+	position:fixed;
+	width:60px;
+	height:60px;
+	bottom:40px;
+	right:40px;
+	background-color:#25d366;
+	color:#FFF;
+	border-radius:50px;
+	text-align:center;
+  font-size:30px;
+	box-shadow: 2px 2px 3px #999;
+  z-index:100;
+}
+
+.my-float{
+	margin-top:16px;
 }

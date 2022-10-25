@@ -1,4 +1,8 @@
-                
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+
+<a href="https://wa.me/96895219590" class="float" target="_blank">
+<i class="fa fa-whatsapp my-float"></i>
+</a>      
         <footer class="page-footer">
             <div class="page-footer__top">
                 <div class="uk-container uk-container-large">

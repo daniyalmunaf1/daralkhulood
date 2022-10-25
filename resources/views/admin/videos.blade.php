@@ -112,7 +112,7 @@ border: 1px solid;
 <h1>Video List</h1>
 <input type="text" id="myInput" onkeyup="myFunction()" placeholder="Search" title="Type in a name">
 <a href="{{route('add-video')}}" class="btn btn-primary">Add Video</a>
-               <table style="width:1250px;" class="table table-striped" id="myTable">
+               <table style="width:100%;" class="table table-striped" id="myTable">
                    <!--Table head-->
                    <thead>
                        <tr>

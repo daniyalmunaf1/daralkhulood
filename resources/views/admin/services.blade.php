@@ -112,7 +112,7 @@ border: 1px solid;
 <h1>Service List</h1>
 <input type="text" id="myInput" onkeyup="myFunction()" placeholder="Search By Title" title="Type in a name">
 <a href="{{route('add-service')}}" class="btn btn-primary">Add Service</a>
-               <table style="width:1250px;" class="table table-striped" id="myTable">
+               <table style="width:100%;" class="table table-striped" id="myTable">
                    <!--Table head-->
                    <thead>
                        <tr>

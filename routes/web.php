@@ -48,6 +48,11 @@ Route::get('/add-video', [App\Http\Controllers\Admin\UsersController::class, 'ad
 Route::post('/storevideo', [App\Http\Controllers\Admin\UsersController::class, 'storevideo'])->middleware(['auth','verified'])->name('storevideo');
 Route::post('/delete-video-{video}', [App\Http\Controllers\Admin\UsersController::class, 'destroyvideo'])->middleware(['auth','verified'])->name('delete-video');
 
+Route::get('/slider', [App\Http\Controllers\Admin\UsersController::class, 'slider'])->middleware(['auth','verified'])->name('slider');
+Route::get('/add-slider-image', [App\Http\Controllers\Admin\UsersController::class, 'addsliderimage'])->middleware(['auth','verified'])->name('add-slider-image');
+Route::post('/storesliderimage', [App\Http\Controllers\Admin\UsersController::class, 'storesliderimage'])->middleware(['auth','verified'])->name('storesliderimage');
+Route::post('/delete-slider-image-{image}', [App\Http\Controllers\Admin\UsersController::class, 'destroysliderimage'])->middleware(['auth','verified'])->name('delete-slider-image');
+
 Route::get('/equipments', [App\Http\Controllers\Admin\UsersController::class, 'equipments'])->middleware(['auth','verified'])->name('equipments');
 Route::get('/editequipment-{id}', [App\Http\Controllers\Admin\UsersController::class, 'editequipment'])->middleware(['auth','verified'])->name('editequipment');
 Route::post('/updateequipment', [App\Http\Controllers\Admin\UsersController::class, 'updateequipment'])->middleware(['auth','verified'])->name('updateequipment');

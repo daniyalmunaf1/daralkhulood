@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-  <title>Project</title>
+  <title>Slider Images</title>
     <meta content="Chernkh Mikhail" name="author">
     <meta content="DAR AL KHULOOD UNITED LLC - Top-Of-The-Line Equipment Rentals" name="description">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -109,34 +109,30 @@ border: 1px solid;
      @if (Session::has('message'))
             <div class="alert alert-success">{{ Session::get('message') }}</div>
             @endif
-<h1>Project List</h1>
-<input type="text" id="myInput" onkeyup="myFunction()" placeholder="Search By Title" title="Type in a name">
-<a href="{{route('add-project')}}" class="btn btn-primary">Add Project</a>
+<h1>Image List</h1>
+<input type="text" id="myInput" onkeyup="myFunction()" placeholder="Search" title="Type in a name">
+<a href="{{route('add-slider-image')}}" class="btn btn-primary">Add Image</a>
                <table style="width:100%;" class="table table-striped" id="myTable">
                    <!--Table head-->
                    <thead>
                        <tr>
                            <!-- <th>#</th> -->
-                           <th>S.NO</th>
-                           <th style="width:102px;">Image</th>
-                           <th>Title</th>
-                           <th>Description</th>
+                           <th style="width:50px;">S.NO</th>
+                           <th>Image</th>
                            <th style="width:180px;">Actions</th>
                        </tr>
                    </thead>
                    <!--Table head-->
                    <!--Table body-->
                    <tbody>
-                        @foreach($projects as $project)
+                        @foreach($images as $image)
                        <tr>
                           <td>{{++$sno}}</td>
-                          <td><img  style="height: 50px;width:50px;" src="{{asset('/storage/'.$project->image)}}" alt=""><a title="change image" href="{{route('image',['id'=>$project->id,'project'])}}"><i style="color: #1089ff;font-size:21px;margin-left:5px;" class="fa fa-edit"></i></a></td>
-                           <td>{{$project->title}}</td>
-                           <td>{{$project->description}}</td>
+                           <td><img src="{{asset('/storage/'.$image->name)}}" style="height:75px;width: 75px;" alt="image"></td>
                            <td>
-                            <a class="btn btn-primary" style="" href="{{route('editproject',$project->id)}}"><i class="fa fa-edit"></i></a>
-                           <form method="POST" style="float:right;" action="{{ route('delete-project',$project->id) }}" class="" novalidate="novalidate" id="" >
+                           <form method="POST" style="float:center;" action="{{ route('delete-slider-image',$image->id) }}" class="" novalidate="novalidate" id="" >
 															@csrf
+																<!-- {{method_field('DELETE')}} -->
                              <button class="btn btn-danger del-user" ><i class="fa fa-trash"></i></button>
                            </form>
                        </td>
@@ -164,7 +160,7 @@ function myFunction() {
   table = document.getElementById("myTable");
   tr = table.getElementsByTagName("tr");
   for (i = 0; i < tr.length; i++) {
-    td = tr[i].getElementsByTagName("td")[2];
+    td = tr[i].getElementsByTagName("td")[1];
     if (td) {
       txtValue = td.textContent || td.innerText;
       if (txtValue.toUpperCase().indexOf(filter) > -1) {

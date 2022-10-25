@@ -13,6 +13,8 @@
     <link rel="shortcut icon" href="{{asset('/storage/'.$user->titleicon)}}" type="image/x-icon">
     <link rel="stylesheet" href="asset/css/libs.min.css">
     <link rel="stylesheet" href="asset/css/main.css">
+    <link rel="stylesheet" href="assets/css/bootstrap.min.css">
+
 
     <style>
 /*****************************
@@ -129,9 +131,9 @@
                         <div class="js-hero-slider">
                             <div class="swiper">
                                 <div class="swiper-wrapper">
-                                    <a href=""> <div class="swiper-slide"><img src="asset/img/hero-slider-1.jpg" alt="hero-slider"></div></a>
-                                    <a href=""> <div class="swiper-slide"></a><img src="asset/img/hero-slider-2.jpg" alt="hero-slider"></div></a>
-                                    <a href=""> <div class="swiper-slide"></a><img src="asset/img/hero-slider-3.jpg" alt="hero-slider"></div></a>
+                                @foreach($images as $image)
+                                    <a href=""> <div class="swiper-slide"></a><img src="{{asset('/storage/'.$image->name)}}" alt="hero-slider"></div></a>
+                                @endforeach
                                 </div>
                                 <div class="swiper-pagination"></div>
                             </div>
@@ -425,8 +427,8 @@
             </section>
             <section class="s-info">
                 <div class="uk-container uk-container-xlarge">
-                    <div class="uk-grid uk-grid-collapse uk-child-width-1-2@l" data-uk-grid>
-                        <div>
+                    <div class="uk-grid uk-grid-collapse" data-uk-grid>
+                        <div style="width: 100%;">
                             <div class="info-card --accent">
                             <div style="padding:100px">
                             <div style="color:white;" class="section-title"><span style="color:white;">[Equipment Rental Industry]</span>
@@ -434,10 +436,20 @@
                             </div>
                             <div style="color:white;" class="section-content">
                                 <p>Send your query today & our team would be happy to assist you because we care industry to utilizing heavy equipment.</p>
-                                <div style="color:white;" class="contacts-box">
-                                    <div class="contacts-box__img"><img src="asset/img/avatar.png" alt="image"></div>
-                                    <div class="contacts-box__desc">
-                                        <div style="color:white;" class="contacts-box__label">Need Help? Call Us</div><a style="color:white;" class="contacts-box__phone" href="tel:+96895219590">{{$user->number}}</a>
+                                <div style="color:white;" class="contacts-box row">
+                                    <div class="col-lg-1 col-md-2 col-12">
+                                        <div class="contacts-box__img"><img src="asset/img/avatar.png" alt="image"></div><br>
+                                    </div>
+                                    <div class="col-lg-4 col-md-4 col-12">
+
+                                        <div class="contacts-box__desc">
+                                            <div style="color:white;" class="contacts-box__label">Need Help? Call Us</div>
+                                            <a style="color:white;" class="contacts-box__phone" href="tel:+96895219590">{{$user->number}}</a>
+                                        </div><br>
+                                    </div>
+                                    <div class="col-lg-4 col-md-6 col-12">
+                                        <a style="width: 280px;border-color: #0E58A8;background-color: #fff;color: #0E58A8;" class="uk-button uk-button-default uk-button-large" href="{{route('contactus')}}"><span>Contact Us</span><span data-uk-icon="arrow-right"></span></a>
+                                        <br>
                                     </div>
                                 </div>
 
@@ -445,15 +457,11 @@
                         </div>
                             </div>
                         </div>
-                        <div>
+                        <!-- <div>
                             <div class="info-card uk-flex-middle" style="height:100%;display:flex;">
                                 <div class="info-card__box">
                                      <form action="#!">
-                                <!-- Hidden Required Fields -->
-                                <input type="hidden" name="project_name" value="DAR AL KHULOOD UNITED LLC - Top-Of-The-Line Equipment Rentals">
-                                <input type="hidden" name="admin_email" value="test@gmail.com">
-                                <input type="hidden" name="form_subject" value="Get Expert’s Help">
-                                <!-- END Hidden Required Fields -->
+                                
                                 <div class="uk-grid uk-child-width-1-2@s uk-grid-small" style="" data-uk-grid>
                                     <a style="width: 280px;border-color: #0E58A8;
     background-color: #0E58A8;
@@ -462,7 +470,7 @@
                             </form>
                                 </div>
                             </div>
-                        </div>
+                        </div> -->
                     </div>
                 </div>
             </section>

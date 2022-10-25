@@ -113,7 +113,7 @@ border: 1px solid;
 <h1>Employee List</h1>
 <input type="text" id="myInput" onkeyup="myFunction()" placeholder="Search By Name" title="Type in a name">
 <a href="{{route('add-employee')}}" class="btn btn-primary">Add Employee</a>
-               <table style="width:1250px;" class="table table-striped" id="myTable">
+               <table style="width:100%;" class="table table-striped" id="myTable">
                    <!--Table head-->
                    <thead>
                        <tr>

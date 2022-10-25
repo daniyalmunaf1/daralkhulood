@@ -38,6 +38,12 @@
           >
         </li>
         <li class="nav-item">
+          <a class="nav-link" href="{{route('slider')}}">
+            <i class="fas fa-fw fa-user-alt"></i>
+            <span>Slider Images</span></a
+          >
+        </li>
+        <li class="nav-item">
           <a class="nav-link" href="{{route('images')}}">
             <i class="fas fa-fw fa-user-alt"></i>
             <span>Images</span></a

@@ -21,6 +21,7 @@ use App\Models\Pin;
 use App\Models\Project;
 use App\Models\Review;
 use App\Models\Service;
+use App\Models\Slider;
 use App\Models\Subscription;
 use App\Models\Video;
 use Illuminate\Http\Request;
@@ -43,12 +44,14 @@ class UsersController extends Controller
         $user = User::where('id',1)->first();
         $services = Service::limit(3)->get();
         $reviews = Review::get();
+        $images = Slider::all();
         $reviewscount = Review::count();
         $equipments = Equipment::limit(4)->get();
         return view('index')->with([
             'user'=>$user,
             'services'=>$services,
             'reviews'=>$reviews,
+            'images'=>$images,
             'reviewscount'=>$reviewscount,
             'equipments'=>$equipments,
         ]);
@@ -528,6 +531,55 @@ class UsersController extends Controller
         $image->save();
         
         return  redirect()->route('images')->with('message', 'Image Added Successfully');   
+    }
+
+    public function slider()
+    {
+        $sno = 0;
+        $images = Slider::all();
+        $user = User::where('id',1)->first();
+        
+        return view('admin.slider')->with([
+            'images'=>$images,
+            'user'=>$user,
+            'sno'=>$sno
+        ]);
+
+    }   
+
+    
+    public function addsliderimage()
+    {       
+        $user = User::where('id',1)->first();
+        return view('admin.add-slider-image')->with([
+            'user'=>$user,
+        ]);
+
+    }
+
+    public function storesliderimage(Request $request)
+    {
+        // dd($request->old_plan);
+        $request->validate([
+            'name' => ['required', 'max:100000'],
+            
+        ]);
+        $user = User::where('id',1)->first();
+        $image = new Slider();
+        $img = app('App\Http\Controllers\UploadImageController')->storage_upload($request->name,'/app/public/slider/');
+        $image->name = $img;
+        
+        $image->save();
+        
+        return  redirect()->route('slider')->with('message', 'Image Added Successfully');   
+    }
+
+    public function destroysliderimage($id)
+    {       
+        $image= Slider::where('id',$id)->first();
+        $image->delete();
+        
+        return redirect()->route('slider')->with('message', 'Image Deleted Successfully');  
     }
 
     public function equipments()
