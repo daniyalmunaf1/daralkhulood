@@ -122,9 +122,9 @@
                     <div class="s-hero__desc">
                         <div class="s-hero__title">Looking For Construction Equipments On Rent?</div>
                         <div class="s-hero__subtitle">Get the best rental service that is more cost effective, efficient and Safest.</div>
-                        <div class="s-hero__search">
-                            <a class="uk-button uk-button-danger uk-button-large uk-icon uk-first-column info-card__btn uk-button" style="background-color: #14A850; border-radius: 100px; font-size: 15px;"; href="{{route('booknow')}}">Book Now</a>
-                            <a class="uk-button uk-button-danger uk-button-large uk-icon uk-first-column info-card__btn uk-button" style="background-color: #fff; color: #0E58A8; border-radius: 100px; font-size: 15px;"; href="{{route('our-equipments')}}">Browse Rental Categories</a>
+                        <div class="s-hero__search mBtnJusCenter">
+                            <a class="uk-button mBtnwidth uk-button-danger uk-button-large uk-icon uk-first-column info-card__btn uk-button" style="background-color: #14A850; border-radius: 100px; font-size: 15px;"; href="{{route('booknow')}}">Book Now</a>
+                            <a class="uk-button mBtnwidth uk-button-danger uk-button-large uk-icon uk-first-column info-card__btn uk-button" style="background-color: #fff; color: #0E58A8; border-radius: 100px; font-size: 15px;"; href="{{route('our-equipments')}}">Browse Rental Categories</a>
                         </div>
                     </div>
                     <div class="s-hero__slider">
@@ -448,7 +448,7 @@
                                         </div><br>
                                     </div>
                                     <div class="col-lg-4 col-md-6 col-12">
-                                        <a style="width: 280px;border-color: #0E58A8;background-color: #fff;color: #0E58A8;" class="uk-button uk-button-default uk-button-large" href="{{route('contactus')}}"><span>Contact Us</span><span data-uk-icon="arrow-right"></span></a>
+                                        <a style="width: 70%;border-color: #0E58A8;background-color: #fff;color: #0E58A8;" class="uk-button uk-button-default uk-button-large" href="{{route('contactus')}}"><span>Contact Us</span><span data-uk-icon="arrow-right"></span></a>
                                         <br>
                                     </div>
                                 </div>

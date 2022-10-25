@@ -7925,7 +7925,13 @@ html .widjet-filter .nice-select {
     .block{
         display: none;
     }
-
+    .mBtnJusCenter{
+        display: flex;
+        justify-content: center;
+    }
+    .mBtnwidth{
+        width: 70%;
+    }
     .contacts-block span {
         display: none;
     }
