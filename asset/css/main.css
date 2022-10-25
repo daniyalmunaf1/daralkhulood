@@ -1478,9 +1478,10 @@ textarea.uk-form-large {
 }
 
 .logo img {
+
+    max-width: 60%;
     display: block;
     position: relative;
-    max-width: 60%;
 }
 
 .logo span {
