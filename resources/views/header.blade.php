@@ -9,7 +9,7 @@
 <header class="page-header">
             <div class="uk-container-expand">
                 <div class="page-header__inner">
-                    <div class="page-header__logo"><a style="margin-right:-100px;" class="logo" href="{{route('index')}}"><img src="{{asset('/storage/'.$user->logo)}}" alt="image"></a></div>
+                    <div class="page-header__logo"><a style="margin-right:-300px;" class="logo" href="{{route('index')}}"><img src="{{asset('/storage/'.$user->logo)}}" alt="image"></a></div>
                     <div style="margin-left:0px;" class="page-header__mainmenu">
                         <ul class="uk-navbar-nav" data-uk-navbar>
                             <li class=""><a href="{{route('index')}}"><span>Home</span></a></li>
@@ -44,9 +44,9 @@
                     <div class="page-header__contacts"><a class="contacts-block" href=""><span>Need Help? Call Us</span><strong>{{$user->number}}</strong></a>
                     <ul style="margin-top:8px;" class="block social">
                                 <li style="background-color: #0E58A8;border-radius: 50%;"><a href="{{$user->facebook}}"><span data-uk-icon="facebook"></span></a></li>
-                                <li style="background-color: #0E58A8;border-radius: 50%;"><a href="{{$user->twitter}}" ><span data-uk-icon="twitter"></span></a></li>
+                                
                                 <li style="background-color: #0E58A8;border-radius: 50%;"><a href="{{$user->instagram}}" ><span data-uk-icon="instagram"></span></a></li>
-                                <li style="background-color: #0E58A8;border-radius: 50%;"><a href="{{$user->linkedin}}" ><span data-uk-icon="linkedin"></span></a></li>
+                               
                                 <li style="background-color: #0E58A8;border-radius: 50%;"><a href="{{$user->youtube}}" ><span data-uk-icon="youtube"></span></a></li>
                             </ul>
                 </div>

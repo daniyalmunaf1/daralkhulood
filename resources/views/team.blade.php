@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="utf-8">
-    <title>News</title>
+    <title>Team</title>
     <meta content="Chernkh Mikhail" name="author">
     <meta content="DAR AL KHULOOD UNITED LLC - Top-Of-The-Line Equipment Rentals" name="description">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">

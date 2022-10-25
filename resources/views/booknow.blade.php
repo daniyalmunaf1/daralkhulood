@@ -72,9 +72,8 @@
                                     </ul>
                                     <ul class="social">
                                     <li><a href="{{$user->facebook}}"><span data-uk-icon="facebook"></span></a></li>
-                                    <li><a href="{{$user->twitter}}" ><span data-uk-icon="twitter"></span></a></li>
+                                    
                                     <li><a href="{{$user->instagram}}" ><span data-uk-icon="instagram"></span></a></li>
-                                    <li><a href="{{$user->linkedin}}" ><span data-uk-icon="linkedin"></span></a></li>
                                     <li><a href="{{$user->youtube}}" ><span data-uk-icon="youtube"></span></a></li>
                                 </ul>
                                 </div>

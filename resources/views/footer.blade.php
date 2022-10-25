@@ -16,32 +16,28 @@
                             </ul>
                             <ul class="social">
                                 <li><a href="{{$user->facebook}}"><span data-uk-icon="facebook"></span></a></li>
-                                <li><a href="{{$user->twitter}}" ><span data-uk-icon="twitter"></span></a></li>
+                               
                                 <li><a href="{{$user->instagram}}" ><span data-uk-icon="instagram"></span></a></li>
-                                <li><a href="{{$user->linkedin}}" ><span data-uk-icon="linkedin"></span></a></li>
+                                
                                 <li><a href="{{$user->youtube}}" ><span data-uk-icon="youtube"></span></a></li>
                             </ul>
                         </div>
                         <div class="page-footer__menu">
-                            <h4>OuR Solutions</h4>
+                            <h4>Operations</h4>
                             <ul class="uk-nav">
-                                <li><a href="page-typography.html">Safe Walls System</a></li>
-                                <li><a href="page-typography.html">Climate Control</a></li>
-                                <li><a href="page-typography.html">Health Care</a></li>
-                                <li><a href="page-typography.html">Entertainment</a></li>
-                                <li><a href="page-typography.html">Power Generation</a></li>
-                                <li><a href="page-typography.html">Industrial Lighting</a></li>
+                                <li><a href="http://visionpakistan.expert-elevators.com/service">Our Services</a></li>
+                                <li><a href="http://visionpakistan.expert-elevators.com/our-equipments">Our Equipments</a></li>
+                                <li><a href="http://visionpakistan.expert-elevators.com/view-projects">Projects</a></li>
+                                <li><a href="http://visionpakistan.expert-elevators.com/booknow">Book Now</a></li>
                             </ul>
                         </div>
                         <div class="page-footer__menu">
                             <h4>COMPANY INFO</h4>
                             <ul class="uk-nav">
-                                <li><a href="page-typography.html">About DAR AL KHULOOD UNITED LLC Rental</a></li>
-                                <li><a href="page-typography.html">Latest News</a></li>
-                                <li><a href="page-typography.html">Our Process</a></li>
-                                <li><a href="page-typography.html">Terms & Conditions</a></li>
-                                <li><a href="page-typography.html">Protections & Coverages</a></li>
-                                <li><a href="page-typography.html">Used Equipment Sale</a></li>
+                                <li><a href="http://visionpakistan.expert-elevators.com/company">About DAR AL KHULOOD UNITED LLC Rental</a></li>
+                                <li><a href="http://visionpakistan.expert-elevators.com/team">Our Team</a></li>
+                                <li><a href="http://visionpakistan.expert-elevators.com/gallery">Gallery</a></li>
+                                <li><a href="http://visionpakistan.expert-elevators.com/contactus">Contact Us</a></li>
                             </ul>
                         </div>
                         <div class="page-footer__news">
