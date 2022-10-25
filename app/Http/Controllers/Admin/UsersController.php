@@ -576,10 +576,16 @@ class UsersController extends Controller
 
     public function destroysliderimage($id)
     {       
+        if(Slider::count()>1)
+        {
         $image= Slider::where('id',$id)->first();
         $image->delete();
-        
         return redirect()->route('slider')->with('message', 'Image Deleted Successfully');  
+        }
+        else
+        {
+            return redirect()->route('slider')->with('issue', 'Slider must have atleast one Image');  
+        }
     }
 
     public function equipments()

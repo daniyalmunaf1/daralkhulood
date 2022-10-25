@@ -109,6 +109,9 @@ border: 1px solid;
      @if (Session::has('message'))
             <div class="alert alert-success">{{ Session::get('message') }}</div>
             @endif
+            @if (Session::has('issue'))
+                <div class="alert alert-danger">{{ Session::get('issue') }}</div>
+                @endif
 <h1>Image List</h1>
 <input type="text" id="myInput" onkeyup="myFunction()" placeholder="Search" title="Type in a name">
 <a href="{{route('add-slider-image')}}" class="btn btn-primary">Add Image</a>
