@@ -18,7 +18,7 @@ use App\Http\Controllers\Student\StudentController;
 
 Route::get('/', App\Http\Controllers\Admin\UsersController::class, 'index')->name('index');
 Route::get('/dashboard', [App\Http\Controllers\Admin\UsersController::class, 'dashboard'])->middleware(['auth','verified'])->name('dashboard');
-Route::post('/subscribe', [App\Http\Controllers\Admin\UsersController::class, 'subscribe'])->middleware(['auth','verified'])->name('subscribe');
+Route::post('/subscribe', [App\Http\Controllers\Admin\UsersController::class, 'subscribe'])->name('subscribe');
 Route::get('/subscriptions', [App\Http\Controllers\Admin\UsersController::class, 'subscriptions'])->middleware(['auth','verified'])->name('subscriptions');
 Route::get('/image-{id}-{name}', [App\Http\Controllers\Admin\UsersController::class, 'image'])->middleware(['auth','verified'])->name('image');
 Route::post('/changeimage', [App\Http\Controllers\Admin\UsersController::class, 'changeimage'])->middleware(['auth','verified'])->name('changeimage');
