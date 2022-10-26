@@ -120,7 +120,6 @@ border: 1px solid;
                            <th>S.NO</th>
                            <th style="width:102px;">Image</th>
                            <th>Title</th>
-                           <th>SubTitle</th>
                            <th>Description</th>
                            <th style="width:180px;">Actions</th>
                        </tr>
@@ -133,7 +132,6 @@ border: 1px solid;
                           <td>{{++$sno}}</td>
                            <td><img  style="height: 50px;width:50px;" src="{{asset('/storage/'.$service->image)}}" alt=""><a title="change image" href="{{route('image',['id'=>$service->id,'service'])}}"><i style="color: #1089ff;font-size:21px;margin-left:5px;" class="fa fa-edit"></i></a></td>
                            <td>{{$service->title}}</td>
-                           <td>{{$service->subtitle}}</td>
                            <td>{{$service->description}}</td>
                            <td>
                             <a class="btn btn-primary" style="" href="{{route('editservice',$service->id)}}"><i class="fa fa-edit"></i></a>

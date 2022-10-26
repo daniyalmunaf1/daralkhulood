@@ -141,8 +141,8 @@
                                         <div class="solution-item">
                                             <div class="solution-item__box uk-inline"><img src="{{asset('/storage/'.$service->image)}}" alt="solution-item">
                                                 <div class="uk-overlay uk-light uk-position-bottom">
-                                                    <div class="solution-item__title"><span>[{{$service->subtitle}}]</span>
-                                                        <h3>{{$service->subtitle}}</h3>
+                                                    <div class="solution-item__title">
+                                                        <h3>{{$service->title}}</h3>
                                                     </div>
                                                     <div class="solution-item__intro">
                                                         <p>{{$service->description}}</p>
