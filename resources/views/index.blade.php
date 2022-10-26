@@ -350,7 +350,7 @@
                                                 </div>
                                                 <div class="review-item__user">
                                                     <div class="user">
-                                                        <div class="user__avatar"><img src="{{asset('/storage/'.$review->image)}}" style="height:52px;" alt="avatar"></div>
+                                                        <div class="user__avatar"><img src="{{asset('/storage/'.$review->image)}}" style="    border-radius: 26px;height:52px;" alt="avatar"></div>
                                                         <div class="user__info">
                                                             <div class="user__name">{{$review->name}}</div>
                                                             <div class="user__position">{{$review->c_type}}</div>
