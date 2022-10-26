@@ -72,19 +72,16 @@ class EmployeesTableSeeder extends Seeder
             'title' => 'Power Generation',
             'description' => 'Excepteur sint occaecat cupidata proident in culpa qui officia deserunt mollit anim labor Sed ut perspiciatis unde omnis.',
             'image' => '/app/public/service/solution-item-1.jpg',
-            'subtitle' => 'For any power needs.',
         ]);
         Service::create([
             'title' => 'Power Generation',
             'description' => 'Excepteur sint occaecat cupidata proident in culpa qui officia deserunt mollit anim labor Sed ut perspiciatis unde omnis.',
             'image' => '/app/public/service/solution-item-2.jpg',
-            'subtitle' => 'For any power needs.',
         ]);
         Service::create([
             'title' => 'Power Generation',
             'description' => 'Excepteur sint occaecat cupidata proident in culpa qui officia deserunt mollit anim labor Sed ut perspiciatis unde omnis.',
             'image' => '/app/public/service/solution-item-3.jpg',
-            'subtitle' => 'For any power needs.',
         ]);
 
         Equipment::truncate();
