@@ -4143,6 +4143,7 @@ textarea.uk-form-large {
 
 .team-user__photo img {
     width: 100%;
+    height:250px;
 }
 
 .team-user__body {
