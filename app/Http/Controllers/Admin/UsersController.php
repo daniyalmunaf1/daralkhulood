@@ -225,12 +225,10 @@ class UsersController extends Controller
     public function service()
     {
         $user = User::where('id',1)->first();
-        $services = Service::limit(3)->get();
-        $equipments = Equipment::limit(4)->get();
+        $services = Service::get();
         return view('services')->with([
             'user'=>$user,
             'services'=>$services,
-            'equipments'=>$equipments,
         ]);
     }
     public function company()
