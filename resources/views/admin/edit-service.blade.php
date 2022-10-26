@@ -73,10 +73,7 @@
                         <label for="username">Title</label>
                         <input type="text" class="form-control item" value="{{ $service->title }}" id="name" name="title" placeholder="Enter Title of Service">
                     </div>
-                    <div class="form-group">
-                        <label for="username">SubTitle</label>
-                        <input type="text" class="form-control item" value="{{ $service->subtitle }}" id="name" name="subtitle" placeholder="Enter SubTitle of Service">
-                    </div>
+                    
                     <div class="form-group">
                         <label for="username">Description</label>
                         <textarea type="text" class="form-control item"  id="description" rows="6" name="description" placeholder="Description">{{$service->description}}</textarea>

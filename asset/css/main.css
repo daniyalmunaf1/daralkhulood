@@ -3038,6 +3038,7 @@ textarea.uk-form-large {
 
 .s-hero__slider .swiper-slide img {
     width: 100%;
+    height:450px;
 }
 
 .s-hero__slider .swiper-pagination-fraction {
@@ -3481,6 +3482,7 @@ textarea.uk-form-large {
 
 .solution-item__box img {
     width: 100%;
+    height: 540px;
 }
 
 .solution-item__box .uk-overlay {

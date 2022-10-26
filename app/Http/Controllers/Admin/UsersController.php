@@ -399,7 +399,6 @@ class UsersController extends Controller
         // dd($request->old_plan);
         $request->validate([
             'title' => ['required', 'string', 'max:100000'],
-            'subtitle' => ['required', 'string', 'max:100000'],
             'image' => ['required', 'max:100000'],
             'description' => ['required', 'string', 'max:100000'],
             
@@ -410,7 +409,6 @@ class UsersController extends Controller
         $image = app('App\Http\Controllers\UploadImageController')->storage_upload($request->image,'/app/public/service/');
         $service->image = $image;
         $service->title = $request->title;
-        $service->subtitle = $request->subtitle;
         $service->description = $request->description;
         
         $service->save();
@@ -422,7 +420,6 @@ class UsersController extends Controller
         // dd($request->old_plan);
         $request->validate([
             'title' => ['required', 'string', 'max:100000'],
-            'subtitle' => ['required', 'string', 'max:100000'],
             'description' => ['required', 'string', 'max:100000'],
             
         ]);
@@ -431,7 +428,6 @@ class UsersController extends Controller
         $service = Service::where('id',$request->id)->first();
         
         $service->title = $request->title;
-        $service->subtitle = $request->subtitle;
         $service->description = $request->description;
         
         $service->save();
@@ -627,7 +623,6 @@ class UsersController extends Controller
         // dd($request->old_plan);
         $request->validate([
             'title' => ['required', 'string', 'max:100000'],
-            'subtitle' => ['required', 'string', 'max:100000'],
             'image' => ['required', 'max:100000'],
             'description' => ['required', 'string', 'max:100000'],
             
