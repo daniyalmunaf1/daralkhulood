@@ -34,10 +34,10 @@
                         <div class="page-footer__menu">
                             <h4>COMPANY INFO</h4>
                             <ul class="uk-nav">
-                                <li><a href="http://visionpakistan.expert-elevators.com/company">About DAR AL KHULOOD UNITED LLC Rental</a></li>
-                                <li><a href="http://visionpakistan.expert-elevators.com/team">Our Team</a></li>
-                                <li><a href="http://visionpakistan.expert-elevators.com/gallery">Gallery</a></li>
-                                <li><a href="http://visionpakistan.expert-elevators.com/contactus">Contact Us</a></li>
+                                <li><a href="{{route('company')}}">About DAR AL KHULOOD UNITED LLC Rental</a></li>
+                                <li><a href="{{route('team')}}">Our Team</a></li>
+                                <li><a href="{{route('gallery')}}">Gallery</a></li>
+                                <li><a href="{{route('contactus')}}">Contact Us</a></li>
                             </ul>
                         </div>
                         <div class="page-footer__news">
