@@ -888,17 +888,32 @@ class UsersController extends Controller
 
     public function destroy(Employee $employee)
     {       
+        if(Employee::count()>1)
+        {
+            $employee->delete();
         
-        $employee->delete();
-        
-        return  redirect()->route('teamlist')->with('message', 'Employee Deleted Successfully');  
+            return  redirect()->route('teamlist')->with('message', 'Employee Deleted Successfully');   
+        }
+        else
+        {
+            return redirect()->route('teamlist')->with('issue', 'There must be atleast one Employee');  
+        }
+          
     }
     public function destroyservice($id)
-    {       
-        $service = Service::where('id',$id)->first();
-        $service->delete();
-        
-        return  redirect()->route('services')->with('message', 'Service Deleted Successfully');  
+    {     
+        if(Service::count()>1)
+        {
+            $service = Service::where('id',$id)->first();
+            $service->delete();
+            
+            return  redirect()->route('services')->with('message', 'Service Deleted Successfully');   
+        }
+        else
+        {
+            return redirect()->route('services')->with('issue', 'There must be atleast one Service');  
+        }  
+         
     }
     public function destroyequipment($id)
     {       

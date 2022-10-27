@@ -25,10 +25,10 @@
                         <div class="page-footer__menu">
                             <h4>Operations</h4>
                             <ul class="uk-nav">
-                                <li><a href="http://visionpakistan.expert-elevators.com/service">Our Services</a></li>
-                                <li><a href="http://visionpakistan.expert-elevators.com/our-equipments">Our Equipments</a></li>
-                                <li><a href="http://visionpakistan.expert-elevators.com/view-projects">Projects</a></li>
-                                <li><a href="http://visionpakistan.expert-elevators.com/booknow">Book Now</a></li>
+                                <li><a href="{{route('service')}}">Our Services</a></li>
+                                <li><a href="{{route('our-equipments')}}">Our Equipments</a></li>
+                                <li><a href="{{route('view-projects')}}">Projects</a></li>
+                                <li><a href="{{route('booknow')}}">Book Now</a></li>
                             </ul>
                         </div>
                         <div class="page-footer__menu">

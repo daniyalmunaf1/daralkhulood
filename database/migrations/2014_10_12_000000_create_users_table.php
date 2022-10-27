@@ -18,7 +18,7 @@ return new class extends Migration
             $table->string('name');
             $table->string('number');
             $table->string('address');
-            $table->string('videolink');
+            $table->longText('videolink');
             $table->string('map');
             $table->string('worktime');
             $table->string('logo');
@@ -28,11 +28,11 @@ return new class extends Migration
             $table->string('email')->unique();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password')->nullable();
-            $table->string('facebook')->nullable();
-            $table->string('twitter')->nullable();
-            $table->string('instagram')->nullable();
-            $table->string('linkedin')->nullable();
-            $table->string('youtube')->nullable();
+            $table->longText('facebook')->nullable();
+            $table->longText('twitter')->nullable();
+            $table->longText('instagram')->nullable();
+            $table->longText('linkedin')->nullable();
+            $table->longText('youtube')->nullable();
             $table->rememberToken();
             $table->timestamps();
         });

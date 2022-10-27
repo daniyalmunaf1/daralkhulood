@@ -110,6 +110,9 @@ border: 1px solid;
      @if (Session::has('message'))
             <div class="alert alert-success">{{ Session::get('message') }}</div>
             @endif
+            @if (Session::has('issue'))
+                <div class="alert alert-danger">{{ Session::get('issue') }}</div>
+                @endif
 <h1>Employee List</h1>
 <input type="text" id="myInput" onkeyup="myFunction()" placeholder="Search By Name" title="Type in a name">
 <a href="{{route('add-employee')}}" class="btn btn-primary">Add Employee</a>

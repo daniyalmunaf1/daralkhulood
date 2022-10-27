@@ -192,7 +192,7 @@
                                                 <div class="uk-card-icon"><span><img src="{{asset('/storage/'.$equipment->logo)}}" alt="ico-cat-item"></span></div>
                                                 <h3 class="uk-card-title">{{$equipment->title}}</h3>
                                                 <p>{{$equipment->description}}</p>
-                                                <a class="more" href=""><span>Book Now</span><span data-uk-icon="arrow-right"></span></a>
+                                                <a class="more" href="{{route('booknow')}}"><span>Book Now</span><span data-uk-icon="arrow-right"></span></a>
                                             </div>
                                         </div>
                                     </div>
