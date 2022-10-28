@@ -68,7 +68,7 @@
                                                         <a href=""> <div class="swiper-slide"></a><img style="height: 278px;width: 418px;" src="{{asset('/storage/'.$project->image5)}}" alt="hero-slider"></div></a>
                                                         @endif
                                                     </div>
-                                                    <div style="height: 12px;width: 340px;" class="swiper-pagination"></div>
+                                                    <div class="swiper-pagination"></div>
                                                 </div>
                                             </div>
                                         </div>
