@@ -11,6 +11,7 @@
     <meta name="HandheldFriendly" content="true">
     <meta name="format-detection" content="telephone=no">
     <meta content="IE=edge" http-equiv="X-UA-Compatible">
+    <link rel="stylesheet" href="asset/css/main.css">
     <link rel="stylesheet" href="assets/css/bootstrap.min.css">
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
 
@@ -23,7 +24,7 @@
    <div class="d-flex justify-content-center " >
     
     
-    <img  img style="width:600px;height:480px;padding:25px;" src="{{asset('/storage/'.$image->name)}}" alt="">
+    <img  img style="width:600px;height:480px;" class="pad" src="{{asset('/storage/'.$image->name)}}" alt="">
 
    </div>
 </body>

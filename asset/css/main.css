@@ -6640,6 +6640,9 @@ html .widjet-filter .nice-select {
     .page-header {
         padding: 0 40px;
     }
+    .pad{
+        padding: 1%;
+    }
 }
 
 @media only screen and (max-width: 1679px) {
@@ -6653,6 +6656,9 @@ html .widjet-filter .nice-select {
 
     .s-hero__subtitle {
         font-size: 24px;
+    }
+    .pad{
+        padding: 1%;
     }
 }
 
@@ -7195,6 +7201,9 @@ html .widjet-filter .nice-select {
 }
 
 @media only screen and (max-width: 767px) {
+    .pad{
+        padding: 10%;
+    }
     .page-head__bg {
         height: 150px;
     }
