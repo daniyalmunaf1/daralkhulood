@@ -21,10 +21,10 @@
     
    <a style="height: 50px;" href="{{route('gallery')}}"><i class="fa fa-close" style="font-size: 50px;"></i></a>
    
-   <div class="d-flex justify-content-center " >
+   <div  class="d-flex pad2" >
     
     
-    <img  img style="width:600px;height:480px;" class="pad" src="{{asset('/storage/'.$image->name)}}" alt="">
+    <img  img style="height:480px;" class="pad" src="{{asset('/storage/'.$image->name)}}" alt="">
 
    </div>
 </body>

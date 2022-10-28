@@ -6641,7 +6641,11 @@ html .widjet-filter .nice-select {
         padding: 0 40px;
     }
     .pad{
-        padding: 1%;
+        width:600px;
+    }
+    .pad2
+    {
+        justify-content: center;
     }
 }
 
@@ -7202,7 +7206,12 @@ html .widjet-filter .nice-select {
 
 @media only screen and (max-width: 767px) {
     .pad{
-        padding: 10%;
+        width:100%;
+
+    }
+    .pad2
+    {
+        justify-content: flex-start;
     }
     .page-head__bg {
         height: 150px;
