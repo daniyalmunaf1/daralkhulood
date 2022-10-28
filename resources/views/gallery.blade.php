@@ -62,7 +62,7 @@
 
                         <div>
                             <div class="new-item"><a class="new-item__box">
-                                    <iframe width="390" height="315" src="{{$video->link}}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                                    <iframe style="max-width: 100%;" width="390" height="315" src="{{$video->link}}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
                                     
                                 </a></div>
                         </div>
