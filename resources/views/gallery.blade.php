@@ -44,7 +44,7 @@
                         
                         @foreach($images as $image)
                         <div>
-                            <div class="new-item"><a class="new-item__box" href="">
+                            <div class="new-item"><a class="new-item__box" href="{{route('view-image',$image->id)}}">
                                     <div class="new-item__media"><img style="width:390px;height:280px;" src="{{asset('/storage/'.$image->name)}}" alt="news"></div>
                                     
                                 </a></div>

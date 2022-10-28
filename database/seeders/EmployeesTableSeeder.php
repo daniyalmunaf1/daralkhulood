@@ -120,20 +120,33 @@ class EmployeesTableSeeder extends Seeder
         Project::create([
             'title' => 'Aerial Machines',
             'description' => 'Excepteur sint occaecat cupidata proident in culpa qui officia deserunt mollit anim labor Sed ut perspiciatis unde omnis.',
-            'image' => '/app/public/equipment/cat-item-1.jpg',
+            'image1' => '/app/public/equipment/cat-item-1.jpg',
+            'image2' => '/app/public/equipment/cat-item-2.jpg',
+            'image3' => '/app/public/equipment/cat-item-3.jpg',
+            'image4' => '/app/public/equipment/cat-item-5.jpg',
         ]);
         Project::create([
             'title' => 'Aerial Machines',
             'description' => 'Excepteur sint occaecat cupidata proident in culpa qui officia deserunt mollit anim labor Sed ut perspiciatis unde omnis.',
-            'image' => '/app/public/equipment/cat-item-1.jpg',
+            'image1' => '/app/public/equipment/cat-item-1.jpg',
+            'image2' => '/app/public/equipment/cat-item-4.jpg',
+            'image3' => '/app/public/equipment/cat-item-2.jpg',
+
         ]);Project::create([
             'title' => 'Aerial Machines',
             'description' => 'Excepteur sint occaecat cupidata proident in culpa qui officia deserunt mollit anim labor Sed ut perspiciatis unde omnis.',
-            'image' => '/app/public/equipment/cat-item-1.jpg',
+            'image1' => '/app/public/equipment/cat-item-2.jpg',
+            'image2' => '/app/public/equipment/cat-item-3.jpg',
+            'image3' => '/app/public/equipment/cat-item-1.jpg',
+            'image4' => '/app/public/equipment/cat-item-5.jpg',
+
         ]);Project::create([
             'title' => 'Aerial Machines',
             'description' => 'Excepteur sint occaecat cupidata proident in culpa qui officia deserunt mollit anim labor Sed ut perspiciatis unde omnis.',
-            'image' => '/app/public/equipment/cat-item-1.jpg',
+            'image1' => '/app/public/equipment/cat-item-1.jpg',
+            'image2' => '/app/public/equipment/cat-item-2.jpg',
+            'image3' => '/app/public/equipment/cat-item-3.jpg',
+
         ]); 
         Review::truncate();
         Review::create([

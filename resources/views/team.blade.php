@@ -38,7 +38,8 @@
             <div class="page-content">
                 <section class="s-team">
                     <div class="uk-section uk-container">
-                        <div class="section-title --center"><span>[Rent The Top Performing Equipments]</span>
+                        <div class="section-title --center">
+                            <!-- <span>[Rent The Top Performing Equipments]</span> -->
                             <h3>Meet Our Team Members</h3>
                         </div>
                        

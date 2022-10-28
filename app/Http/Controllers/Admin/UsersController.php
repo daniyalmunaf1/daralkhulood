@@ -86,11 +86,43 @@ class UsersController extends Controller
             $table->save();
             return  redirect()->route('reviews')->with('message', 'Image Updated Successfully');   
         }
-        elseif($request->name=='project')
+        elseif($request->name=='project1')
         {
             $table = Project::where('id',$request->id)->first();
             $image = app('App\Http\Controllers\UploadImageController')->storage_upload($request->image,'/app/public/project/');
-            $table->image = $image;
+            $table->image1 = $image;
+            $table->save();
+            return  redirect()->route('projects')->with('message', 'Image Updated Successfully');
+        }
+        elseif($request->name=='project2')
+        {
+            $table = Project::where('id',$request->id)->first();
+            $image = app('App\Http\Controllers\UploadImageController')->storage_upload($request->image,'/app/public/project/');
+            $table->image2 = $image;
+            $table->save();
+            return  redirect()->route('projects')->with('message', 'Image Updated Successfully');
+        }
+        elseif($request->name=='project3')
+        {
+            $table = Project::where('id',$request->id)->first();
+            $image = app('App\Http\Controllers\UploadImageController')->storage_upload($request->image,'/app/public/project/');
+            $table->image3 = $image;
+            $table->save();
+            return  redirect()->route('projects')->with('message', 'Image Updated Successfully');
+        }
+        elseif($request->name=='project4')
+        {
+            $table = Project::where('id',$request->id)->first();
+            $image = app('App\Http\Controllers\UploadImageController')->storage_upload($request->image,'/app/public/project/');
+            $table->image4 = $image;
+            $table->save();
+            return  redirect()->route('projects')->with('message', 'Image Updated Successfully');
+        }
+        elseif($request->name=='project5')
+        {
+            $table = Project::where('id',$request->id)->first();
+            $image = app('App\Http\Controllers\UploadImageController')->storage_upload($request->image,'/app/public/project/');
+            $table->image5 = $image;
             $table->save();
             return  redirect()->route('projects')->with('message', 'Image Updated Successfully');
         }
@@ -138,6 +170,13 @@ class UsersController extends Controller
             'user'=>$user,
             'images'=>$images,
             'videos'=>$videos,
+        ]);
+    }
+    public function viewimage($id)
+    {
+        $image = Image::where('id',$id)->first();
+        return view('view-image')->with([
+            'image'=>$image,
         ]);
     }
 
@@ -698,15 +737,31 @@ class UsersController extends Controller
         // dd($request->old_plan);
         $request->validate([
             'title' => ['required', 'string', 'max:100000'],
-            'image' => ['required', 'max:100000'],
+            'image1' => ['required', 'max:100000'],
             'description' => ['required', 'string', 'max:100000'],
             
         ]);
 
         $user = User::where('id',1)->first();
         $project = new Project();
-        $image = app('App\Http\Controllers\UploadImageController')->storage_upload($request->image,'/app/public/project/');
-        $project->image = $image;
+        $image1 = app('App\Http\Controllers\UploadImageController')->storage_upload($request->image1,'/app/public/project/');
+        $project->image1 = $image1;
+        if($request->image2){
+            $image2 = app('App\Http\Controllers\UploadImageController')->storage_upload($request->image2,'/app/public/project/');
+            $project->image2 = $image2;
+        }
+        if($request->image3){
+            $image3 = app('App\Http\Controllers\UploadImageController')->storage_upload($request->image3,'/app/public/project/');
+            $project->image3 = $image3;
+        }
+        if($request->image4){
+            $image4 = app('App\Http\Controllers\UploadImageController')->storage_upload($request->image4,'/app/public/project/');
+            $project->image4 = $image4;
+        }
+        if($request->image5){
+            $image5 = app('App\Http\Controllers\UploadImageController')->storage_upload($request->image5,'/app/public/project/');
+            $project->image5 = $image5;
+        }
         $project->title = $request->title;
         $project->description = $request->description;
         

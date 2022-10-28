@@ -238,7 +238,7 @@
                                                     <div class="solution-item__intro">
                                                         <p>{{$service->description}}</p>
                                                     </div>
-                                                    <div class="solution-item__link"><a class="more" href="07_equipment-detail.html"><span data-uk-icon="arrow-right"></span><span>learn more</span></a></div>
+                                                    <div class="solution-item__link"></div>
                                                 </div>
                                             </div>
                                         </div>

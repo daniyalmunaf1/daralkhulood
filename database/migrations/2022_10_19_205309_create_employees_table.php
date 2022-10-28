@@ -18,11 +18,11 @@ return new class extends Migration
             $table->string('name');
             $table->string('image');
             $table->string('designation');
-            $table->string('facebook')->nullable();
-            $table->string('twitter')->nullable();
-            $table->string('instagram')->nullable();
-            $table->string('linkedin')->nullable();
-            $table->string('youtube')->nullable();
+            $table->longText('facebook')->nullable();
+            $table->longText('twitter')->nullable();
+            $table->longText('instagram')->nullable();
+            $table->longText('linkedin')->nullable();
+            $table->longText('youtube')->nullable();
             $table->timestamps();
         });
     }

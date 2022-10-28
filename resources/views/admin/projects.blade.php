@@ -118,7 +118,11 @@ border: 1px solid;
                        <tr>
                            <!-- <th>#</th> -->
                            <th>S.NO</th>
-                           <th style="width:102px;">Image</th>
+                           <th style="width:102px;">Image 1</th>
+                           <th style="width:102px;">Image 2</th>
+                           <th style="width:102px;">Image 3</th>
+                           <th style="width:102px;">Image 4</th>
+                           <th style="width:102px;">Image 5</th>
                            <th>Title</th>
                            <th>Description</th>
                            <th style="width:180px;">Actions</th>
@@ -130,7 +134,31 @@ border: 1px solid;
                         @foreach($projects as $project)
                        <tr>
                           <td>{{++$sno}}</td>
-                          <td><img  style="height: 50px;width:50px;" src="{{asset('/storage/'.$project->image)}}" alt=""><a title="change image" href="{{route('image',['id'=>$project->id,'project'])}}"><i style="color: #1089ff;font-size:21px;margin-left:5px;" class="fa fa-edit"></i></a></td>
+                          @if($project->image1)
+                          <td><img  style="height: 50px;width:50px;" src="{{asset('/storage/'.$project->image1)}}" alt=""><a title="change image" href="{{route('image',['id'=>$project->id,'project1'])}}"><i style="color: #1089ff;font-size:21px;margin-left:5px;" class="fa fa-edit"></i></a></td>
+                          @else
+                          <td><a title="change image" href="{{route('image',['id'=>$project->id,'project1'])}}"><i style="margin-top: 20px;color: #1089ff;font-size:21px;margin-left:5px;" class="fa fa-edit"></i></a></td>
+                          @endif
+                          @if($project->image2)
+                          <td><img  style="height: 50px;width:50px;" src="{{asset('/storage/'.$project->image2)}}" alt=""><a title="change image" href="{{route('image',['id'=>$project->id,'project2'])}}"><i style="color: #1089ff;font-size:21px;margin-left:5px;" class="fa fa-edit"></i></a></td>
+                          @else
+                          <td><a title="change image" href="{{route('image',['id'=>$project->id,'project2'])}}"><i style="margin-top: 20px;color: #1089ff;font-size:21px;margin-left:5px;" class="fa fa-edit"></i></a></td>
+                          @endif
+                          @if($project->image3)
+                          <td><img  style="height: 50px;width:50px;" src="{{asset('/storage/'.$project->image3)}}" alt=""><a title="change image" href="{{route('image',['id'=>$project->id,'project3'])}}"><i style="color: #1089ff;font-size:21px;margin-left:5px;" class="fa fa-edit"></i></a></td>
+                          @else
+                          <td><a title="change image" href="{{route('image',['id'=>$project->id,'project3'])}}"><i style="margin-top: 20px;color: #1089ff;font-size:21px;margin-left:5px;" class="fa fa-edit"></i></a></td>
+                          @endif
+                          @if($project->image4)
+                          <td><img  style="height: 50px;width:50px;" src="{{asset('/storage/'.$project->image4)}}" alt=""><a title="change image" href="{{route('image',['id'=>$project->id,'project4'])}}"><i style="color: #1089ff;font-size:21px;margin-left:5px;" class="fa fa-edit"></i></a></td>
+                          @else
+                          <td><a title="change image" href="{{route('image',['id'=>$project->id,'project4'])}}"><i style="margin-top: 20px;color: #1089ff;font-size:21px;margin-left:5px;" class="fa fa-edit"></i></a></td>
+                          @endif
+                          @if($project->image5)
+                          <td><img  style="height: 50px;width:50px;" src="{{asset('/storage/'.$project->image5)}}" alt=""><a title="change image" href="{{route('image',['id'=>$project->id,'project5'])}}"><i style="color: #1089ff;font-size:21px;margin-left:5px;" class="fa fa-edit"></i></a></td>
+                          @else
+                          <td><a title="change image" href="{{route('image',['id'=>$project->id,'projec5'])}}"><i style="margin-top: 20px;color: #1089ff;font-size:21px;margin-left:5px;" class="fa fa-edit"></i></a></td>
+                          @endif
                            <td>{{$project->title}}</td>
                            <td>{{$project->description}}</td>
                            <td>

@@ -17,7 +17,7 @@ return new class extends Migration
             $table->id();
             $table->string('title');
             $table->string('image');
-            $table->string('description');
+            $table->longText('description');
             $table->string('name');
             $table->string('c_type');
             $table->string('rate');

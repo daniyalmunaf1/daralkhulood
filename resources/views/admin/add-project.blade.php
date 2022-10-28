@@ -77,8 +77,24 @@
                     </div>
                     
                     <div class="form-group">
-                        <label for="image">Image</label>
-                        <input type="file"  style="height:52px;" class="form-control item" id="accnum" name="image">
+                        <label for="image">Image 1</label>
+                        <input type="file"  style="height:52px;" class="form-control item" id="accnum" name="image1">
+                    </div>
+                    <div class="form-group">
+                        <label for="image">Image 2</label>
+                        <input type="file"  style="height:52px;" class="form-control item" id="accnum" name="image2">
+                    </div>
+                    <div class="form-group">
+                        <label for="image">Image 3</label>
+                        <input type="file"  style="height:52px;" class="form-control item" id="accnum" name="image3">
+                    </div>
+                    <div class="form-group">
+                        <label for="image">Image 4</label>
+                        <input type="file"  style="height:52px;" class="form-control item" id="accnum" name="image4">
+                    </div>
+                    <div class="form-group">
+                        <label for="image">Image 5</label>
+                        <input type="file"  style="height:52px;" class="form-control item" id="accnum" name="image5">
                     </div>
                     <div class="form-group">
                         <button type="Submit" class="btn btn-block create-account">Add</button>

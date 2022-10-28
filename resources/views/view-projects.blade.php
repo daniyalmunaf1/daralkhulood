@@ -44,11 +44,34 @@
 
                         <div class="section-content">
                             <div class="uk-grid uk-child-width-1-2@s  uk-child-width-1-2@m uk-child-width-1-4@l uk-child-width-1-2@xl" data-uk-grid>
-                            @foreach($projects as $project)
-                                
-                            <div>
+                                @foreach($projects as $project)
+                                    
+                                <div>
                                     <div class="uk-card uk-card-default uk-grid-collapse uk-child-width-1-2@xl uk-margin" data-uk-grid>
-                                        <div class="uk-card-media-left uk-cover-container"><img src="{{asset('/storage/'.$project->image)}}" alt="cat-item" data-uk-cover><canvas width="350" height="300"></canvas></div>
+                                        <div class="s-hero__slider">
+                                            <div class="js-hero-slider">
+                                                <div class="swiper">
+                                                    <div class="swiper-wrapper">
+                                                        @if($project->image1)
+                                                        <a href=""> <div class="swiper-slide"></a><img style="height: 278px;width: 418px;" src="{{asset('/storage/'.$project->image1)}}" alt="hero-slider"></div></a>
+                                                        @endif
+                                                        @if($project->image2)
+                                                        <a href=""> <div class="swiper-slide"></a><img style="height: 278px;width: 418px;" src="{{asset('/storage/'.$project->image2)}}" alt="hero-slider"></div></a>
+                                                        @endif
+                                                        @if($project->image3)
+                                                        <a href=""> <div class="swiper-slide"></a><img style="height: 278px;width: 418px;" src="{{asset('/storage/'.$project->image3)}}" alt="hero-slider"></div></a>
+                                                        @endif
+                                                        @if($project->image4)
+                                                        <a href=""> <div class="swiper-slide"></a><img style="height: 278px;width: 418px;" src="{{asset('/storage/'.$project->image4)}}" alt="hero-slider"></div></a>
+                                                        @endif
+                                                        @if($project->image5)
+                                                        <a href=""> <div class="swiper-slide"></a><img style="height: 278px;width: 418px;" src="{{asset('/storage/'.$project->image5)}}" alt="hero-slider"></div></a>
+                                                        @endif
+                                                    </div>
+                                                    <div style="height: 12px;width: 340px;" class="swiper-pagination"></div>
+                                                </div>
+                                            </div>
+                                        </div>
                                         <div>
                                             <div class="uk-card-body">
                                                 <h3 class="uk-card-title">{{$project->title}}</h3>

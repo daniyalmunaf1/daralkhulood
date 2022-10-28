@@ -86,6 +86,7 @@ Route::post('/sendinquiry', [App\Http\Controllers\Admin\UsersController::class, 
 Route::post('/sendmessage', [App\Http\Controllers\Admin\UsersController::class, 'sendmessage'])->name('sendmessage');
 Route::get('/team', [App\Http\Controllers\Admin\UsersController::class, 'team'])->name('team');
 Route::post('/update', [App\Http\Controllers\Admin\UsersController::class, 'update'])->middleware(['auth','verified'])->name('update');
+Route::get('/view-image-{id}', [App\Http\Controllers\Admin\UsersController::class, 'viewimage'])->name('view-image');
 
 
 Route::post('user/change', [App\Http\Controllers\Admin\UsersController::class, 'changePassword'])->middleware(['auth','verified'])->name('change_password');
