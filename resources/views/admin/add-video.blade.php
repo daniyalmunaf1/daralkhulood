@@ -65,7 +65,7 @@
             <div class="alert alert-danger">{{ Session::get('issue') }}</div>
             @endif
                     <div class="d-flex justify-content-center">
-                    <h3 style="margin-bottom :25px;">Add Service</h3>
+                    <h3 style="margin-bottom :25px;">Add Video</h3>
                     </div>
                     
                     <div class="form-group">
