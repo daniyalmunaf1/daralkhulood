@@ -7207,6 +7207,9 @@ html .widjet-filter .nice-select {
         width:100%;
         
     }
+    .logo img {
+        max-height: 50px;
+    }
     .pad2
     {
         justify-content: flex-start;
