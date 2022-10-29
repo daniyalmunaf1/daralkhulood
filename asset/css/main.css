@@ -6832,7 +6832,9 @@ html .widjet-filter .nice-select {
     .sidebar.--left {
         padding: 0;
     }
-
+    .logo img {
+        max-height: 50px;
+    }
     .newsletter-form__form {
         border: 5px solid rgba(255, 255, 255, 0.2);
     }
@@ -7207,9 +7209,7 @@ html .widjet-filter .nice-select {
         width:100%;
         
     }
-    .logo img {
-        max-height: 50px;
-    }
+    
     .pad2
     {
         justify-content: flex-start;
