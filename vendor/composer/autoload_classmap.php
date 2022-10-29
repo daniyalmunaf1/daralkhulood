@@ -46,6 +46,7 @@ return array(
     'App\\Http\\Requests\\Auth\\LoginRequest' => $baseDir . '/app/Http/Requests/Auth/LoginRequest.php',
     'App\\Mail\\Email' => $baseDir . '/app/Mail/Email.php',
     'App\\Mail\\SendEmailLink' => $baseDir . '/app/Mail/SendEmailLink.php',
+    'App\\Models\\Certificate' => $baseDir . '/app/Models/Certificate.php',
     'App\\Models\\DeactivateDays' => $baseDir . '/app/Models/DeactivateDays.php',
     'App\\Models\\Employee' => $baseDir . '/app/Models/Employee.php',
     'App\\Models\\Equipment' => $baseDir . '/app/Models/Equipment.php',

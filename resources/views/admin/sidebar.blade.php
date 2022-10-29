@@ -44,6 +44,12 @@
           >
         </li>
         <li class="nav-item">
+          <a class="nav-link" href="{{route('certificates')}}">
+            <i class="fas fa-fw fa-user-alt"></i>
+            <span>Certificates</span></a
+          >
+        </li>
+        <li class="nav-item">
           <a class="nav-link" href="{{route('images')}}">
             <i class="fas fa-fw fa-user-alt"></i>
             <span>Images</span></a

@@ -584,6 +584,7 @@ class ComposerStaticInit41d858e844c137098c80cdd5be39d606
         'App\\Http\\Requests\\Auth\\LoginRequest' => __DIR__ . '/../..' . '/app/Http/Requests/Auth/LoginRequest.php',
         'App\\Mail\\Email' => __DIR__ . '/../..' . '/app/Mail/Email.php',
         'App\\Mail\\SendEmailLink' => __DIR__ . '/../..' . '/app/Mail/SendEmailLink.php',
+        'App\\Models\\Certificate' => __DIR__ . '/../..' . '/app/Models/Certificate.php',
         'App\\Models\\DeactivateDays' => __DIR__ . '/../..' . '/app/Models/DeactivateDays.php',
         'App\\Models\\Employee' => __DIR__ . '/../..' . '/app/Models/Employee.php',
         'App\\Models\\Equipment' => __DIR__ . '/../..' . '/app/Models/Equipment.php',

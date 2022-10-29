@@ -8,6 +8,7 @@ use App\Models\DeactivateDays;
 use App\Models\User;
 use Illuminate\Support\Facades\Mail;
 use App\Mail\SendEmailLink;
+use App\Models\Certificate;
 use App\Models\Role;
 use App\Models\Employee;
 use App\Models\Equipment;
@@ -93,6 +94,14 @@ class UsersController extends Controller
             $table->image1 = $image;
             $table->save();
             return  redirect()->route('projects')->with('message', 'Image Updated Successfully');
+        }
+        elseif($request->name=='certificate')
+        {
+            $table = Certificate::where('id',$request->id)->first();
+            $image = app('App\Http\Controllers\UploadImageController')->storage_upload($request->image,'/app/public/certificate/');
+            $table->image = $image;
+            $table->save();
+            return  redirect()->route('certificates')->with('message', 'Image Updated Successfully');
         }
         elseif($request->name=='project2')
         {
@@ -303,6 +312,15 @@ class UsersController extends Controller
             'employees'=>$employees
         ]);
     }
+    public function certificate()
+    {
+        $user = User::where('id',1)->first();
+        $certificates = Certificate::all();
+        return view('certificate')->with([
+            'user'=>$user,
+            'certificates'=>$certificates
+        ]);
+    }
 
     public function gotochangepassword()
     {
@@ -396,6 +414,74 @@ class UsersController extends Controller
         $employee->save();
         
         return  redirect()->route('teamlist')->with('message', 'Details Updated Successfully');   
+    }
+
+    public function certificates()
+    {
+        $sno = 0;
+        $certificates = Certificate::all();
+        $user = User::where('id',1)->first();
+        
+        return view('admin.certificates')->with([
+            'certificates'=>$certificates,
+            'user'=>$user,
+            'sno'=>$sno
+        ]);
+
+    }   
+
+    public function editcertificate($id)
+    {       
+        $user = User::where('id',1)->first();
+        $certificate = Certificate::where('id',$id)->first();
+        return view('admin.editcertificate')->with([
+            'user'=>$user,
+            'certificate'=>$certificate
+        ]);
+
+    }
+    public function addcertificate()
+    {       
+        $user = User::where('id',1)->first();
+        return view('admin.add-certificate')->with([
+            'user'=>$user,
+        ]);
+
+    }
+
+    public function storecertificate(Request $request)
+    {
+        // dd($request->old_plan);
+        $request->validate([
+            'name' => ['required', 'string', 'max:100000'],
+            'image' => ['required', 'max:100000'],            
+        ]);
+
+        $user = User::where('id',1)->first();
+        $certificate = new Certificate();
+        $image = app('App\Http\Controllers\UploadImageController')->storage_upload($request->image,'/app/public/certificate/');
+        $certificate->image = $image;
+        $certificate->name = $request->name;
+        
+        $certificate->save();
+        
+        return  redirect()->route('certificates')->with('message', 'Certificate Added Successfully');   
+    }
+    public function updatecertificate(Request $request)
+    {
+        // dd($request->old_plan);
+        $request->validate([
+            'name' => ['required', 'string', 'max:100000'],
+           
+        ]);
+
+        $user = User::where('id',1)->first();
+        $certificate = Certificate::where('id',$request->id)->first();
+        
+        $certificate->name = $request->name;        
+        $certificate->save();
+        
+        return  redirect()->route('certificates')->with('message', 'Certificate Updated Successfully');   
     }
 
     public function services()
@@ -976,6 +1062,13 @@ class UsersController extends Controller
         $equipment->delete();
         
         return  redirect()->route('equipments')->with('message', 'Equipment Deleted Successfully');  
+    }
+    public function destroycertificate($id)
+    {       
+        $certificate = Certificate::where('id',$id)->first();
+        $certificate->delete();
+        
+        return  redirect()->route('certificates')->with('message', 'Certificate Deleted Successfully');  
     }
     public function destroyproject($id)
     {       
