@@ -135,8 +135,8 @@ border: 1px solid;
                           <td><img  style="height: 50px;width:50px;" src="{{asset('/storage/'.$certificate->image)}}" alt=""><a title="change image" href="{{route('image',['id'=>$certificate->id,'certificate'])}}"><i style="color: #1089ff;font-size:21px;margin-left:5px;" class="fa fa-edit"></i></a></td>
                            <td>{{$certificate->name}}</td>
                            <td>
-                            <a class="btn btn-primary" style="" href="{{route('edit',$certificate->id)}}"><i class="fa fa-edit"></i></a>
-                           <form method="POST" style="float:right;" action="{{ route('delete',$certificate) }}" class="" novalidate="novalidate" id="" >
+                            <a class="btn btn-primary" style="" href="{{route('editcertificate',$certificate->id)}}"><i class="fa fa-edit"></i></a>
+                           <form method="POST" style="float:right;" action="{{ route('deletecertificate',$certificate) }}" class="" novalidate="novalidate" id="" >
 															@csrf
 																{{method_field('DELETE')}}
                              <button class="btn btn-danger del-user" ><i class="fa fa-trash"></i></button>

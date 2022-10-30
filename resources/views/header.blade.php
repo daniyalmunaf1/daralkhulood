@@ -19,7 +19,7 @@
                                         <li><a href="{{route('company')}}">Company</a></li>
                                         <li><a href="{{route('gallery')}}">Gallery</a></li>
                                         <li><a href="{{route('service')}}">Services</a></li>
-                                        <li><a href="{{route('certificate')}}">Certificates</a></li>
+                                        <li><a href="{{route('our-achievements')}}">Our AAchievements</a></li>
                                     </ul>
                                 </div>
                             </li>

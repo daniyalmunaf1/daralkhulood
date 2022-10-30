@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="utf-8">
-    <title>Certificate</title>
+    <title>Our Achievements</title>
     <meta content="Chernkh Mikhail" name="author">
     <meta content="DAR AL KHULOOD UNITED LLC - Top-Of-The-Line Equipment Rentals" name="description">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -27,10 +27,10 @@
         <main class="page-main">
             <div class="page-head">
                 <div class="page-head__bg" style="background-image: url(asset/img/bg_page-blog-grid.jpg)">
-                    <div class="page-head__title" style="font-size:35px;">Certificates</div>
+                    <div class="page-head__title" style="font-size:35px;">Our Achievements</div>
                     <div class="page-head__breadcrumb">
                         <ul class="uk-breadcrumb">
-                            <li><span>Certificates</span></li>
+                            <li><span>Achievements</span></li>
                         </ul>
                     </div>
                 </div>
@@ -50,7 +50,7 @@
                                         <div class="uk-card-media-left uk-cover-container"><img src="{{asset('/storage/'.$certificate->image)}}" alt="cat-item" data-uk-cover><canvas width="350" height="300"></canvas></div>
                                         <div style="margin-top: -30px;">
                                             <div style="height: 10px;" class="uk-card-body">
-                                                <h3 class="uk-card-title">{{$certificate->name}}</h3>
+                                                <p style="font-size: 18px;" class="uk-card-title">{{$certificate->name}}</p>
                                             </div>
                                         </div>
                                     </div>
@@ -70,33 +70,8 @@
         <div id="offcanvas" data-uk-offcanvas="mode: reveal; overlay: true">
             <div class="uk-offcanvas-bar uk-flex uk-flex-column uk-flex-between"><button class="uk-offcanvas-close" type="button" data-uk-close></button>
                 <div class="uk-margin-bottom"><a class="logo uk-margin-bottom" href="/"><img src="asset/img/logo-white.png" alt="image"></a>
-                    <ul class="uk-nav uk-nav-default uk-nav-parent-icon" data-uk-nav>
-                        <li class="uk-parent"><a href="01_home.html"><span>Home</span></a>
-                            <ul class="uk-nav-sub">
-                                <li><a href="01_home.html">Home 1</a></li>
-                                <li><a href="02_home.html">Home 2</a></li>
-                            </ul>
-                        </li>
-                        <li class="uk-parent"><a href="03_equipment-categories.html"><span>Equipments</span></a>
-                            <ul class="uk-nav-sub">
-                                <li><a href="03_equipment-categories.html">Equipment categories 1</a></li>
-                                <li><a href="04_equipment-categories.html">Equipment categories 2</a></li>
-                                <li><a href="05_all-equipments-list.html">All equipments list</a></li>
-                                <li><a href="06_all-equipments-grid.html">All equipments grid</a></li>
-                                <li><a href="07_equipment-detail.html">Equipment detail</a></li>
-                            </ul>
-                        </li>
-                        <li><a href="07_equipment-detail.html"><span>Our Solutions</span></a></li>
-                        <li><a href="11_about-us.html"><span>About</span></a></li>
-                        <li class="uk-parent uk-active"><a href="08_blog-grid.html"><span>News</span></a>
-                            <ul class="uk-nav-sub">
-                                <li><a href="08_blog-grid.html">Blog grid</a></li>
-                                <li><a href="09_blog-default.html">Blog default</a></li>
-                                <li><a href="10_blog-post.html">Blog post</a></li>
-                            </ul>
-                        </li>
-                        <li><a href="12_contact-us.html"><span>Contact</span></a></li>
-                    </ul>
+                                        @include('mb_menu')
+                        
                 </div>
                 <div class="uk-margin"><a class="contacts-block" href="tel:+96895219590"><span>Need Help? Call Us</span><strong>(+968) 9521-9590</strong></a></div>
             </div>

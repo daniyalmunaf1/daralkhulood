@@ -79,33 +79,8 @@
         <div id="offcanvas" data-uk-offcanvas="mode: reveal; overlay: true">
             <div class="uk-offcanvas-bar uk-flex uk-flex-column uk-flex-between"><button class="uk-offcanvas-close" type="button" data-uk-close></button>
                 <div class="uk-margin-bottom"><a class="logo uk-margin-bottom" href="/"><img src="asset/img/logo-white.png" alt="image"></a>
-                    <ul class="uk-nav uk-nav-default uk-nav-parent-icon" data-uk-nav>
-                        <li class="uk-parent"><a href="01_home.html"><span>Home</span></a>
-                            <ul class="uk-nav-sub">
-                                <li><a href="01_home.html">Home 1</a></li>
-                                <li><a href="02_home.html">Home 2</a></li>
-                            </ul>
-                        </li>
-                        <li class="uk-parent"><a href="03_equipment-categories.html"><span>Equipments</span></a>
-                            <ul class="uk-nav-sub">
-                                <li><a href="03_equipment-categories.html">Equipment categories 1</a></li>
-                                <li><a href="04_equipment-categories.html">Equipment categories 2</a></li>
-                                <li><a href="05_all-equipments-list.html">All equipments list</a></li>
-                                <li><a href="06_all-equipments-grid.html">All equipments grid</a></li>
-                                <li><a href="07_equipment-detail.html">Equipment detail</a></li>
-                            </ul>
-                        </li>
-                        <li><a href="07_equipment-detail.html"><span>Our Solutions</span></a></li>
-                        <li><a href="11_about-us.html"><span>About</span></a></li>
-                        <li class="uk-parent uk-active"><a href="08_blog-grid.html"><span>News</span></a>
-                            <ul class="uk-nav-sub">
-                                <li><a href="08_blog-grid.html">Blog grid</a></li>
-                                <li><a href="09_blog-default.html">Blog default</a></li>
-                                <li><a href="10_blog-post.html">Blog post</a></li>
-                            </ul>
-                        </li>
-                        <li><a href="12_contact-us.html"><span>Contact</span></a></li>
-                    </ul>
+                                        @include('mb_menu')
+                        
                 </div>
                 <div class="uk-margin"><a class="contacts-block" href="tel:+96895219590"><span>Need Help? Call Us</span><strong>(+968) 9521-9590</strong></a></div>
             </div>

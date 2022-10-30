@@ -36,7 +36,7 @@ Route::get('/editcertificate-{id}', [App\Http\Controllers\Admin\UsersController:
 Route::post('/updatecertificate', [App\Http\Controllers\Admin\UsersController::class, 'updatecertificate'])->middleware(['auth','verified'])->name('updatecertificate');
 Route::get('/add-certificate', [App\Http\Controllers\Admin\UsersController::class, 'addcertificate'])->middleware(['auth','verified'])->name('add-certificate');
 Route::post('/storecertificate', [App\Http\Controllers\Admin\UsersController::class, 'storecertificate'])->middleware(['auth','verified'])->name('storecertificate');
-Route::DELETE('/delete-{certificate}', [App\Http\Controllers\Admin\UsersController::class, 'destroycertificate'])->middleware(['auth','verified'])->name('deletecertificate');
+Route::DELETE('/deletecertificate-{certificate}', [App\Http\Controllers\Admin\UsersController::class, 'destroycertificate'])->middleware(['auth','verified'])->name('deletecertificate');
 
 Route::get('/services', [App\Http\Controllers\Admin\UsersController::class, 'services'])->middleware(['auth','verified'])->name('services');
 Route::get('/editservice-{id}', [App\Http\Controllers\Admin\UsersController::class, 'editservice'])->middleware(['auth','verified'])->name('editservice');
@@ -92,7 +92,7 @@ Route::get('/booknow', [App\Http\Controllers\Admin\UsersController::class, 'book
 Route::post('/sendinquiry', [App\Http\Controllers\Admin\UsersController::class, 'sendinquiry'])->name('sendinquiry');
 Route::post('/sendmessage', [App\Http\Controllers\Admin\UsersController::class, 'sendmessage'])->name('sendmessage');
 Route::get('/team', [App\Http\Controllers\Admin\UsersController::class, 'team'])->name('team');
-Route::get('/certificate', [App\Http\Controllers\Admin\UsersController::class, 'certificate'])->name('certificate');
+Route::get('/our-achievements', [App\Http\Controllers\Admin\UsersController::class, 'certificate'])->name('our-achievements');
 Route::post('/update', [App\Http\Controllers\Admin\UsersController::class, 'update'])->middleware(['auth','verified'])->name('update');
 Route::get('/view-image-{id}', [App\Http\Controllers\Admin\UsersController::class, 'viewimage'])->name('view-image');
 
