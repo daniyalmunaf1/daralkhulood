@@ -235,7 +235,7 @@ class UsersController extends Controller
             $message = $request->message;
             $user = User::first();
       
-            Mail::to($user->email)->send(new SendEmailLink($name,$email,$subject,$message));
+            Mail::to($email)->send(new SendEmailLink($name,$email,$subject,$message));
             return redirect()->route('contactus')->with('message', 'Message Sent Successfully');         
     }
     public function sendinquiry(Request $request)
@@ -258,7 +258,7 @@ class UsersController extends Controller
             $message = $request->message;
             $user = User::first();
       
-            Mail::to($user->email)->send(new Email($name,$email,$equipment,$message,$phonenumber,$companyname,$city));
+            Mail::to($email)->send(new Email($name,$email,$equipment,$message,$phonenumber,$companyname,$city));
             return redirect()->route('booknow')->with('message', 'Message Sent Successfully'); 
     }
     public function aboutus()
@@ -973,6 +973,9 @@ class UsersController extends Controller
             'twitter' => ['required', 'string', 'max:100000'],
             'linkedin' => ['required', 'string', 'max:100000'],
             'youtube' => ['required', 'string', 'max:100000'],
+            'slider' => ['required', 'string', 'max:100000'],
+            'address' => ['required', 'string', 'max:100000'],
+            'map' => ['required', 'string', 'max:100000'],
         ]);
 
         $user = User::where('id',1)->first();
@@ -1001,6 +1004,8 @@ class UsersController extends Controller
         $user->linkedin = $request->linkedin;
         $user->youtube = $request->youtube;
         $user->map = $request->map;
+        $user->slider = $request->slider;
+        $user->address = $request->address;
         
         $user->save();
         

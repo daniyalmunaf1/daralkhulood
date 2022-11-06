@@ -43,13 +43,7 @@
                         </div>
                     </div>
                     <div class="page-header__contacts"><a class="contacts-block" href=""><span>Need Help? Call Us</span><strong>{{$user->number}}</strong></a>
-                    <ul style="margin-top:8px;" class="block social">
-                                <li style="background-color: #0E58A8;border-radius: 50%;"><a href="{{$user->facebook}}"><span data-uk-icon="facebook"></span></a></li>
-                                
-                                <li style="background-color: #0E58A8;border-radius: 50%;"><a href="{{$user->instagram}}" ><span data-uk-icon="instagram"></span></a></li>
-                               
-                                <li style="background-color: #0E58A8;border-radius: 50%;"><a href="{{$user->youtube}}" ><span data-uk-icon="youtube"></span></a></li>
-                            </ul>
+                    
                 </div>
                     <div class="page-header__mobile-menu-btn"><button data-uk-toggle="target: #offcanvas" type="button"><span data-uk-icon="menu"></span></button></div>
                     
