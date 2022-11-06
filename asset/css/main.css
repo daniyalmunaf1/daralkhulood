@@ -6649,11 +6649,26 @@ html .widjet-filter .nice-select {
     }
 }
 
+@media only screen and (min-width: 1679px) {
+    .logo img {
+        max-width: 85%;
+    }
+}
+@media only screen and (max-width: 1678px) and (min-width: 1599px) {
+    .logo img {
+        max-width: 75%;
+    }
+}
+@media only screen and (max-width: 1598px) and (min-width: 1439px) {
+    .logo img {
+        max-width: 70%;
+    }
+}
 @media only screen and (max-width: 1679px) {
     .logo span {
         display: none;
     }
-
+    
     .s-hero__title {
         font-size: 40px;
     }
@@ -6834,6 +6849,7 @@ html .widjet-filter .nice-select {
     }
     .logo img {
         max-height: 50px;
+        max-width: 70%;
     }
     .newsletter-form__form {
         border: 5px solid rgba(255, 255, 255, 0.2);
